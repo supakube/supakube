@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/rust:1 AS development
+FROM purtontech/rust-on-nails-devcontainer:1.3.4 AS development
 
 COPY ps1.bash .
 RUN cat ps1.bash >> ~/.bashrc && sudo rm ps1.bash
@@ -12,7 +12,3 @@ RUN echo 'git config core.hooksPath /workspace/.devcontainer/.githooks' >> ~/.ba
 ARG USERNAME=vscode
 RUN sudo mkdir -p /workspace/target && sudo chown $USERNAME:$USERNAME /workspace/target
 #RUN sudo mkdir -p /workspace/crates/asset-pipeline/node_modules && sudo chown $USERNAME:$USERNAME /workspace/crates/asset-pipeline/node_modules
-
-RUN curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-RUN cargo binstall cargo-watch
-RUN cargo binstall watchexec-cli

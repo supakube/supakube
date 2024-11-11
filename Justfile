@@ -11,4 +11,4 @@ install-supakube:
     cargo run --bin supakube -- install --development
 
 chill:
-    cargo watch -w crates/web-server -x "build --bin web-server"
+    watchexec -w crates/web-server "cargo build --bin web-server"

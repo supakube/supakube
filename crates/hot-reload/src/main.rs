@@ -1,29 +1,14 @@
-use axum::{
-    http::HeaderMap,
-    response::{Html, IntoResponse},
-    Router,
-};
-use base64::{engine::general_purpose::URL_SAFE_NO_PAD, Engine};
+use axum::{extract::Request, response::Html, routing::get, Router};
+use jsonwebtoken::{decode, DecodingKey, Validation};
 use serde_json::Value;
 use std::env;
 use std::net::SocketAddr;
 
 #[tokio::main]
 async fn main() {
-    // Initialize tracing subscriber for logging
-    tracing_subscriber::fmt::init();
-
-    // Build our application with a fallback handler to catch all routes
-    let app = Router::new().fallback(handler);
-
-    // Get the port from the environment variable, default to 3000 if not set
-    let port: u16 = env::var("PORT")
-        .unwrap_or_else(|_| "3000".to_string())
-        .parse()
-        .expect("PORT must be a valid u16 number");
-
+    let app = Router::new().route("/", get(handler));
     // Define the address to listen on (0.0.0.0)
-    let addr = SocketAddr::from(([0, 0, 0, 0], port));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
     tracing::debug!("Listening on {}", addr);
     println!("Listening on http://{}", addr);
 
@@ -34,110 +19,171 @@ async fn main() {
         .unwrap();
 }
 
-// The handler function that processes all incoming requests
-async fn handler(headers: HeaderMap) -> impl IntoResponse {
-    // Start building the HTML response
-    let mut html = String::from(
-        "<html>
-            <head>
-                <title>Request Headers</title>
-                <style>
-                    body { font-family: Arial, sans-serif; }
-                    table { border-collapse: collapse; width: 50%; }
-                    th, td { border: 1px solid #ddd; padding: 8px; }
-                    th { background-color: #f2f2f2; }
-                    pre { background-color: #f8f8f8; padding: 10px; border: 1px solid #ddd; }
-                </style>
-            </head>
-            <body>
-                <h1>Request Headers</h1>
-                <table>
-                    <tr><th>Name</th><th>Value</th></tr>",
+async fn handler(req: Request) -> Html<String> {
+    let headers = get_headers(&req);
+    let jwt = get_jwt(&req);
+    let env_vars = get_env_vars();
+
+    let html = format!(
+        r#"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Reload Info</title>
+    <style>
+        body {{
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }}
+        .container {{
+            width: 80%;
+            height: 80vh;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+        }}
+        h1 {{
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }}
+        .tab-container {{
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }}
+        .tab-buttons {{
+            display: flex;
+            background: #f1f1f1;
+        }}
+        .tab-button {{
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }}
+        .tab-button:hover {{
+            background-color: #ddd;
+        }}
+        .tab-button.active {{
+            background-color: white;
+        }}
+        .tab-content {{
+            display: none;
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }}
+        .tab-content.active {{
+            display: block;
+        }}
+        pre {{
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hot Reload</h1>
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="openTab(event, 'headers')">HTTP Headers</button>
+                <button class="tab-button" onclick="openTab(event, 'jwt')">JWT Contents</button>
+                <button class="tab-button" onclick="openTab(event, 'env')">Environment Variables</button>
+            </div>
+            <div id="headers" class="tab-content active">
+                <pre>{}</pre>
+            </div>
+            <div id="jwt" class="tab-content">
+                <pre>{}</pre>
+            </div>
+            <div id="env" class="tab-content">
+                <pre>{}</pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {{
+            var i, tabContent, tabButtons;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {{
+                tabContent[i].classList.remove("active");
+            }}
+            tabButtons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabButtons.length; i++) {{
+                tabButtons[i].classList.remove("active");
+            }}
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }}
+    </script>
+</body>
+</html>
+        "#,
+        headers, jwt, env_vars
     );
 
-    // Iterate over the headers and append them to the HTML table
-    for (key, value) in headers.iter() {
-        let name = key.as_str();
-        let value = value.to_str().unwrap_or("<invalid UTF-8>");
-        html.push_str(&format!(
-            "<tr><td>{}</td><td>{}</td></tr>",
-            html_escape(name),
-            html_escape(value)
-        ));
-    }
-
-    html.push_str("</table>");
-
-    // Check for x-forwarded-access-token header and parse JWT
-    if let Some(token_value) = headers.get("x-forwarded-access-token") {
-        if let Ok(token_str) = token_value.to_str() {
-            html.push_str("<h2>Parsed JWT (x-forwarded-access-token)</h2>");
-            match parse_jwt(token_str) {
-                Ok(parsed_jwt_html) => {
-                    html.push_str(&parsed_jwt_html);
-                }
-                Err(e) => {
-                    html.push_str(&format!(
-                        "<p>Error parsing JWT: {}</p>",
-                        html_escape(&e.to_string())
-                    ));
-                }
-            }
-        }
-    } else {
-        html.push_str("<h2>JWT Not Found</h2>");
-    }
-
-    // Close the HTML tags
-    html.push_str("</body></html>");
-
-    // Return the HTML response
     Html(html)
 }
 
-// Function to parse JWT and return HTML representation
-fn parse_jwt(token: &str) -> Result<String, Box<dyn std::error::Error>> {
-    let parts: Vec<&str> = token.split('.').collect();
-    if parts.len() != 3 {
-        return Err("Invalid JWT format".into());
+fn get_headers(req: &Request) -> String {
+    req.headers()
+        .iter()
+        .map(|(name, value)| {
+            format!(
+                "{}: {}",
+                name,
+                value.to_str().unwrap_or("Unable to decode value")
+            )
+        })
+        .collect::<Vec<String>>()
+        .join("\n")
+}
+
+fn get_jwt(req: &Request) -> String {
+    if let Some(auth_header) = req.headers().get("Authorization") {
+        if let Ok(auth_str) = auth_header.to_str() {
+            if auth_str.starts_with("Bearer ") {
+                if let Some(token) = auth_str.strip_prefix("Bearer ") {
+                    // This is a dummy secret key. In a real application, you'd use a proper secret.
+                    let secret = b"secret";
+                    match decode::<Value>(
+                        token,
+                        &DecodingKey::from_secret(secret),
+                        &Validation::default(),
+                    ) {
+                        Ok(token_data) => {
+                            return serde_json::to_string_pretty(&token_data.claims)
+                                .unwrap_or_else(|_| "Failed to format JWT".to_string())
+                        }
+                        Err(_) => return "Invalid JWT".to_string(),
+                    }
+                }
+            }
+        }
     }
-
-    let header_b64 = parts[0];
-    let payload_b64 = parts[1];
-    // The signature is the third part, but we won't decode it in this example
-
-    let header_json = base64_url_decode(header_b64)?;
-    let payload_json = base64_url_decode(payload_b64)?;
-
-    let header_value: Value = serde_json::from_str(&header_json)?;
-    let payload_value: Value = serde_json::from_str(&payload_json)?;
-
-    let mut html = String::new();
-
-    html.push_str("<h3>Header</h3>");
-    html.push_str("<pre>");
-    html.push_str(&html_escape(&serde_json::to_string_pretty(&header_value)?));
-    html.push_str("</pre>");
-
-    html.push_str("<h3>Payload</h3>");
-    html.push_str("<pre>");
-    html.push_str(&html_escape(&serde_json::to_string_pretty(&payload_value)?));
-    html.push_str("</pre>");
-
-    Ok(html)
+    "No JWT found".to_string()
 }
 
-// Helper function to base64url decode a JWT part
-fn base64_url_decode(input: &str) -> Result<String, Box<dyn std::error::Error>> {
-    let decoded_bytes = URL_SAFE_NO_PAD.decode(input)?;
-    let decoded_str = String::from_utf8(decoded_bytes)?;
-    Ok(decoded_str)
-}
-
-// Helper function to escape HTML special characters
-fn html_escape(input: &str) -> String {
-    input
-        .replace('&', "&amp;")
-        .replace('<', "&lt;")
-        .replace('>', "&gt;")
+fn get_env_vars() -> String {
+    env::vars()
+        .map(|(key, value)| format!("{}={}", key, value))
+        .collect::<Vec<String>>()
+        .join("\n")
 }
