@@ -7,8 +7,15 @@ use std::net::SocketAddr;
 #[tokio::main]
 async fn main() {
     let app = Router::new().route("/", get(handler));
+
+    // Get the port from the environment variable, default to 3000 if not set
+    let port: u16 = env::var("PORT")
+        .unwrap_or_else(|_| "3000".to_string())
+        .parse()
+        .expect("PORT must be a valid u16 number");
+
     // Define the address to listen on (0.0.0.0)
-    let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
+    let addr = SocketAddr::from(([0, 0, 0, 0], port));
     tracing::debug!("Listening on {}", addr);
     println!("Listening on http://{}", addr);
 
