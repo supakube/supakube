@@ -2,7 +2,7 @@ VERSION 0.8
 
 FROM purtontech/rust-on-nails-devcontainer:1.3.3
 
-ARG --global HOT_RELOAD_IMAGE_NAME=bionic-gpt/bionicgpt-hot-reload:latest
+ARG --global HOT_RELOAD_IMAGE_NAME=ghcr.io/supakube/hot-reload:latest
 
 WORKDIR /build
 
