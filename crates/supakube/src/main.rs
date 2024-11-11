@@ -34,7 +34,7 @@ pub struct Installer {
     #[arg(long, default_value = "supakube-system")]
     operator_namespace: String,
     /// What is the application called
-    #[arg(long, default_value = "nails")]
+    #[arg(long, default_value = "hot-reload")]
     app_name: String,
     /// The number of replicas
     #[arg(long, default_value_t = 1)]

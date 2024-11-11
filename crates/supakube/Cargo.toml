@@ -27,6 +27,6 @@ tracing-subscriber = { version="0.3.18", features = ["env-filter"] }
 
 # So we can create secrets
 uuid = { version="1", features = ["v4"] }
-#rand = "0.8.4"
-#base64 = "0"
 url = "2"
+getrandom = "0.2.15"
+base64 = "0.22.1"

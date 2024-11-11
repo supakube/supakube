@@ -39,7 +39,7 @@ pub async fn deploy_application(
         }),
     ];
 
-    let image_name = "ghcr.io/bionic-gpt/bionicgpt:latest".to_string();
+    let image_name = "ghcr.io/supakube/hot-reload:latest".to_string();
 
     // Bionic with the migrations as a sidecar
     deployment::deployment(

@@ -8,6 +8,8 @@ use kube::api::{DeleteParams, PostParams};
 use kube::{Api, Client};
 use serde_json::json;
 use url::Url;
+use base64::engine::general_purpose;
+use base64::Engine as _;
 
 // Oauth2 Proxy handles are authentication as our Open ID Connect provider
 pub async fn deploy_oauth2_proxy(
@@ -138,12 +140,21 @@ async fn oauthproxy_secret(
                 "client-secret": "69b26b08-12fe-48a2-85f0-6ab223f45777",
                 "redirect-uri": format!("{}/oauth2/callback", installer.hostname_url),
                 "issuer-url": "http://keycloak:7910/oidc/realms/bionic-gpt",
-                "cookie-secret": uuid::Uuid::new_v4().to_string()
+                "cookie-secret": rand_base64()
             }
         }))?;
         secret_api.create(&PostParams::default(), &secret).await?;
     }
     Ok(())
+}
+
+pub fn rand_base64() -> String {
+    // Generate random bytes
+    let mut buf = [0u8; 32];
+    getrandom::getrandom(&mut buf).unwrap();
+
+    // Encode random bytes to Base64
+    general_purpose::URL_SAFE_NO_PAD.encode(buf)
 }
 
 pub async fn _delete(client: Client, namespace: &str) -> Result<(), Error> {
