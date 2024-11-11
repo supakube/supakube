@@ -26,7 +26,8 @@
 				"mutantdino.resourcemonitor",
 				"rust-lang.rust-analyzer",
 				"tamasfe.even-better-toml",
-				"fill-labs.dependi"
+				"fill-labs.dependi",
+				"earthly.earthfile-syntax-highlighting"
 			]
 		}
 	},
@@ -36,7 +37,9 @@
         "ghcr.io/rio/features/k3d:1": {},
         "ghcr.io/rio/features/skaffold:1": {},
 		"ghcr.io/devcontainers-extra/features/kubectl-asdf:2": {},
-        "ghcr.io/rio/features/k9s:1": {}
+        "ghcr.io/rio/features/k9s:1": {},
+		"ghcr.io/earthly/devcontainer-features/earthly:1": {},
+		"ghcr.io/guiyomh/features/just:0": {}
     },
 
 	"remoteEnv": {
