@@ -31,7 +31,6 @@ pub async fn install(installer: &crate::Installer) -> Result<()> {
         &client,
         &installer.namespace,
         &installer.app_name,
-        &installer.insecure_override_passwords,
         &installer.db_user_prefix,
     )
     .await?;

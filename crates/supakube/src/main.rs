@@ -42,9 +42,6 @@ pub struct Installer {
     /// The hostname we are deploying on. By default use the local ip address
     #[arg(long, default_value = "http://localhost:30000")]
     hostname_url: String,
-    /// Don't create random db passwords but use this one. NOT FOR PRODUCTION
-    #[arg(long)]
-    insecure_override_passwords: Option<String>,
     /// Is this development? In which case we may do some things differently
     #[arg(long, default_value_t = false)]
     development: bool,
