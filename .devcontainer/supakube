@@ -8,15 +8,24 @@ install() {
 
 # Define the function to call on file change
 on_file_change() {
+    local app_name="hot-reload"
+    local namespace="supakube"
+
     echo "File changed, running function..."
     # Add the code you want to execute on file change
     # Simulate a process with sleep, for example
-    sleep 1
+    start_time=$(date +%s)
+    POD_NAME=$(kubectl get pods -n supakube -l app=$app_name -o jsonpath="{.items[0].metadata.name}")
+    kubectl cp /workspace/target/debug/web-server $namespace/$POD_NAME:/app/new-server
+    kubectl cp /workspace/crates/hot-reload/new-server.txt $namespace/$POD_NAME:/app/new-server.txt
+    end_time=$(date +%s)
+    duration=$((end_time - start_time))
+    echo "Deployment completed in ${duration} seconds."
 }
 
 # Define the watch function
 watch() {
-    local folder_to_watch="$1"
+    local file_to_watch="/workspace/target/debug/web-server"
     
     # Check if inotifywait is available
     if ! command -v inotifywait &> /dev/null; then
@@ -24,11 +33,11 @@ watch() {
         exit 1
     fi
     
-    echo "Watching folder: $folder_to_watch for changes..."
+    echo "Watching file: $file_to_watch for changes..."
     
     while true; do
         # Wait for a modification in the folder and run on_file_change
-        inotifywait -r -e modify "$folder_to_watch" &> /dev/null
+        inotifywait -e modify "$file_to_watch" &> /dev/null
         on_file_change
     done
 }
@@ -39,12 +48,7 @@ case "$1" in
         install
         ;;
     watch)
-        # Check if folder to watch is provided
-        if [ -z "$2" ]; then
-            echo "Error: Please specify a folder to watch."
-            exit 1
-        fi
-        watch "$2"
+        watch
         ;;
     *)
         echo "Usage: $0 {install|watch <folder>}"

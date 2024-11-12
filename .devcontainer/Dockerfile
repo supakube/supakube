@@ -14,3 +14,5 @@ RUN echo 'export PATH="$PATH:/workspace/.devcontainer"' >> ~/.bashrc
 ARG USERNAME=vscode
 RUN sudo mkdir -p /workspace/target && sudo chown $USERNAME:$USERNAME /workspace/target
 #RUN sudo mkdir -p /workspace/crates/asset-pipeline/node_modules && sudo chown $USERNAME:$USERNAME /workspace/crates/asset-pipeline/node_modules
+
+RUN sudo apt -y install inotify-tools
