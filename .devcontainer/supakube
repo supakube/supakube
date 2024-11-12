@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Define the install function placeholder
+install() {
+    echo "Running install function..."
+    cargo run --bin supakube -- install --development
+}
+
+# Define the function to call on file change
+on_file_change() {
+    echo "File changed, running function..."
+    # Add the code you want to execute on file change
+    # Simulate a process with sleep, for example
+    sleep 1
+}
+
+# Define the watch function
+watch() {
+    local folder_to_watch="$1"
+    
+    # Check if inotifywait is available
+    if ! command -v inotifywait &> /dev/null; then
+        echo "Error: inotifywait is required but not installed. Install it with 'sudo apt install inotify-tools' or equivalent."
+        exit 1
+    fi
+    
+    echo "Watching folder: $folder_to_watch for changes..."
+    
+    while true; do
+        # Wait for a modification in the folder and run on_file_change
+        inotifywait -r -e modify "$folder_to_watch" &> /dev/null
+        on_file_change
+    done
+}
+
+# Main script logic to handle subcommands
+case "$1" in
+    install)
+        install
+        ;;
+    watch)
+        # Check if folder to watch is provided
+        if [ -z "$2" ]; then
+            echo "Error: Please specify a folder to watch."
+            exit 1
+        fi
+        watch "$2"
+        ;;
+    *)
+        echo "Usage: $0 {install|watch <folder>}"
+        exit 1
+        ;;
+esac

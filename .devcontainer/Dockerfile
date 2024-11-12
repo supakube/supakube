@@ -7,6 +7,8 @@ COPY .bash_aliases /home/vscode/.bash_aliases
 
 # Enable our git hooks and set the permisisons on docker sock.
 RUN echo 'git config core.hooksPath /workspace/.devcontainer/.githooks' >> ~/.bashrc
+RUN echo 'export PATH="$PATH:/workspace/.devcontainer"' >> ~/.bashrc
+
 
 # all the volumes configured in the docker-compose.yml
 ARG USERNAME=vscode
