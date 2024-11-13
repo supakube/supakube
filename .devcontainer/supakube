@@ -16,7 +16,7 @@ hot-install() {
     earthly -P +hot-reload
     k3d image import $image_name
     kubectl patch deployment $deployment -n $namespace -p \
-    "{\"spec\": {\"template\": {\"spec\": {\"containers\": [{\"name\": \"$namespace\", \"image\": \"$image_name\", \"imagePullPolicy\": \"Never\"}]}}}}"
+    "{\"spec\": {\"template\": {\"spec\": {\"containers\": [{\"name\": \"$deployment\", \"image\": \"$image_name\", \"imagePullPolicy\": \"Never\"}]}}}}"
 }
 
 # Define the function to call on file change
