@@ -6,6 +6,19 @@ install() {
     cargo run --bin supakube -- install --development
 }
 
+# Define the install function placeholder
+hot-install() {
+    local image_name="ghcr.io/supakube/hot-reload:latest"
+    local namespace="supakube"
+    local deployment="hot-reload"
+
+    echo "Installing hot reloader"
+    earthly -P +hot-reload
+    k3d image import $image_name
+    kubectl patch deployment $deployment -n $namespace -p \
+    "{\"spec\": {\"template\": {\"spec\": {\"containers\": [{\"name\": \"$namespace\", \"image\": \"$image_name\", \"imagePullPolicy\": \"Never\"}]}}}}"
+}
+
 # Define the function to call on file change
 on_file_change() {
     local app_name="hot-reload"
@@ -46,6 +59,9 @@ watch() {
 case "$1" in
     install)
         install
+        ;;
+    hot-install)
+        hot-install
         ;;
     watch)
         watch
