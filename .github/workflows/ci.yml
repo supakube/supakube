@@ -109,7 +109,7 @@ jobs:
       run: |
         cd .github/workflows/ && ./update-version.sh ${{ steps.get_latest_release.outputs.latest_release }}
         cd ../..
-        cat crates/k8s-operator/Cargo.toml
+        cat crates/supakube/Cargo.toml
 
     - name: Run build
       run: earthly --allow-privileged --output --ci +build-cli-linux
