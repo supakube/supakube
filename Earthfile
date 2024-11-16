@@ -21,8 +21,8 @@ build:
     SAVE ARTIFACT target/x86_64-unknown-linux-musl/release/$OPERATOR_EXE_NAME
 
 build-cli-linux:
-    COPY --dir crates/k8s-operator .
-    RUN cd k8s-operator && cargo build --release
+    COPY --dir crates/supakube .
+    RUN cd supakube && cargo build --release
     SAVE ARTIFACT supakube/target/release/supakube AS LOCAL ./supakube-cli-linux
 
 # We've got a Kubernetes operator
