@@ -24,6 +24,9 @@ on:
       - 'crates/static-website/**'
       - Justfile
 
+permissions:
+  contents: write
+
 jobs:
 
   build:
