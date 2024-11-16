@@ -102,7 +102,7 @@ jobs:
     - name: Get latest release info
       id: get_latest_release
       run: |
-        latest_release=$(curl  "https://api.github.com/repos/bionic-gpt/bionic-gpt/tags" | jq -r '.[0].name')
+        latest_release=$(curl  "https://api.github.com/repos/supakube/supakube/tags" | jq -r '.[0].name')
         echo "::set-output name=latest_release::$latest_release"
 
     - name: Set versions
@@ -117,69 +117,4 @@ jobs:
     - name: Upload executable to release
       if: github.ref == 'refs/heads/main'
       run: |
-        gh release upload ${{ steps.get_latest_release.outputs.latest_release }} ./bionic-cli-linux --clobber
-
-  build-osx-cli:
-    needs: wait-for-release
-    runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      FORCE_COLOR: 1
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Download latest earthly
-      run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-
-    - name: Get latest release info
-      id: get_latest_release
-      run: |
-        latest_release=$(curl  "https://api.github.com/repos/bionic-gpt/bionic-gpt/tags" | jq -r '.[0].name')
-        echo "::set-output name=latest_release::$latest_release"
-
-    - name: Set versions
-      run: |
-        cd .github/workflows/ && ./update-version.sh ${{ steps.get_latest_release.outputs.latest_release }}
-        cd ../..
-        cat crates/k8s-operator/Cargo.toml
-
-    - name: Run build
-      run: earthly --allow-privileged --output --ci +build-cli-osx
-
-
-    - name: Upload executable to release
-      if: github.ref == 'refs/heads/main'
-      run: |
-        gh release upload ${{ steps.get_latest_release.outputs.latest_release }} ./bionic-cli-darwin --clobber
-
-  build-windows-cli:
-    needs: wait-for-release
-    runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      FORCE_COLOR: 1
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Download latest earthly
-      run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/latest/download/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-
-    - name: Get latest release info
-      id: get_latest_release
-      run: |
-        latest_release=$(curl  "https://api.github.com/repos/bionic-gpt/bionic-gpt/tags" | jq -r '.[0].name')
-        echo "::set-output name=latest_release::$latest_release"
-        
-    - name: Set versions
-      run: |
-        cd .github/workflows/ && ./update-version.sh ${{ steps.get_latest_release.outputs.latest_release }}
-        cd ../..
-        cat crates/k8s-operator/Cargo.toml
-
-    - name: Run build
-      run: earthly --allow-privileged --output --ci +build-cli-windows
-
-    - name: Upload executable to release
-      if: github.ref == 'refs/heads/main'
-      run: |
-        gh release upload ${{ steps.get_latest_release.outputs.latest_release }} ./bionic-cli-windows.exe --clobber
+        gh release upload ${{ steps.get_latest_release.outputs.latest_release }} ./supakube-cli-linux --clobber
