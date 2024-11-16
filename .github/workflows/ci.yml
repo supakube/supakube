@@ -26,6 +26,7 @@ on:
 
 permissions:
   contents: write
+  packages: write
 
 jobs:
 
