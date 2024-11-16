@@ -2,4 +2,4 @@
 
 Backend as a service
 
-![Alt text](.github/supakube.svg "Architetcure")
+<img src=".github/supakube.svg" style="width:100%;">
