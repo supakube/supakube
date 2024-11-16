@@ -2,7 +2,7 @@ VERSION 0.8
 
 FROM purtontech/rust-on-nails-devcontainer:1.3.3
 
-ARG --global OPERATOR_IMAGE_NAME=ghcr.io/supakube/supakube:latest
+ARG --global OPERATOR_IMAGE_NAME=supakube/supakube:latest
 ARG --global OPERATOR_EXE_NAME=supakube
 
 WORKDIR /build
