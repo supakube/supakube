@@ -11,38 +11,47 @@
   <text x="200" y="45" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">Nginx</text>
   
   <!-- OIDC box -->
-  <rect x="10" y="170" width="120" height="60" fill="none" stroke="#999999" stroke-width="2" rx="10" ry="10"/>
-  <text x="70" y="205" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">OIDC</text>
+  <rect x="10" y="170" width="90" height="60" fill="none" stroke="#999999" stroke-width="2" rx="10" ry="10"/>
+  <text x="55" y="205" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">OIDC</text>
   
   <!-- Storage box -->
-  <rect x="140" y="170" width="120" height="60" fill="none" stroke="#999999" stroke-width="2" rx="10" ry="10"/>
-  <text x="200" y="205" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">Storage</text>
+  <rect x="110" y="170" width="90" height="60" fill="none" stroke="#999999" stroke-width="2" rx="10" ry="10"/>
+  <text x="155" y="205" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">Storage</text>
   
   <!-- Realtime box -->
-  <rect x="270" y="170" width="120" height="60" fill="none" stroke="#999999" stroke-width="2" rx="10" ry="10"/>
-  <text x="330" y="205" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">Realtime</text>
+  <rect x="210" y="170" width="90" height="60" fill="none" stroke="#999999" stroke-width="2" rx="10" ry="10"/>
+  <text x="255" y="205" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">Realtime</text>
   
+  <!-- Your APP box -->
+  <rect x="310" y="170" width="90" height="60" fill="none" stroke="#999999" stroke-width="2" rx="10" ry="10"/>
+  <text x="355" y="205" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">Your APP</text>
+
   <!-- Postgres box -->
   <rect x="10" y="330" width="380" height="60" fill="none" stroke="#999999" stroke-width="2" rx="10" ry="10"/>
   <text x="200" y="365" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">Postgres</text>
-  
+
   <!-- Arrows from Nginx to components -->
-  <line x1="70" y1="70" x2="70" y2="170" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <line x1="200" y1="70" x2="200" y2="170" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <line x1="330" y1="70" x2="330" y2="170" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
-  
+  <line x1="55" y1="70" x2="55" y2="170" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="155" y1="70" x2="155" y2="170" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="255" y1="70" x2="255" y2="170" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="355" y1="70" x2="355" y2="170" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
+
   <!-- Arrows from components to Postgres -->
-  <line x1="70" y1="230" x2="70" y2="330" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <line x1="200" y1="230" x2="200" y2="330" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <line x1="330" y1="230" x2="330" y2="330" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
-  
+  <line x1="55" y1="230" x2="55" y2="330" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="155" y1="230" x2="155" y2="330" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="255" y1="230" x2="255" y2="330" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="355" y1="230" x2="355" y2="330" stroke="#999999" stroke-width="2" marker-end="url(#arrowhead)"/>
+
   <!-- Arrow labels with black background -->
-  <rect x="40" y="110" width="60" height="24" fill="black" rx="12" ry="12"/>
-  <text x="70" y="127" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">/oidc</text>
-  
-  <rect x="170" y="110" width="60" height="24" fill="black" rx="12" ry="12"/>
-  <text x="200" y="127" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">/storage</text>
-  
-  <rect x="300" y="110" width="60" height="24" fill="black" rx="12" ry="12"/>
-  <text x="330" y="127" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">/realtime</text>
+  <rect x="25" y="110" width="60" height="24" fill="black" rx="12" ry="12"/>
+  <text x="55" y="127" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">/oidc</text>
+
+  <rect x="125" y="110" width="60" height="24" fill="black" rx="12" ry="12"/>
+  <text x="155" y="127" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">/storage</text>
+
+  <rect x="225" y="110" width="60" height="24" fill="black" rx="12" ry="12"/>
+  <text x="255" y="127" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">/realtime</text>
+
+  <rect x="325" y="110" width="60" height="24" fill="black" rx="12" ry="12"/>
+  <text x="355" y="127" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">/*</text>
 </svg>
