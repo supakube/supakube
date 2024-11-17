@@ -14,14 +14,6 @@
       ["@semantic-release/exec", {
         "publishCmd": "./update-git.sh ${nextRelease.version}",
         "execCwd": "./.github/workflows"
-      }],
-      ["@semantic-release/github", {
-        "assets": [
-          {
-            "path": "supakube-cli-linux",
-            "label": "Supakube CLI Linux"
-          }
-        ]
       }]
     ]
   }

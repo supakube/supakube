@@ -19,7 +19,6 @@ build:
     # We need to run inside docker as we need postgres running for cornucopia
     RUN cargo build --release --target x86_64-unknown-linux-musl
     SAVE ARTIFACT target/x86_64-unknown-linux-musl/release/$OPERATOR_EXE_NAME
-    SAVE ARTIFACT target/x86_64-unknown-linux-musl/release/$OPERATOR_EXE_NAME AS LOCAL ./supakube-cli-linux
 
 # We've got a Kubernetes operator
 operator-container:
