@@ -3,6 +3,8 @@
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
 	"workspaceFolder": "/workspace",
 	"mounts": [
+		// Bring in the users .ssh folder. Not sure what happens if they don't have one.
+    	"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
 		// Set the target folder as a volume so that we're not transferring
 		// build artifacts to the host which is very slow on docker desktop
 		"source=rust-target,target=/workspace/target,type=volume"
