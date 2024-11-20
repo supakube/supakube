@@ -1,38 +1,38 @@
 use super::deployment;
 use crate::error::Error;
-use crate::Installer;
 use anyhow::Result;
+use base64::engine::general_purpose;
+use base64::Engine as _;
 use k8s_openapi::api::apps::v1::Deployment;
 use k8s_openapi::api::core::v1::{Secret, Service};
 use kube::api::{DeleteParams, PostParams};
 use kube::{Api, Client};
 use serde_json::json;
 use url::Url;
-use base64::engine::general_purpose;
-use base64::Engine as _;
 
 // Oauth2 Proxy handles are authentication as our Open ID Connect provider
 pub async fn deploy_oauth2_proxy(
     client: &Client,
-    installer: &Installer,
+    hostname_url: &str,
+    app_name: &str,
     namespace: &str,
 ) -> Result<()> {
-    let whitelist_domain = Url::parse(&installer.hostname_url);
+    let whitelist_domain = Url::parse(hostname_url);
     let whitelist_domain = if let Ok(host) = &whitelist_domain {
         host.host_str().unwrap_or_default()
     } else {
         ""
     };
 
-    let app_address = format!("http://{}:7903", installer.app_name);
+    let app_address = format!("http://{}:7903", app_name);
 
     // Oauth2 Proxy
     deployment::deployment(
         client.clone(),
         deployment::ServiceDeployment {
             name: "oauth2-proxy".to_string(),
-            image_name: super::OAUTH2_PROXY_IMAGE.to_string(),
-            replicas: installer.replicas,
+            image_name: crate::OAUTH2_PROXY_IMAGE.to_string(),
+            replicas: 1,
             port: 7900,
             env: vec![
                 json!({"name": "OAUTH2_PROXY_HTTP_ADDRESS", "value": "0.0.0.0:7900"}),
@@ -115,14 +115,14 @@ pub async fn deploy_oauth2_proxy(
     )
     .await?;
 
-    oauthproxy_secret(namespace, installer, client).await?;
+    oauthproxy_secret(namespace, hostname_url, client).await?;
 
     Ok(())
 }
 
 async fn oauthproxy_secret(
     namespace: &str,
-    installer: &Installer,
+    hostname_url: &str,
     client: &Client,
 ) -> Result<(), Error> {
     let secret_api: Api<Secret> = Api::namespaced(client.clone(), namespace);
@@ -138,7 +138,7 @@ async fn oauthproxy_secret(
             "stringData": {
                 "client-id": "bionic-gpt",
                 "client-secret": "69b26b08-12fe-48a2-85f0-6ab223f45777",
-                "redirect-uri": format!("{}/oauth2/callback", installer.hostname_url),
+                "redirect-uri": format!("{}/oauth2/callback", hostname_url),
                 "issuer-url": "http://keycloak:7910/oidc/realms/bionic-gpt",
                 "cookie-secret": rand_base64()
             }
@@ -157,7 +157,7 @@ pub fn rand_base64() -> String {
     general_purpose::URL_SAFE_NO_PAD.encode(buf)
 }
 
-pub async fn _delete(client: Client, namespace: &str) -> Result<(), Error> {
+pub async fn delete(client: Client, namespace: &str) -> Result<(), Error> {
     // Remove deployments
     let api: Api<Deployment> = Api::namespaced(client.clone(), namespace);
     if api.get("oauth2-proxy").await.is_ok() {

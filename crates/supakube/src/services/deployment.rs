@@ -100,7 +100,7 @@ pub async fn deployment(
         }
     });
 
-    super::apply::apply(&client, &deployment.to_string(), Some(namespace)).await?;
+    crate::apply::apply(&client, &deployment.to_string(), Some(namespace)).await?;
 
     service(
         client,
@@ -138,6 +138,6 @@ pub async fn service(client: Client, name: &str, port_number: u16, namespace: &s
         }
     });
 
-    super::apply::apply(&client, &service.to_string(), Some(namespace)).await?;
+    crate::apply::apply(&client, &service.to_string(), Some(namespace)).await?;
     Ok(())
 }

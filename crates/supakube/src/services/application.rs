@@ -1,6 +1,5 @@
-use crate::deployment;
+use super::deployment;
 use crate::error::Error;
-use crate::Installer;
 use anyhow::Result;
 use k8s_openapi::api::apps::v1::Deployment;
 use k8s_openapi::api::core::v1::Service;
@@ -9,11 +8,7 @@ use kube::{Api, Client};
 use serde_json::json;
 
 // The web user interface
-pub async fn deploy_application(
-    client: &Client,
-    installer: &Installer,
-    namespace: &str,
-) -> Result<()> {
+pub async fn deploy_application(client: &Client, namespace: &str, app_name: &str) -> Result<()> {
     let env = vec![
         json!({
             "name":
@@ -45,9 +40,9 @@ pub async fn deploy_application(
     deployment::deployment(
         client.clone(),
         deployment::ServiceDeployment {
-            name: installer.app_name.clone(),
+            name: app_name.to_string(),
             image_name,
-            replicas: installer.replicas,
+            replicas: 1,
             port: 7903,
             env,
             command: None,

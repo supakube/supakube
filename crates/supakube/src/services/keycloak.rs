@@ -9,15 +9,11 @@ use kube::api::{DeleteParams, ObjectMeta, PostParams};
 use kube::{Api, Client};
 use serde_json::json;
 
-const CONFIG_JSON: &str = include_str!("../config/realm.json");
+const CONFIG_JSON: &str = include_str!("../../config/realm.json");
 pub const KEYCLOAK_NAME: &str = "keycloak";
 
 // We are using envoy to add security headers to all responses from the main application.
-pub async fn deploy_keycloak(
-    client: &Client,
-    installer: &crate::Installer,
-    namespace: &str,
-) -> Result<()> {
+pub async fn deploy_keycloak(client: &Client, hostname_url: &str, namespace: &str) -> Result<()> {
     // Put the envoy.yaml into a ConfigMap
     let config_map = serde_json::json!({
         "apiVersion": "v1",
@@ -31,15 +27,15 @@ pub async fn deploy_keycloak(
         }
     });
 
-    super::apply::apply(client, &config_map.to_string(), Some(namespace)).await?;
+    crate::apply::apply(client, &config_map.to_string(), Some(namespace)).await?;
 
     // Keycloak
     deployment::deployment(
         client.clone(),
         deployment::ServiceDeployment {
             name: KEYCLOAK_NAME.to_string(),
-            image_name: super::KEYCLOAK_IMAGE.to_string(),
-            replicas: installer.replicas,
+            image_name: crate::KEYCLOAK_IMAGE.to_string(),
+            replicas: 1,
             port: 7910,
             env: vec![
                 json!({
@@ -103,7 +99,7 @@ pub async fn deploy_keycloak(
                     "--proxy=edge".to_string(),
                     "--hostname-strict=false".to_string(),
                     "--hostname-strict-https=false".to_string(),
-                    format!("--hostname-url={}/oidc", installer.hostname_url),
+                    format!("--hostname-url={}/oidc", hostname_url),
                     "--http-relative-path=/oidc".to_string(),
                 ],
             }),
@@ -130,7 +126,10 @@ async fn keycloak_secrets(namespace: &str, client: Client) -> Result<(), Error> 
     let secret = secret_api.get("keycloak-secrets").await;
     if secret.is_err() {
         let mut secret_data = BTreeMap::new();
-        secret_data.insert("admin-password".to_string(), uuid::Uuid::new_v4().to_string());
+        secret_data.insert(
+            "admin-password".to_string(),
+            uuid::Uuid::new_v4().to_string(),
+        );
         let keycloak_secret = Secret {
             metadata: ObjectMeta {
                 name: Some("keycloak-secrets".to_string()),
@@ -147,7 +146,7 @@ async fn keycloak_secrets(namespace: &str, client: Client) -> Result<(), Error> 
     Ok(())
 }
 
-pub async fn _delete(client: Client, namespace: &str) -> Result<(), Error> {
+pub async fn delete(client: Client, namespace: &str) -> Result<(), Error> {
     // Remove deployments
     let api: Api<Deployment> = Api::namespaced(client.clone(), namespace);
     if api.get(KEYCLOAK_NAME).await.is_ok() {

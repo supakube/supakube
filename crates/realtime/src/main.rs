@@ -6,8 +6,8 @@ use axum::{
 };
 use futures::{stream, SinkExt, StreamExt};
 use futures::{FutureExt, TryStreamExt};
-use std::{env, net::SocketAddr};
 use std::sync::Arc;
+use std::{env, net::SocketAddr};
 use tokio::sync::broadcast;
 use tokio_postgres::NoTls;
 
@@ -21,7 +21,8 @@ async fn main() {
 
     // Make transmitter and receiver.
     let (tx, rx) = futures_channel::mpsc::unbounded();
-    let stream = stream::poll_fn(move |cx| connection.poll_message(cx)).map_err(|e| panic!("{}", e));
+    let stream =
+        stream::poll_fn(move |cx| connection.poll_message(cx)).map_err(|e| panic!("{}", e));
     let connection = stream.forward(tx).map(|r| r.unwrap());
     tokio::spawn(connection);
 
@@ -67,9 +68,7 @@ async fn main() {
     let addr = SocketAddr::from(([0, 0, 0, 0], port));
 
     // run it
-    let listener = tokio::net::TcpListener::bind(&addr)
-        .await
-        .unwrap();
+    let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     println!("listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, app).await.unwrap();
 }

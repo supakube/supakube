@@ -1,7 +1,9 @@
 use std::collections::BTreeMap;
 
-use super::operators::{BootstrapSpec, Cluster, ClusterSpec, InitDBSpec, SecretSpec, StorageSpec};
 use crate::error::Error;
+use crate::operator::operators::{
+    BootstrapSpec, Cluster, ClusterSpec, InitDBSpec, SecretSpec, StorageSpec,
+};
 use k8s_openapi::api::core::v1::Secret;
 use kube::api::{DeleteParams, ObjectMeta};
 use kube::{
@@ -12,6 +14,7 @@ use kube::{
 pub async fn deploy_keycloak_database(
     client: &Client,
     namespace: &str,
+    disk_size: i32,
 ) -> Result<Option<String>, Error> {
     // If the cluster is already created then leave it alone.
     let cluster_api: Api<Cluster> = Api::namespaced(client.clone(), namespace);
@@ -42,7 +45,7 @@ pub async fn deploy_keycloak_database(
                 },
             },
             storage: StorageSpec {
-                size: "1Gi".to_string(),
+                size: format!("{}Gi", disk_size),
             },
         },
     };
@@ -70,7 +73,7 @@ pub async fn deploy_keycloak_database(
     Ok(Some(database_password))
 }
 
-pub async fn _delete(client: Client, namespace: &str) -> Result<(), Error> {
+pub async fn delete(client: Client, namespace: &str) -> Result<(), Error> {
     // Remove deployments
     let api: Api<Cluster> = Api::namespaced(client.clone(), namespace);
     if api.get("keycloak-db-cluster").await.is_ok() {

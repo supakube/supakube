@@ -1,14 +1,19 @@
 {
-	"name": "Supakube",
-	"dockerComposeFile": [
-		"docker-compose.yml"
-	],
-	"service": "development",
+	"image": "mcr.microsoft.com/devcontainers/rust:1-1-bullseye",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
 	"workspaceFolder": "/workspace",
 	"mounts": [
-    	"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
+		// Set the target folder as a volume so that we're not transferring
+		// build artifacts to the host which is very slow on docker desktop
+		"source=rust-target,target=/workspace/target,type=volume"
 	],
-		
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+        "ghcr.io/rio/features/k3d:1": {},
+		"ghcr.io/devcontainers-extra/features/kubectl-asdf:2": {},
+		"ghcr.io/r3dpoint/devcontainer-features/tailwindcss-standalone-cli:1": {},
+        "ghcr.io/rio/features/k9s:1": {}
+	},
 	// Set *default* container specific settings.json values on container create.
 	"customizations": {
 		"vscode": {
@@ -26,31 +31,13 @@
 				"mutantdino.resourcemonitor",
 				"rust-lang.rust-analyzer",
 				"tamasfe.even-better-toml",
-				"fill-labs.dependi",
-				"earthly.earthfile-syntax-highlighting"
+				"fill-labs.dependi"
 			]
 		}
 	},
-
-    "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:1": {},
-        "ghcr.io/rio/features/k3d:1": {}
-    },
-
+	"postCreateCommand": "cat /workspace/.devcontainer/.bash_aliases >> ~/.bash_aliases && sudo chown -R vscode:vscode /workspace/target && chmod -R u+w /workspace/target",
 	"remoteEnv": {
-		// You can create env vars on your local machine and they will get passed into your container.
-		"EMAIL": "${localEnv:EMAIL}",
-		"NAME": "${localEnv:NAME}",
 		// Pass in the host directory for Docker mount commands from inside the container
 		"HOST_PROJECT_PATH": "${localWorkspaceFolder}"
-	},
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [5432],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "rustc --version",
-
-	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode"
+	}
 }

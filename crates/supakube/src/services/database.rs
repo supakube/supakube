@@ -1,13 +1,15 @@
-use std::collections::BTreeMap;
-use uuid::Uuid;
 use crate::error::Error;
-use crate::operators::{BootstrapSpec, Cluster, ClusterSpec, InitDBSpec, SecretSpec, StorageSpec};
+use crate::operator::operators::{
+    BootstrapSpec, Cluster, ClusterSpec, InitDBSpec, SecretSpec, StorageSpec,
+};
 use k8s_openapi::api::core::v1::Secret;
 use kube::api::{DeleteParams, ObjectMeta};
 use kube::{
     api::{Api, PostParams},
     Client,
 };
+use std::collections::BTreeMap;
+use uuid::Uuid;
 
 pub async fn deploy_app_database(
     client: &Client,
@@ -124,7 +126,7 @@ pub async fn deploy_app_database(
     Ok(Some(readonly_database_password))
 }
 
-pub async fn _delete(client: Client, namespace: &str, app_name: &str) -> Result<(), Error> {
+pub async fn delete(client: Client, namespace: &str, app_name: &str) -> Result<(), Error> {
     // Remove deployments
     let cluster_name = format!("{}-db-cluster", app_name);
 

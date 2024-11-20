@@ -1,4 +1,4 @@
-use crate::deployment;
+use super::deployment;
 use anyhow::Result;
 use kube::Client;
 use serde_json::json;

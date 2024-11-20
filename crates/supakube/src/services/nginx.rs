@@ -1,10 +1,10 @@
-use crate::deployment;
+use super::deployment;
 use anyhow::Result;
 use kube::Client;
 use serde_json::json;
 
 pub const NGINX_NAME: &str = "nginx";
-const NGINX_CONF: &str = include_str!("../config/nginx.conf");
+const NGINX_CONF: &str = include_str!("../../config/nginx.conf");
 
 // The web user interface
 pub async fn deploy_nginx(client: &Client, namespace: &str) -> Result<()> {
@@ -25,7 +25,7 @@ pub async fn deploy_nginx(client: &Client, namespace: &str) -> Result<()> {
         }
     });
 
-    super::apply::apply(client, &config_map.to_string(), Some(namespace)).await?;
+    crate::apply::apply(client, &config_map.to_string(), Some(namespace)).await?;
 
     // Bionic with the migrations as a sidecar
     deployment::deployment(
