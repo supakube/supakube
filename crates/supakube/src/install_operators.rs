@@ -78,7 +78,7 @@ async fn create_operator(client: &Client, namespace: &str) -> Result<()> {
 }
 
 async fn create_roles(client: &Client, installer: &super::Installer) -> Result<()> {
-    println!("Setting up roles");
+    println!("🔧 Setting up roles");
     let sa_api: Api<ServiceAccount> =
         Api::namespaced(client.clone(), &installer.operator_namespace);
     let service_account = ServiceAccount {
