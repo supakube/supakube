@@ -2,7 +2,7 @@ mod apply;
 mod error;
 mod operator;
 mod services;
-mod install;
+mod install_operators;
 
 use anyhow::Result;
 
@@ -43,7 +43,7 @@ async fn main() -> Result<()> {
 
     match &cli.command {
         Commands::Install(installer) => {
-            install::install(installer).await?;
+            install_operators::install(installer).await?;
         }
         Commands::Operator {} => {
             operator::operator().await?;
