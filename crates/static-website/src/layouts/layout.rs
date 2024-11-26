@@ -85,6 +85,9 @@ pub fn Layout(props: LayoutProps) -> Element {
                 "type": "text/css"
             }
             script {
+                src: "https://unpkg.com/htmx.org@2.0.3"
+            }
+            script {
                 "hljs.addPlugin(new CopyButtonPlugin());hljs.highlightAll();"
             }
         }

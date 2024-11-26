@@ -11,6 +11,7 @@ pub fn Navigation(mobile_menu: Element) -> Element {
                     class: "navigation-logo",
                     a { 
                         class: "navigation-logo-link", href: marketing::Index {}.to_string(),
+                        "hx-boost": "true",
                         img {
                             alt: "Logo",
                             width: "22",
@@ -21,12 +22,12 @@ pub fn Navigation(mobile_menu: Element) -> Element {
                         span { class: "navigation-logo-text", "Supakube" }
                     }
                     nav { class: "navigation-menu",
-                        a { class: "navigation-menu-item", href: marketing::Pricing {}.to_string(), "Pricing" }
-                        a { class: "navigation-menu-item", href: docs::Index {}.to_string(), "Documentation" }
-                        a { class: "navigation-menu-item", href: blog::Index {}.to_string(), "Blog" }
-                        a { class: "navigation-menu-item", href: marketing::PartnersPage {}.to_string(), "Partners" }
-                        a { class: "navigation-menu-item", href: marketing::ServicesPage {}.to_string(), "Services" }
-                        a { class: "navigation-menu-item", href: marketing::Contact {}.to_string(), "Contact Us" }
+                        a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::Pricing {}.to_string(), "Pricing" }
+                        a { class: "navigation-menu-item", "hx-boost": "true", href: docs::Index {}.to_string(), "Documentation" }
+                        a { class: "navigation-menu-item", "hx-boost": "true", href: blog::Index {}.to_string(), "Blog" }
+                        a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::PartnersPage {}.to_string(), "Partners" }
+                        a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::ServicesPage {}.to_string(), "Services" }
+                        a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::Contact {}.to_string(), "Contact Us" }
                     }
                 }
 

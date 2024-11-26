@@ -68,6 +68,7 @@ fn LeftNav(summary: Summary) -> Element {
                                 a {
                                     class: "rounded-md hover:text-sky-500 dark:hover:text-sky-400",
                                     href: "/{page.folder}",
+                                    "hx-boost": "true",
                                     "{page.title}"
                                 }
                             }
