@@ -66,7 +66,7 @@ async fn create_bionic_operator(client: &Client, namespace: &str) -> Result<()> 
     let deployment_api: Api<Deployment> = Api::namespaced(client.clone(), namespace);
     deployment_api
         .patch(
-            "bionic-gpt-operator-deployment",
+            "supakube-operator-deployment",
             &PatchParams::apply(MANAGER),
             &Patch::Apply(deployment),
         )
