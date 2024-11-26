@@ -22,11 +22,13 @@ pub fn MarkdownPage(post: Page) -> Element {
             description: "{post.description}",
             mobile_menu: None,
             article {
-                class: "mx-auto prose lg:prose-xl p-4",
+                class: "mx-auto max-w-2xl p-4",
                 h1 {
+                    class: "reset-tw",
                     "{post.title}"
                 }
                 div {
+                    class: "reset-tw",
                     dangerous_inner_html: "{content}"
                 }
             }
