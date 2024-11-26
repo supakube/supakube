@@ -14,7 +14,9 @@
         "ghcr.io/rio/features/k3d:1": {},
 		"ghcr.io/devcontainers-extra/features/kubectl-asdf:2": {},
 		"ghcr.io/r3dpoint/devcontainer-features/tailwindcss-standalone-cli:1": {},
-        "ghcr.io/rio/features/k9s:1": {}
+        "ghcr.io/rio/features/k9s:1": {},
+		"ghcr.io/audacioustux/devcontainers/mirrord:1": {},
+		"ghcr.io/earthly/devcontainer-features/earthly:1": {}
 	},
 	// Set *default* container specific settings.json values on container create.
 	"customizations": {
