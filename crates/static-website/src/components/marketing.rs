@@ -6,8 +6,6 @@ use crate::components::extra_footer::ExtraFooter;
 use crate::components::footer::Footer;
 use crate::components::image_feature::ImageFeature;
 use crate::components::partners::Partners;
-use crate::components::quad_feature::QuadFeature;
-use crate::components::small_image_feature::SmallImageFeature;
 use crate::layouts::layout::Layout;
 use crate::routes::marketing::Index;
 use axum::response::Html;
@@ -119,73 +117,6 @@ pub fn Pricing() -> Element {
                                 href: "https://app.bionic-gpt.com",
                                 class: "btn btn-secondary btn-outline",
                                 "\n            Get Started\n          "
-                            }
-                        }
-                    }
-                }
-                div { class: "card card-bordered lg:w-1/3",
-                    div { class: "card-body flex flex-col justify-between list-tick",
-                        div { class: "flex flex-col gap-3",
-                            h3 { class: "card-title", "Encrypted Cloud" }
-                            span { class: "badge badge-primary badge-outline", "Secure Compute" }
-                            p { "Runs in our secure enclave with end to end encryption" }
-                            h4 { class: "font-extrabold", "Everything from Cloud Edition and..." }
-                            ul {
-                                li { "Secure enclave running CPU resources." }
-                                li { "Secure enclave running GPU resources." }
-                                li { "Fully siloed and security hardenend." }
-                            }
-                            h4 { class: "font-extrabold", "Maximum Data Protection" }
-                            ul {
-                                li { "Built for running Generative AI on highly confidential data." }
-                                li {
-                                    "Hardware based secure compute thanks to our partnership with Nvidia and Google."
-                                }
-                                li { "Bring/Hold your own keys." }
-                                li { "Provable supply chain with server attestation." }
-                            }
-                        }
-                        div { class: "mt-5 flex flex-col gap-2",
-                            hr {}
-                            h3 { class: "font-extrabold", "Custom Pricing" }
-                            a {
-                                href: "/contact",
-                                class: "btn btn-secondary btn-outline",
-                                "\n            Book a Call\n          "
-                            }
-                        }
-                    }
-                }
-                div { class: "card card-bordered lg:w-1/3",
-                    div { class: "card-body flex flex-col justify-between list-tick",
-                        div { class: "flex flex-col gap-3",
-                            h3 { class: "card-title", "On Premise / Private Cloud" }
-                            span { class: "badge badge-primary badge-outline", "Enterprise Edition" }
-                            p { "On Premise or Private Cloud" }
-                            h4 { class: "font-extrabold",
-                                "Everything from Cloud Edition and Encrypted Cloud..."
-                            }
-                            ul {
-                                li { "Maximum privacy and security." }
-                                li { "Support for running on bare metal." }
-                                li { "Single Sign On." }
-                            }
-                            h4 { class: "font-extrabold", "Support" }
-                            ul {
-                                li { "Hardware recommendations." }
-                                li { "Possibility of custom builds." }
-                                li { "Dedicated customer success and engineering resources." }
-                                li { "Custom Integrations." }
-                                li { "Custom SLAs and support." }
-                            }
-                        }
-                        div { class: "mt-5 flex flex-col gap-2",
-                            hr {}
-                            h3 { class: "font-extrabold", "Custom Pricing" }
-                            a {
-                                href: "/contact",
-                                class: "btn btn-secondary btn-outline",
-                                "\n            Book a Call\n          "
                             }
                         }
                     }
@@ -412,85 +343,6 @@ pub fn HomePage() -> Element {
                     text3: "By deploying Bionic close to your data you are able to benefit from Generative AI
         and still conform to data privacy and controls.",
                     image: "/landing-page/bionic-console.png",
-                }
-
-                SmallImageFeature {
-                    title: "Confidential Computing",
-                    sub_title: "Trusted Execution Environments",
-                    text: "Don't spend time and resources re-inventing the wheel.
-        We've developed an integrated solution using the best open source tools on the market
-        to accelerate Gen AI adoption in your company.",
-                    image: "/landing-page/confidential-compute.jpg"
-                }
-
-                ImageFeature {
-                    title: "Retrieval Augmented Generation",
-                    sub_title: "Build AI Assistants With Confidential Data",
-                    text: "Teams manage their own datasets for use in RAG and fine tuning.",
-                    title1: "Segmented Data.",
-                    text1: "Teams manage their own data and can decide how best to share it.
-                        Data is segregated at the database level.",
-                    title2: "Self Manage Teams.",
-                    text2: "There are no restrictions on the number of teams and teams are self managed.
-                        Team administrators can add new users.",
-                    title3: "Role Based Access Control",
-                    text3: "Teams can manage the roles a user has from contributer to administrator. A central
-                        system administrator role can manage the whole system.",
-                    image: "/landing-page/assistants.png",
-                }
-
-                SmallImageFeature {
-                    title: "Open Source",
-                    sub_title: "Works with all Open Source LLMs",
-                    text: "In most deployments the models are the bottleneck.
-                        Bionic comes with a reverse proxy to monitor usage and apply limits to users
-                        when needed",
-                    image: "/landing-page/models.png"
-                }
-
-                QuadFeature {
-                    title: "Cloud Native",
-                    sub_title: "Private Cloud or Your Data Center",
-                    text: "We fully support both options and can integrate with any provider",
-                    title1: "Open Source Quantized Models.",
-                    text1: "We integrate seemlessly with most open source AI models and out of the
-        box we run against LLama 3 8B.",
-                    title2: "Google, Amazon, Azure...",
-                    text2: "If you choose to use a provider either from the public cloud or via a
-        private cloud with have integrations with all the main suppliers.",
-                    title3: "Multiple Models",
-                    text3: "We can run against more than one model at a time allowing you to test use
-        cases by easily switching between models",
-                    title4: "Bare Metal",
-                    text4: "Bionic has been deployed and tested on multiple bare metal Kubernetes clusters.
-        You can run Bionic close to your private data for maximum control.",
-                }
-
-                SmallImageFeature {
-                    title: "Support for PDF, Excel, Word, TXT, and more including OCR",
-                    sub_title: "Integration with over 300 Data Sources",
-                    text: "Our Data Pipeline API allows you to automate document uploads.",
-                    image: "/landing-page/airbyte.png"
-                }
-
-                ImageFeature {
-                    title: "Enterprise Grade Security",
-                    sub_title: "Open Source under a Permissive Licence",
-                    text: "Transport encryption, authentication, authorization, data segragation and more...",
-                    title1: "SSO and Siem",
-                    text1: "Our modular architecture allows us to adapt to your authentication and security needs.",
-                    title2: "Support Contracts.",
-                    text2: "Peace of mind knowing that the project maintainers are on call to help with your success.",
-                    title3: "Consultancy",
-                    text3: "We also can help with the full lifecycle of your Generative AI project. Trust the experts.",
-                    image: "/landing-page/github.png",
-                }
-
-                SmallImageFeature {
-                    title: "The easiest enterprise deployment you've ever seen",
-                    sub_title: "Hundreds of installations around the world",
-                    text: "Our high performance Rust solution is paired with Kubernetes for enterprise deployment stability.",
-                    image: "/landing-page/bionic-startup-k9s.png"
                 }
                 Footer {}
             }
