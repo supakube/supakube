@@ -1,5 +1,5 @@
 use anyhow::Result;
-use k8s_openapi::api::{apps::v1::Deployment, core::v1::Namespace};
+use k8s_openapi::api::{apps::v1::Deployment, core::v1::{Namespace, ServiceAccount}, rbac::v1::{ClusterRole, ClusterRoleBinding, PolicyRule, RoleRef, Subject}};
 use kube::{
     api::{ObjectMeta, Patch, PatchParams, PostParams},
     Api, Client, Error,
@@ -11,6 +11,7 @@ const CNPG_YAML: &str = include_str!("../config/cnpg-1.22.1.yaml");
 const OPERATOR_IMAGE: &str = "ghcr.io/supakube/supakube";
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 const MANAGER: &str = "supakube-operator";
+const OPERATOR_NAME: &str = "supakube-operator";
 
 pub async fn install(installer: &crate::Installer) -> Result<()> {
     println!("🔗 Connecting to the cluster...");
@@ -24,22 +25,23 @@ pub async fn install(installer: &crate::Installer) -> Result<()> {
         install_postgres_operator(&client).await?;
     }
 
-    create_bionic_operator(&client, &installer.operator_namespace).await?;
+    create_operator(&client, &installer.operator_namespace).await?;
+    create_roles(&client, installer).await?;
 
     Ok(())
 }
 
-async fn create_bionic_operator(client: &Client, namespace: &str) -> Result<()> {
+async fn create_operator(client: &Client, namespace: &str) -> Result<()> {
     println!("🔧 Installing the Supakube Operator into {}", namespace);
     let app_labels = serde_json::json!({
-        "app": "supakube-operator",
+        "app": OPERATOR_NAME,
     });
 
     let deployment = serde_json::json!({
         "apiVersion": "apps/v1",
         "kind": "Deployment",
         "metadata": {
-            "name": "supakube-operator-deployment",
+            "name": format!("{}-deployment", OPERATOR_NAME),
             "namespace": namespace
         },
         "spec": {
@@ -52,9 +54,9 @@ async fn create_bionic_operator(client: &Client, namespace: &str) -> Result<()> 
                     "labels": app_labels
                 },
                 "spec": {
-                    "serviceAccountName": "supakube-operator-service-account",
+                    "serviceAccountName": format!("{}-service-account", OPERATOR_NAME),
                     "containers": json!([{
-                        "name": "supakube-operator",
+                        "name": OPERATOR_NAME,
                         "image": format!("{}:{}", OPERATOR_IMAGE, VERSION)
                     }]),
                 }
@@ -66,12 +68,82 @@ async fn create_bionic_operator(client: &Client, namespace: &str) -> Result<()> 
     let deployment_api: Api<Deployment> = Api::namespaced(client.clone(), namespace);
     deployment_api
         .patch(
-            "supakube-operator-deployment",
+            &format!("{}-deployment", OPERATOR_NAME),
             &PatchParams::apply(MANAGER),
             &Patch::Apply(deployment),
         )
         .await?;
 
+    Ok(())
+}
+
+async fn create_roles(client: &Client, installer: &super::Installer) -> Result<()> {
+    println!("Setting up roles");
+    let sa_api: Api<ServiceAccount> =
+        Api::namespaced(client.clone(), &installer.operator_namespace);
+    let service_account = ServiceAccount {
+        metadata: ObjectMeta {
+            name: Some(format!("{}-service-account", OPERATOR_NAME)),
+            namespace: Some(installer.operator_namespace.clone()),
+            ..Default::default()
+        },
+        ..Default::default()
+    };
+    sa_api
+        .patch(
+            &format!("{}-service-account", OPERATOR_NAME),
+            &PatchParams::apply(MANAGER),
+            &Patch::Apply(service_account),
+        )
+        .await?;
+    let role_api: Api<ClusterRole> = Api::all(client.clone());
+    let role = ClusterRole {
+        metadata: ObjectMeta {
+            name: Some(format!("{}-cluster-role", OPERATOR_NAME)),
+            ..Default::default()
+        },
+        rules: Some(vec![PolicyRule {
+            api_groups: Some(vec!["*".to_string()]),
+            resources: Some(vec!["*".to_string()]),
+            verbs: vec!["*".to_string()],
+            ..Default::default()
+        }]),
+        ..Default::default()
+    };
+    role_api
+        .patch(
+            &format!("{}-cluster-role", OPERATOR_NAME),
+            &PatchParams::apply(MANAGER),
+            &Patch::Apply(role),
+        )
+        .await?;
+
+    // Now the cluster role
+    let role_binding_api: Api<ClusterRoleBinding> = Api::all(client.clone());
+    let role_binding = ClusterRoleBinding {
+        metadata: ObjectMeta {
+            name: Some(format!("{}-cluster-role-binding", OPERATOR_NAME)),
+            ..Default::default()
+        },
+        role_ref: RoleRef {
+            api_group: "rbac.authorization.k8s.io".to_string(),
+            kind: "ClusterRole".to_string(),
+            name: format!("{}-cluster-role", OPERATOR_NAME),
+        },
+        subjects: Some(vec![Subject {
+            kind: "ServiceAccount".to_string(),
+            name: format!("{}-service-account", OPERATOR_NAME),
+            namespace: Some(installer.operator_namespace.clone()),
+            ..Default::default()
+        }]),
+    };
+    role_binding_api
+        .patch(
+            &format!("{}-cluster-role-binding", OPERATOR_NAME),
+            &PatchParams::apply(MANAGER),
+            &Patch::Apply(role_binding),
+        )
+        .await?;
     Ok(())
 }
 
