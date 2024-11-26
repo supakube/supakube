@@ -25,7 +25,7 @@ alias watch-tailwind='cd /workspace/crates/web-assets && npx tailwindcss -i ./in
 alias wt=watch-tailwind
 alias watch-static='cd /workspace/crates/static-website && cargo watch --workdir /workspace/crates/static-website -w ./content -w ./src --no-gitignore -x "run --bin static-website"'
 alias ws=watch-static
-alias watch-tailwind-static='cd /workspace/crates/static-website && npx tailwindcss -i ./input.css -o ./dist/tailwind.css --watch'
+alias watch-tailwind-static='tailwindcss -i crates/static-website/input.css -o crates/static-website/dist/tailwind.css --watch'
 alias wts=watch-tailwind-static
 
 # Spell check

@@ -1,5 +1,7 @@
 {
-	"image": "mcr.microsoft.com/devcontainers/rust:1-1-bullseye",
+	"build": {
+		"dockerfile": "./Dockerfile"
+	},
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
 	"workspaceFolder": "/workspace",
 	"mounts": [
@@ -12,11 +14,9 @@
 	"features": {
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
         "ghcr.io/rio/features/k3d:1": {},
-		"ghcr.io/devcontainers-extra/features/kubectl-asdf:2": {},
-		"ghcr.io/r3dpoint/devcontainer-features/tailwindcss-standalone-cli:1": {},
-        "ghcr.io/rio/features/k9s:1": {},
-		"ghcr.io/audacioustux/devcontainers/mirrord:1": {},
-		"ghcr.io/earthly/devcontainer-features/earthly:1": {}
+		"ghcr.io/r3dpoint/devcontainer-features/tailwindcss-standalone-cli:1": {
+			"version": "v4.0.0-beta.2"
+		}
 	},
 	// Set *default* container specific settings.json values on container create.
 	"customizations": {
