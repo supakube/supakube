@@ -12,7 +12,7 @@
     }
 
     .navigation {
-      @apply sticky top-0 z-50 w-full border-b backdrop-blur;
+      @apply sticky top-0 z-50 w-full border-b border-gray-200 backdrop-blur;
     }
     .navigation-container {
       @apply flex h-14 items-center px-4;

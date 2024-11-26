@@ -15,10 +15,10 @@ pub fn Navigation(mobile_menu: Element) -> Element {
                             alt: "Logo",
                             width: "22",
                             height: "22",
-                            src: "/bionic-logo.svg",
+                            src: "/logo.svg",
                             class: "navigation-logo-icon",
                         }
-                        span { class: "navigation-logo-text", "Bionic" }
+                        span { class: "navigation-logo-text", "Supakube" }
                     }
                     nav { class: "navigation-menu",
                         a { class: "navigation-menu-item", href: marketing::Pricing {}.to_string(), "Pricing" }
