@@ -130,8 +130,8 @@ pub fn Pricing() -> Element {
                 cta: "Find out more",
                 cta_url: crate::routes::marketing::Index {}.to_string()
             }
-            Footer {}
         }
+        Footer {}
     }
 }
 
@@ -209,8 +209,8 @@ pub fn PartnersPage() -> Element {
                     }
                 }
             }
-            Footer {}
         }
+        Footer {}
     }
 }
 
@@ -344,8 +344,8 @@ pub fn HomePage() -> Element {
         and still conform to data privacy and controls.",
                     image: "/landing-page/bionic-console.png",
                 }
-                Footer {}
             }
+            Footer {}
         }
     }
 }
