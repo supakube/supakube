@@ -13,11 +13,11 @@ pub fn Document(summary: Summary, category: Category, doc: Page) -> Element {
             mobile_menu: rsx! (MobileMenu {
                 summary: summary.clone()
             }),
-            div {
-                class: "w-full text-sm dark:bg-ideblack",
+            main {
+                class: "flex-1",
 
                 div {
-                    class: "flex flex-row",
+                    class: "container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10",
                     LeftNav {
                         summary
                     }
@@ -95,9 +95,9 @@ fn Content(doc: Page) -> Element {
     .expect("Couldn't generate markdown");
     rsx! {
         section {
-            class: "grow h-[calc(100vh-68px)] p-2",
+            class: "",
             div {
-                class: "bg-slate-100 rounded border border-slate-300 flex justify-center h-[calc(100vh-86px)] overflow-scroll",
+                class: "",
                 article {
                     class: "prose",
                     div {

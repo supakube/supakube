@@ -1,104 +1,107 @@
-use crate::routes::{blog, docs, marketing, SIGN_IN_UP};
+use crate::routes::{blog, docs, marketing};
 use dioxus::prelude::*;
 
 #[component]
 pub fn Navigation(mobile_menu: Element) -> Element {
     rsx! {
-        header {
-            div {
-                class: "navbar justify-between bg-base-100",
-                div {
-                    div { class: "dropdown lg:hidden",
-                        div {
-                            tabindex: "0",
-                            role: "button",
-                            class: "btn btn-ghost",
+        header { class: "navigation",
+            div { 
+                class: "navigation-container",
+                div { 
+                    class: "navigation-logo",
+                    a { 
+                        class: "navigation-logo-link", href: marketing::Index {}.to_string(),
+                        img {
+                            alt: "Logo",
+                            width: "22",
+                            height: "22",
+                            src: "/bionic-logo.svg",
+                            class: "navigation-logo-icon",
+                        }
+                        span { class: "navigation-logo-text", "Bionic" }
+                    }
+                    nav { class: "navigation-menu",
+                        a { class: "navigation-menu-item", href: marketing::Pricing {}.to_string(), "Pricing" }
+                        a { class: "navigation-menu-item", href: docs::Index {}.to_string(), "Documentation" }
+                        a { class: "navigation-menu-item", href: blog::Index {}.to_string(), "Blog" }
+                        a { class: "navigation-menu-item", href: marketing::PartnersPage {}.to_string(), "Partners" }
+                        a { class: "navigation-menu-item", href: marketing::ServicesPage {}.to_string(), "Services" }
+                        a { class: "navigation-menu-item", href: marketing::Contact {}.to_string(), "Contact Us" }
+                    }
+                }
+
+                // Mobile Toggle Button
+                button {
+                    class: "navigation-toggle-button",
+                    r#type: "button",
+                    "aria_has_popup": "dialog",
+                    aria_expanded: "false",
+                    aria_controls: "mobile-menu",
+                    "data_state": "closed",
+                    svg {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        fill: "none",
+                        view_box: "0 0 24 24",
+                        stroke_width: "1.5",
+                        stroke: "currentColor",
+                        class: "!size-6",
+                        path {
+                            stroke_linecap: "round",
+                            stroke_linejoin: "round",
+                            d: "M3.75 9h16.5m-16.5 6.75h16.5",
+                        }
+                    }
+                    span { class: "sr-only", "Toggle Menu" }
+                }
+                div { class: "flex flex-1 items-center justify-between gap-2 md:justify-end",
+                
+                    // Icons
+                    nav { class: "navigation-icons",
+                        // GitHub Icon
+                        a {
+                            target: "_blank",
+                            rel: "noreferrer",
+                            href: "https://github.com/bionic-gpt/bionic-gpt",
+                            img { src: "https://img.shields.io/github/stars/bionic-gpt/bionic-gpt" }
+                            span { class: "sr-only", "GitHub" }
+                        }
+                        // Theme Toggle Button
+                        button { class: "navigation-icon-button",
                             svg {
-                                "xmlns": "http://www.w3.org/2000/svg",
-                                "stroke": "currentColor",
-                                "viewBox": "0 0 24 24",
-                                "fill": "none",
-                                class: "h-5 w-5",
-                                path {
-                                    "d": "M4 6h16M4 12h8m-8 6h16",
-                                    "stroke-linejoin": "round",
-                                    "stroke-linecap": "round",
-                                    "stroke-width": "2"
-                                }
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: "24",
+                                height: "24",
+                                fill: "none",
+                                stroke: "currentColor",
+                                stroke_width: "2",
+                                stroke_linecap: "round",
+                                stroke_linejoin: "round",
+                                class: "hidden [html.dark_&]:block",
+                                // Sun Icon SVG content
+                                circle { cx: "12", cy: "12", r: "4" }
+                                path { d: "M12 2v2" }
+                                path { d: "M12 20v2" }
+                                path { d: "m4.93 4.93 1.41 1.41" }
+                                path { d: "m17.66 17.66 1.41 1.41" }
+                                path { d: "M2 12h2" }
+                                path { d: "M20 12h2" }
+                                path { d: "m6.34 17.66-1.41 1.41" }
+                                path { d: "m19.07 4.93-1.41 1.41" }
                             }
-                        }
-                        ul {
-                            class: "menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52",
-                            li {
-                                a {
-                                    href: blog::Index {}.to_string(),
-                                    "Blog"
-                                }
+                            svg {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: "24",
+                                height: "24",
+                                fill: "none",
+                                stroke: "currentColor",
+                                stroke_width: "2",
+                                stroke_linecap: "round",
+                                stroke_linejoin: "round",
+                                class: "hidden [html.light_&]:block",
+                                // Moon Icon SVG content
+                                path { d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" }
                             }
-                            li {
-                                a {
-                                    href: docs::Index {}.to_string(),
-                                    "Documentation"
-                                }
-                            }
-                            li {
-                                a { href: SIGN_IN_UP, "Sign Up" }
-                            }
-                            li {
-                                a { href: SIGN_IN_UP, "Sign In" }
-                            }
-                            {mobile_menu}
-                        }
-                    }
-                    a {
-                        href: marketing::Index {}.to_string(),
-                        span {
-                            class: "flex flex-row gap-4",
-                            img {
-                                alt: "Logo",
-                                width: "22",
-                                height: "22",
-                                src: "/bionic-logo.svg"
-                            }
-                            "Bionic"
-                        }
-                    }
-                }
-                div { class: "navbar-center hidden lg:flex",
-                    ul { class: "menu menu-horizontal px-1",
-                        li {
-                            a { href: marketing::Pricing {}.to_string(), "Pricing" }
-                        }
-                        li {
-                            a { href: docs::Index {}.to_string(), "Documentation" }
-                        }
-                        li {
-                            a { href: blog::Index {}.to_string(), "Blog" }
-                        }
-                        li {
-                            a { href: marketing::PartnersPage {}.to_string(), "Partners" }
-                        }
-                        li {
-                            a { href: marketing::ServicesPage {}.to_string(), "Services" }
-                        }
-                        li {
-                            a { href: marketing::Contact {}.to_string(), "Contact Us" }
-                        }
-                    }
-                }
-                div { class: "hidden lg:flex",
-                    ul { class: "menu menu-horizontal px-1",
-                        li {
-                            a {
-                                href: "https://github.com/bionic-gpt/bionic-gpt",
-                                img { src: "https://img.shields.io/github/stars/bionic-gpt/bionic-gpt" }
-                            }
-                        }
-                        li {
-                            a { href: SIGN_IN_UP, "Sign Up" }
-                        }
-                        li {
-                            a { href: SIGN_IN_UP, "Sign In" }
+                            span { class: "sr-only", "Toggle theme" }
                         }
                     }
                 }
