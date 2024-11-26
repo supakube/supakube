@@ -5,6 +5,12 @@
 @tailwind utilities;
 
 @layer components {
+  
+    /** Switch off tailwind i.e. where we would normall use prose **/
+    .reset-tw, .reset-tw * {
+        all: revert !important;
+    }
+
     .navigation {
       @apply sticky top-0 z-50 w-full border-b backdrop-blur;
     }

@@ -31,7 +31,7 @@ pub fn BlogPost(post: Page) -> Element {
             image: "{image}",
             mobile_menu: None,
             article {
-                class: "mt-12 mx-auto prose lg:prose-xl p-4",
+                class: "mt-12 mx-auto max-w-2xl",
                 h1 {
                     "{post.title}"
                 }
@@ -87,6 +87,7 @@ pub fn BlogPost(post: Page) -> Element {
                     src: "{post.image.unwrap()}"
                 }
                 div {
+                    class: "reset-tw",
                     dangerous_inner_html: "{content}"
                 }
             }
