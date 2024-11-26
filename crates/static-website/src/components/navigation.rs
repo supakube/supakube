@@ -61,8 +61,8 @@ pub fn Navigation(mobile_menu: Element) -> Element {
                         a {
                             target: "_blank",
                             rel: "noreferrer",
-                            href: "https://github.com/bionic-gpt/bionic-gpt",
-                            img { src: "https://img.shields.io/github/stars/bionic-gpt/bionic-gpt" }
+                            href: "https://github.com/supakube/supakube",
+                            img { src: "https://img.shields.io/github/stars/supakube/supakube" }
                             span { class: "sr-only", "GitHub" }
                         }
                         // Theme Toggle Button
