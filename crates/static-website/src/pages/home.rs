@@ -3,9 +3,9 @@ use crate::components::customer_logos::Customers;
 use crate::components::faq_accordian::Faq;
 use crate::components::features::Features;
 use crate::components::footer::Footer;
-use crate::components::image_feature::ImageFeature;
 use crate::components::image_hero::ImageHero;
 use crate::components::problem_solution::ProblemSolution;
+use crate::components::small_image_feature::SmallImageFeature;
 use crate::components::testamonials::Testamonials;
 use crate::layouts::layout::Layout;
 use dioxus::prelude::*;
@@ -55,19 +55,31 @@ pub fn HomePage() -> Element {
                     benefit3_desc: "A Chat-GPT Replacement Without The Data Leakage",
                 }
 
-                ImageFeature {
+                SmallImageFeature {
                     title: "Data Governance",
                     sub_title: "A Chat-GPT Replacement Without The Data Leakage",
                     text: "Leverage your existing company knowledge to automate tasks like customer support,
         lead qualification, and RFP processing and much more.",
-                    title1: "Regulatory Compliance.",
-                    text1: "Run Generative AI and become compliant with GDPR, CCPA, PIPEDA, POPI, LGPD, HIPAA, PCI-DSS, and More",
-                    title2: "Chat Console.",
-                    text2: "A familiar chat console with text and code generation and the ability to select an assistant tuned on your data.",
-                    title3: "Data Governance.",
-                    text3: "By deploying Bionic close to your data you are able to benefit from Generative AI
-        and still conform to data privacy and controls.",
                     image: "/landing-page/bionic-console.png",
+                    flip: false
+                }
+
+                SmallImageFeature {
+                    title: "Data Governance",
+                    sub_title: "A Chat-GPT Replacement Without The Data Leakage",
+                    text: "Leverage your existing company knowledge to automate tasks like customer support,
+        lead qualification, and RFP processing and much more.",
+                    image: "/landing-page/bionic-console.png",
+                    flip: true
+                }
+
+                SmallImageFeature {
+                    title: "Data Governance",
+                    sub_title: "A Chat-GPT Replacement Without The Data Leakage",
+                    text: "Leverage your existing company knowledge to automate tasks like customer support,
+        lead qualification, and RFP processing and much more.",
+                    image: "/landing-page/bionic-console.png",
+                    flip: false
                 }
 
                 Features {}
