@@ -7,7 +7,7 @@ pub fn ImageHero(title: String, subtitle: String) -> Element {
             div {
                 class: "text-center",
                 div {
-                    class: "max-w-md",
+                    class: "max-w-lg",
                     h1 {
                         class: "text-5xl font-bold",
                         "{title}"

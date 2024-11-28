@@ -4,17 +4,22 @@ use dioxus::prelude::*;
 pub fn ProblemSolution(title: String, subtitle: String) -> Element {
     rsx! {
         section {
-            class: "mt-24 flex lg:max-w-5xl ",
+            class: "mt-24 flex lg:max-w-5xl gap-8",
             div {
-                class: "flex-1 text-center",
-                img {
-                    width: "100%",
-                    height: "100%",
-                    src: "/temporary-image.svg"
+                class: "",
+                iframe {
+                    width: "560", 
+                    height: "315",
+                    src: "https://www.youtube.com/embed/slRiOOM17tM?si=yBb5noZUF44ZIo70",
+                    title: "YouTube video player",
+                    "frameborder": "0",
+                    allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+                    referrerpolicy: "strict-origin-when-cross-origin",
+                    allowfullscreen: "true"
                 }
             }
             div {
-                class: "flex-1",
+                class: "",
                 h1 {
                     class: "text-2xl font-bold",
                     "{title}"

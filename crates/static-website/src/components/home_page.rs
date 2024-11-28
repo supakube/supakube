@@ -28,7 +28,7 @@ pub fn HomePage() -> Element {
             div {
                 class: "mt-24 flex flex-col items-center",
                 ImageHero {
-                    title: "Generative AI Private Data",
+                    title: "Increase company productivity with Private Generative AI",
                     subtitle: "We use hardware based confidential computing to
                         run AI in a highly secure enclave for maximum 
                         protection of your data in the cloud or on premise"
