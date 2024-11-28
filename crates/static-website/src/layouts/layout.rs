@@ -85,9 +85,15 @@ pub fn Layout(props: LayoutProps) -> Element {
                 "type": "text/css"
             }
             script {
+                "async": "true",
                 src: "https://unpkg.com/htmx.org@2.0.3"
             }
             script {
+                "async": "true",
+                src: "https://unpkg.com/@mahozad/theme-switch"
+            }
+            script {
+                "async": "true",
                 "hljs.addPlugin(new CopyButtonPlugin());hljs.highlightAll();"
             }
         }

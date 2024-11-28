@@ -56,8 +56,8 @@ pub fn Navigation(mobile_menu: Element) -> Element {
                 div { class: "flex flex-1 items-center justify-between gap-2 md:justify-end",
 
                     // Icons
-                    nav { class: "navigation-icons",
-
+                    nav { 
+                        class: "navigation-icons",
                         a {
                             class: "navigation-menu-item",
                             "hx-boost": "true",
@@ -66,12 +66,15 @@ pub fn Navigation(mobile_menu: Element) -> Element {
                         }
                         // GitHub Icon
                         a {
-                            class: "ml-4",
+                            class: "ml-4 mr-4",
                             target: "_blank",
                             rel: "noreferrer",
                             href: "https://github.com/supakube/supakube",
                             img { src: "https://img.shields.io/github/stars/supakube/supakube" }
                             span { class: "sr-only", "GitHub" }
+                        }
+                        theme-switch {
+
                         }
                     }
                 }
