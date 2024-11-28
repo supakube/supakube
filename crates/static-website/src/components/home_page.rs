@@ -1,6 +1,6 @@
 use super::image_hero::ImageHero;
-use crate::components::customer_logos::Customers;
 use crate::components::benefits::Benefits;
+use crate::components::customer_logos::Customers;
 use crate::components::footer::Footer;
 use crate::components::image_feature::ImageFeature;
 use crate::components::problem_solution::ProblemSolution;
@@ -42,8 +42,14 @@ pub fn HomePage() -> Element {
                 }
 
                 Benefits {
+                    title: "Benefits",
+                    subtitle: "More benefits",
                     benefit1: "Military grade encryption and data security best practices",
                     benefit1_desc: "A Chat-GPT Replacement Without The Data Leakage",
+                    benefit2: "Military grade encryption and data security best practices",
+                    benefit2_desc: "A Chat-GPT Replacement Without The Data Leakage",
+                    benefit3: "Military grade encryption and data security best practices",
+                    benefit3_desc: "A Chat-GPT Replacement Without The Data Leakage",
                 }
 
                 ImageFeature {

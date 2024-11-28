@@ -8,7 +8,7 @@ pub fn ProblemSolution(video: String, title: String, subtitle: String) -> Elemen
             div {
                 class: "",
                 iframe {
-                    width: "560", 
+                    width: "560",
                     height: "315",
                     src: video,
                     title: "YouTube video player",

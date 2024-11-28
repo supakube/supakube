@@ -3,6 +3,7 @@ use std::io::Write;
 
 use crate::components::extra_footer::ExtraFooter;
 use crate::components::footer::Footer;
+use crate::components::team::Team;
 use crate::layouts::layout::Layout;
 use dioxus::prelude::*;
 
@@ -18,13 +19,6 @@ pub async fn generate() {
 
     fs::create_dir_all("dist/partners").expect("Couyldn't create folder");
     let mut file = File::create("dist/partners/index.html").expect("Unable to create file");
-    file.write_all(html.as_bytes())
-        .expect("Unable to write to file");
-
-    let html = crate::render(ServicesPage).await;
-
-    fs::create_dir_all("dist/services").expect("Couyldn't create folder");
-    let mut file = File::create("dist/services/index.html").expect("Unable to create file");
     file.write_all(html.as_bytes())
         .expect("Unable to write to file");
 
@@ -259,65 +253,6 @@ pub fn PartnersPage() -> Element {
 }
 
 #[component]
-pub fn ServicesPage() -> Element {
-    rsx! {
-        Layout {
-            title: "Services",
-            mobile_menu: None,
-            description: "Services",
-            section {
-                class: "mt-12 mb-12 mx-auto prose lg:prose-xl justify-center px-4", // Add padding to the section
-                div {
-                    class: "w-full lg:w-3/4 lg:max-w-3xl mx-auto px-4 md:px-6 lg:px-8 text-left", // Adjust max width and add padding at multiple screen sizes
-                    h2 {
-                        class: "text-4xl font-extrabold mt-4 text-center",
-                        "bionicGPT Services"
-                    }
-                    p {
-                        class: "mt-4 mb-6",
-                        "At bionicGPT, we offer a comprehensive suite of services designed to maximize your organisation’s AI potential, from foundational training to advanced, custom AI solutions tailored to your needs."
-                    }
-                    h4 {
-                        class: "text-2xl font-bold mt-8",
-                        "AI Training"
-                    }
-                    p {
-                        class: "mt-4 mb-6",
-                        "Empower your team with the skills to harness generative AI confidently and effectively. Our training covers both general AI knowledge and specific product training on bionicGPT, ensuring that your team can use the platform to its fullest potential. Whether your team is new to AI or looking to advance their expertise, we provide insights into AI-driven data workflows, and secure deployment. Our hands-on sessions transform AI concepts into practical applications, giving your team the tools to integrate generative AI and ensure data security and compliance."
-                    }
-                    h4 {
-                        class: "text-2xl font-bold mt-8",
-                        "AI Consulting"
-                    }
-                    p {
-                        class: "mt-4 mb-6",
-                        "Our AI Consulting services focus on transforming your specific business needs into effective AI solutions. We work closely with your team to identify opportunities, design strategies, and integrate AI in ways that drive real value. From feasibility studies to model selection and data management, we’re here to guide you through each step, ensuring your AI initiatives align with industry best practices and regulatory standards."
-                    }
-                    h4 {
-                        class: "text-2xl font-bold mt-8",
-                        "AI Development"
-                    }
-                    p {
-                        class: "mt-4 mb-6",
-                        "Our team specialises in custom AI development, tailored extensions to bionicGPT, and powerful AI agents. From enhancing existing functionalities to creating bespoke AI workflows, we help you deploy highly effective solutions that fit seamlessly into your tech stack. We also provide support for integrating AI agents that automate tasks, streamline data handling, and optimize operations. With bionicGPT as your foundation, you can scale up securely and efficiently with innovations that align perfectly with your goals."
-                    }
-                    div {
-                        class: "mt-10 flex flex-col items-center",
-                        hr { class: "w-full mb-4" }
-                        a {
-                            href: "/contact",
-                            class: "btn btn-secondary btn-outline",
-                            "Book a Call"
-                        }
-                    }
-                }
-            }
-            Footer {}
-        }
-    }
-}
-
-#[component]
 pub fn ContactPage() -> Element {
     rsx! {
         Layout {
@@ -347,6 +282,9 @@ pub fn ContactPage() -> Element {
                     href: "https://calendly.com/bionicgpt",
                     "Schedule a Meeting"
                 }
+            }
+            Team {
+
             }
             ExtraFooter {
                 title: "The secure open source Chat-GPT replacement
