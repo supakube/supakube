@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 pub fn Customers() -> Element {
     rsx! {
         section {
-            class: "flex flex-col items-center mt-12",
+            class: "flex flex-col items-center mt-24",
             span {
                 class: "badge badge-primary badge-outline",
                 "Partners"

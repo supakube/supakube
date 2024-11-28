@@ -109,7 +109,7 @@ pub fn BlogList(summary: Summary) -> Element {
             description: "Blog",
             mobile_menu: None,
             section {
-                class: "lg:max-w-5xl mx-auto text-center mb-12 mt-12",
+                class: "lg:max-w-5xl mx-auto text-center mb-12 mt-24",
                 h1 {
                     class: "text-4xl font-extrabold",
                     "Enterprise Generative AI"

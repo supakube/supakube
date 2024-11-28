@@ -6,7 +6,7 @@ pub fn Testamonials() -> Element {
         section {
             class: "lg:max-w-5xl text-gray-600 body-font",
             div {
-                class: "container px-5 py-24 mx-auto",
+                class: "container py-24 mx-auto",
                 h1 {
                     class: "text-3xl font-medium title-font text-gray-900 mb-12 text-center",
                     "Testimonials"
