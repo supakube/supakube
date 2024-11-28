@@ -22,11 +22,11 @@ pub fn Navigation(mobile_menu: Element) -> Element {
                         span { class: "navigation-logo-text", "Bionic-GPT" }
                     }
                     nav { class: "navigation-menu",
+                    a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::EnterprisePage {}.to_string(), "Enterprise" }
                         a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::Pricing {}.to_string(), "Pricing" }
                         a { class: "navigation-menu-item", "hx-boost": "true", href: blog::Index {}.to_string(), "Blog" }
-                        a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::PartnersPage {}.to_string(), "Partners" }
-                        a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::EnterprisePage {}.to_string(), "Enterprise" }
                         a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::Contact {}.to_string(), "Contact Us" }
+                        a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::PartnersPage {}.to_string(), "Partners" }
                     }
                 }
 

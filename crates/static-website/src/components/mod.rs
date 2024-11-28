@@ -13,3 +13,4 @@ pub mod quad_feature;
 pub mod small_image_feature;
 pub mod team;
 pub mod webinar;
+pub mod partners;
