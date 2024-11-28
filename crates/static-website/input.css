@@ -1,15 +1,8 @@
-@import "tailwindcss" source("./src");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-  
-    /** Switch off tailwind i.e. where we would normall use prose **/
-    .reset-tw, .reset-tw * {
-        all: revert !important;
-    }
 
     .navigation {
       @apply sticky top-0 z-50 w-full border-b border-gray-200 backdrop-blur;
@@ -59,5 +52,5 @@
     .navigation-icon-button {
       @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50 h-8 w-8 px-0;
     }
-  }
+}
   

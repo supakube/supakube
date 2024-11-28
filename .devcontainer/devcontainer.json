@@ -15,7 +15,7 @@
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
         "ghcr.io/rio/features/k3d:1": {},
 		"ghcr.io/r3dpoint/devcontainer-features/tailwindcss-standalone-cli:1": {
-			"version": "v4.0.0-beta.2"
+			"version": "v3.4.15"
 		}
 	},
 	// Set *default* container specific settings.json values on container create.

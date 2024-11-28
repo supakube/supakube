@@ -87,7 +87,7 @@ pub fn BlogPost(post: Page) -> Element {
                     src: "{post.image.unwrap()}"
                 }
                 div {
-                    class: "reset-tw",
+                    class: "prose",
                     dangerous_inner_html: "{content}"
                 }
             }

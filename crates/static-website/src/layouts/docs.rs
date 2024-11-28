@@ -100,7 +100,7 @@ fn Content(doc: Page) -> Element {
             div {
                 class: "",
                 article {
-                    class: "reset-tw",
+                    class: "prose",
                     div {
                         dangerous_inner_html: "{content}"
                     }

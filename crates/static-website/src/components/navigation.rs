@@ -19,7 +19,7 @@ pub fn Navigation(mobile_menu: Element) -> Element {
                             src: "/logo.svg",
                             class: "navigation-logo-icon",
                         }
-                        span { class: "navigation-logo-text", "Supakube" }
+                        span { class: "navigation-logo-text", "Bionic-GPT" }
                     }
                     nav { class: "navigation-menu",
                         a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::Pricing {}.to_string(), "Pricing" }
