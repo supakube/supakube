@@ -44,7 +44,7 @@ pub fn Pricing() -> Element {
             description: "Bionic Pricing",
             mobile_menu: None,
             div {
-                div { class: "mt-12 mx-auto max-w-7xl px-6 lg:px-8",
+                div { class: "mt-24 mx-auto max-w-7xl px-6 lg:px-8",
                     div { class: "mx-auto max-w-2xl sm:text-center",
                         h2 { class: "text-3xl font-bold tracking-tight sm:text-4xl", "Pricing" }
                         p { class: "mt-6 text-lg leading-8",
@@ -98,6 +98,73 @@ pub fn Pricing() -> Element {
                         }
                     }
                 }
+                div { class: "card card-bordered lg:w-1/3",
+                    div { class: "card-body flex flex-col justify-between list-tick",
+                        div { class: "flex flex-col gap-3",
+                            h3 { class: "card-title", "Encrypted Cloud" }
+                            span { class: "badge badge-primary badge-outline", "Secure Compute" }
+                            p { "Runs in our secure enclave with end to end encryption" }
+                            h4 { class: "font-extrabold", "Everything from Cloud Edition and..." }
+                            ul {
+                                li { "Secure enclave running CPU resources." }
+                                li { "Secure enclave running GPU resources." }
+                                li { "Fully siloed and security hardenend." }
+                            }
+                            h4 { class: "font-extrabold", "Maximum Data Protection" }
+                            ul {
+                                li { "Built for running Generative AI on highly confidential data." }
+                                li {
+                                    "Hardware based secure compute thanks to our partnership with Nvidia and Google."
+                                }
+                                li { "Bring/Hold your own keys." }
+                                li { "Provable supply chain with server attestation." }
+                            }
+                        }
+                        div { class: "mt-5 flex flex-col gap-2",
+                            hr {}
+                            h3 { class: "font-extrabold", "Custom Pricing" }
+                            a {
+                                href: "/contact",
+                                class: "btn btn-secondary btn-outline",
+                                "\n            Book a Call\n          "
+                            }
+                        }
+                    }
+                }
+                div { class: "card card-bordered lg:w-1/3",
+                    div { class: "card-body flex flex-col justify-between list-tick",
+                        div { class: "flex flex-col gap-3",
+                            h3 { class: "card-title", "On Premise / Private Cloud" }
+                            span { class: "badge badge-primary badge-outline", "Enterprise Edition" }
+                            p { "On Premise or Private Cloud" }
+                            h4 { class: "font-extrabold",
+                                "Everything from Cloud Edition and Encrypted Cloud..."
+                            }
+                            ul {
+                                li { "Maximum privacy and security." }
+                                li { "Support for running on bare metal." }
+                                li { "Single Sign On." }
+                            }
+                            h4 { class: "font-extrabold", "Support" }
+                            ul {
+                                li { "Hardware recommendations." }
+                                li { "Possibility of custom builds." }
+                                li { "Dedicated customer success and engineering resources." }
+                                li { "Custom Integrations." }
+                                li { "Custom SLAs and support." }
+                            }
+                        }
+                        div { class: "mt-5 flex flex-col gap-2",
+                            hr {}
+                            h3 { class: "font-extrabold", "Custom Pricing" }
+                            a {
+                                href: "/contact",
+                                class: "btn btn-secondary btn-outline",
+                                "\n            Book a Call\n          "
+                            }
+                        }
+                    }
+                }
             }
             ExtraFooter {
                 title: "The secure open source Chat-GPT replacement
@@ -107,8 +174,8 @@ pub fn Pricing() -> Element {
                 cta: "Find out more",
                 cta_url: crate::routes::marketing::Index {}.to_string()
             }
+            Footer {}
         }
-        Footer {}
     }
 }
 
