@@ -24,7 +24,7 @@ pub fn Features() -> Element {
                         div {
                             div {
                                 class: "flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900",
-        
+
                                 match i {
                                     0 => rsx!(img { src: "/feature-icons/marketing.svg" }),
                                     1 => rsx!(img { src: "/feature-icons/marketing.svg" }),
@@ -65,5 +65,5 @@ pub fn Features() -> Element {
                 }
             }
         }
-    }    
+    }
 }

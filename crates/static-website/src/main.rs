@@ -3,6 +3,7 @@ pub mod components;
 pub mod docs_summary;
 pub mod generator;
 pub mod layouts;
+pub mod pages;
 pub mod pages_summary;
 
 use axum::Router;
@@ -78,8 +79,8 @@ async fn main() {
 
     fs::create_dir_all("dist").expect("Couldn't create dist folder");
     components::marketing::generate().await;
-    components::enterprise::generate().await;
-    components::home_page::generate().await;
+    pages::enterprise::generate().await;
+    pages::home::generate().await;
     generator::generate_docs(docs_summary::summary());
     generator::generate(blog_summary::summary());
     generator::generate_pages(pages_summary::summary()).await;

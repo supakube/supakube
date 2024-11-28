@@ -7,7 +7,7 @@ use crate::components::team::Team;
 use crate::layouts::layout::Layout;
 use dioxus::prelude::*;
 
-use super::partners::PartnersPage;
+use crate::pages::partners::PartnersPage;
 
 pub async fn generate() {
     let html = crate::render(Pricing).await;
@@ -40,11 +40,15 @@ pub fn Pricing() -> Element {
             description: "Bionic Pricing",
             mobile_menu: None,
             div {
-                div { class: "mt-24 mx-auto max-w-7xl px-6 lg:px-8",
-                    div { class: "mx-auto max-w-2xl sm:text-center",
-                        h2 { class: "text-3xl font-bold tracking-tight sm:text-4xl", "Pricing" }
-                        p { class: "mt-6 text-lg leading-8",
-                            "\n          Bionic works best when it's integrated with your systems.\n          We offer packages to integrate Bionic with your Operations, Compliance and Security. \n        "
+                div {
+                    class: "mt-24 mx-auto max-w-7xl px-6 lg:px-8",
+                    div {
+                        class: "mx-auto max-w-2xl sm:text-center",
+                        h2 {
+                            class: "text-3xl font-bold tracking-tight sm:text-4xl", "Pricing" }
+                        p {
+                            class: "mt-6 text-lg leading-8",
+                            "Bionic works best when it's integrated with your systems.\n          We offer packages to integrate Bionic with your Operations, Compliance and Security. \n        "
                         }
                     }
                 }
