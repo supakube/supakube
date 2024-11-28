@@ -12,5 +12,6 @@ pub mod problem_solution;
 pub mod quad_feature;
 pub mod small_image_feature;
 pub mod team;
+pub mod testamonials;
 pub mod webinar;
 pub mod partners;

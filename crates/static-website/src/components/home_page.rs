@@ -4,6 +4,7 @@ use crate::components::customer_logos::Customers;
 use crate::components::footer::Footer;
 use crate::components::image_feature::ImageFeature;
 use crate::components::problem_solution::ProblemSolution;
+use crate::components::testamonials::Testamonials;
 use crate::layouts::layout::Layout;
 use dioxus::prelude::*;
 use std::fs::File;
@@ -66,6 +67,8 @@ pub fn HomePage() -> Element {
         and still conform to data privacy and controls.",
                     image: "/landing-page/bionic-console.png",
                 }
+
+                Testamonials {}
             }
             Footer {}
         }
