@@ -2,9 +2,10 @@ use std::fs::{self, File};
 use std::io::Write;
 
 use super::image_hero::ImageHero;
-use crate::components::customer_logos::Partners;
+use crate::components::customer_logos::Customers;
 use crate::components::footer::Footer;
 use crate::components::image_feature::ImageFeature;
+use crate::components::problem_solution::ProblemSolution;
 use crate::layouts::layout::Layout;
 use dioxus::prelude::*;
 
@@ -28,11 +29,17 @@ pub fn EnterprisePage() -> Element {
             div {
                 class: "mt-24 flex flex-col items-center",
                 ImageHero {
-                    title: "On Premise or Private Cloud Enterprise Generative AI",
+                    title: "On Premise or Private Cloud. Enterprise Generative AI.",
                     subtitle: "Collaborate with the highest levels of security and privacy across all AI models.
     Use any model on your own server or cloud."
                 }
-                Partners {}
+                Customers {}
+
+                ProblemSolution {
+                    video: "https://www.youtube.com/embed/mNFd0Bur238?si=69vNCg09KvoCKzW3",
+                    title: "How can your enterprise unlock 100's of Gen AI use cases?",
+                    subtitle: "A Chat-GPT Replacement Without The Data Leakage",
+                }
 
                 ImageFeature {
                     title: "Data Governance",

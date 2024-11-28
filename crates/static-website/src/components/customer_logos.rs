@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 #[component]
-pub fn Partners() -> Element {
+pub fn Customers() -> Element {
     rsx! {
         section {
             class: "flex flex-col items-center mt-12",

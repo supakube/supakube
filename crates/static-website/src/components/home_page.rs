@@ -1,5 +1,5 @@
 use super::image_hero::ImageHero;
-use crate::components::customer_logos::Partners;
+use crate::components::customer_logos::Customers;
 use crate::components::benefits::Benefits;
 use crate::components::footer::Footer;
 use crate::components::image_feature::ImageFeature;
@@ -33,9 +33,10 @@ pub fn HomePage() -> Element {
                         run AI in a highly secure enclave for maximum 
                         protection of your data in the cloud or on premise"
                 }
-                Partners {}
+                Customers {}
 
                 ProblemSolution {
+                    video: "https://www.youtube.com/embed/slRiOOM17tM?si=yBb5noZUF44ZIo70",
                     title: "How do you get the benefits of AI and keep your data private?",
                     subtitle: "A Chat-GPT Replacement Without The Data Leakage",
                 }

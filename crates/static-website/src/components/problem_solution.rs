@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 #[component]
-pub fn ProblemSolution(title: String, subtitle: String) -> Element {
+pub fn ProblemSolution(video: String, title: String, subtitle: String) -> Element {
     rsx! {
         section {
             class: "mt-24 flex lg:max-w-5xl gap-8",
@@ -10,7 +10,7 @@ pub fn ProblemSolution(title: String, subtitle: String) -> Element {
                 iframe {
                     width: "560", 
                     height: "315",
-                    src: "https://www.youtube.com/embed/slRiOOM17tM?si=yBb5noZUF44ZIo70",
+                    src: video,
                     title: "YouTube video player",
                     "frameborder": "0",
                     allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
