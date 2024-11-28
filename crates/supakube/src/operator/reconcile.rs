@@ -45,7 +45,10 @@ enum SupakubeAction {
     NoOp,
 }
 
-pub async fn reconcile(supakube: Arc<Supakube>, context: Arc<ContextData>) -> Result<Action, Error> {
+pub async fn reconcile(
+    supakube: Arc<Supakube>,
+    context: Arc<ContextData>,
+) -> Result<Action, Error> {
     let client: Client = context.client.clone(); // The `Client` is shared -> a clone from the reference is obtained
 
     let namespace: String = supakube.namespace().unwrap_or("default".to_string());
@@ -75,14 +78,17 @@ pub async fn reconcile(supakube: Arc<Supakube>, context: Arc<ContextData>) -> Re
             )
             .await?;
 
-            keycloak::deploy_keycloak(&client, &supakube.spec.hostname_url, &namespace).await.unwrap();
+            keycloak::deploy_keycloak(&client, &supakube.spec.hostname_url, &namespace)
+                .await
+                .unwrap();
             oauth2_proxy::deploy_oauth2_proxy(
                 &client,
                 &supakube.spec.hostname_url,
                 &supakube.spec.app_name,
                 &namespace,
             )
-            .await.unwrap();
+            .await
+            .unwrap();
 
             deploy_nginx(&client, &namespace).await.unwrap();
 

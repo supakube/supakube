@@ -5,11 +5,11 @@ use dioxus::prelude::*;
 pub fn Navigation(mobile_menu: Element) -> Element {
     rsx! {
         header { class: "navigation",
-            div { 
+            div {
                 class: "navigation-container",
-                div { 
+                div {
                     class: "navigation-logo",
-                    a { 
+                    a {
                         class: "navigation-logo-link", href: marketing::Index {}.to_string(),
                         "hx-boost": "true",
                         img {
@@ -23,7 +23,6 @@ pub fn Navigation(mobile_menu: Element) -> Element {
                     }
                     nav { class: "navigation-menu",
                         a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::Pricing {}.to_string(), "Pricing" }
-                        a { class: "navigation-menu-item", "hx-boost": "true", href: docs::Index {}.to_string(), "Documentation" }
                         a { class: "navigation-menu-item", "hx-boost": "true", href: blog::Index {}.to_string(), "Blog" }
                         a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::PartnersPage {}.to_string(), "Partners" }
                         a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::EnterprisePage {}.to_string(), "Enterprise" }
@@ -56,54 +55,24 @@ pub fn Navigation(mobile_menu: Element) -> Element {
                     span { class: "sr-only", "Toggle Menu" }
                 }
                 div { class: "flex flex-1 items-center justify-between gap-2 md:justify-end",
-                
+
                     // Icons
                     nav { class: "navigation-icons",
+
+                        a {
+                            class: "navigation-menu-item",
+                            "hx-boost": "true",
+                            href: docs::Index {}.to_string(),
+                            "Documentation"
+                        }
                         // GitHub Icon
                         a {
+                            class: "ml-4",
                             target: "_blank",
                             rel: "noreferrer",
                             href: "https://github.com/supakube/supakube",
                             img { src: "https://img.shields.io/github/stars/supakube/supakube" }
                             span { class: "sr-only", "GitHub" }
-                        }
-                        // Theme Toggle Button
-                        button { class: "navigation-icon-button",
-                            svg {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                width: "24",
-                                height: "24",
-                                fill: "none",
-                                stroke: "currentColor",
-                                stroke_width: "2",
-                                stroke_linecap: "round",
-                                stroke_linejoin: "round",
-                                class: "hidden [html.dark_&]:block",
-                                // Sun Icon SVG content
-                                circle { cx: "12", cy: "12", r: "4" }
-                                path { d: "M12 2v2" }
-                                path { d: "M12 20v2" }
-                                path { d: "m4.93 4.93 1.41 1.41" }
-                                path { d: "m17.66 17.66 1.41 1.41" }
-                                path { d: "M2 12h2" }
-                                path { d: "M20 12h2" }
-                                path { d: "m6.34 17.66-1.41 1.41" }
-                                path { d: "m19.07 4.93-1.41 1.41" }
-                            }
-                            svg {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                width: "24",
-                                height: "24",
-                                fill: "none",
-                                stroke: "currentColor",
-                                stroke_width: "2",
-                                stroke_linecap: "round",
-                                stroke_linejoin: "round",
-                                class: "hidden [html.light_&]:block",
-                                // Moon Icon SVG content
-                                path { d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" }
-                            }
-                            span { class: "sr-only", "Toggle theme" }
                         }
                     }
                 }

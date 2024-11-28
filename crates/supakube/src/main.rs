@@ -1,8 +1,8 @@
 mod apply;
 mod error;
+mod install_operators;
 mod operator;
 mod services;
-mod install_operators;
 
 use anyhow::Result;
 

@@ -1,24 +1,24 @@
-use std::fs::{self, File};
-use std::io::Write;
-
 use super::image_hero::ImageHero;
 use crate::components::customer_logos::Partners;
+use crate::components::benefits::Benefits;
 use crate::components::footer::Footer;
 use crate::components::image_feature::ImageFeature;
+use crate::components::problem_solution::ProblemSolution;
 use crate::layouts::layout::Layout;
 use dioxus::prelude::*;
+use std::fs::File;
+use std::io::Write;
 
 pub async fn generate() {
-    let html = crate::render(EnterprisePage).await;
+    let html = crate::render(HomePage).await;
 
-    fs::create_dir_all("dist/enterprise").expect("Couyldn't create folder");
-    let mut file = File::create("dist/enterprise/index.html").expect("Unable to create file");
+    let mut file = File::create("dist/index.html").expect("Unable to create file");
     file.write_all(html.as_bytes())
         .expect("Unable to write to file");
 }
 
 #[component]
-pub fn EnterprisePage() -> Element {
+pub fn HomePage() -> Element {
     rsx! {
         Layout {
             title: "Enterprise Generative AI",
@@ -28,11 +28,22 @@ pub fn EnterprisePage() -> Element {
             div {
                 class: "mt-24 flex flex-col items-center",
                 ImageHero {
-                    title: "On Premise or Private Cloud Enterprise Generative AI",
-                    subtitle: "Collaborate with the highest levels of security and privacy across all AI models.
-    Use any model on your own server or cloud."
+                    title: "Generative AI Private Data",
+                    subtitle: "We use hardware based confidential computing to
+                        run AI in a highly secure enclave for maximum 
+                        protection of your data in the cloud or on premise"
                 }
                 Partners {}
+
+                ProblemSolution {
+                    title: "How do you get the benefits of AI and keep your data private?",
+                    subtitle: "A Chat-GPT Replacement Without The Data Leakage",
+                }
+
+                Benefits {
+                    benefit1: "Military grade encryption and data security best practices",
+                    benefit1_desc: "A Chat-GPT Replacement Without The Data Leakage",
+                }
 
                 ImageFeature {
                     title: "Data Governance",

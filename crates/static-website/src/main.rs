@@ -79,6 +79,7 @@ async fn main() {
     fs::create_dir_all("dist").expect("Couldn't create dist folder");
     components::marketing::generate().await;
     components::enterprise::generate().await;
+    components::home_page::generate().await;
     generator::generate_docs(docs_summary::summary());
     generator::generate(blog_summary::summary());
     generator::generate_pages(pages_summary::summary()).await;

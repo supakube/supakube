@@ -43,4 +43,3 @@ pub async fn operator() -> Result<()> {
 
     Ok(())
 }
-

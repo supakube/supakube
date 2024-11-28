@@ -1,29 +1,12 @@
 use std::fs::{self, File};
 use std::io::Write;
 
-use super::image_hero::ImageHero;
 use crate::components::extra_footer::ExtraFooter;
 use crate::components::footer::Footer;
-use crate::components::image_feature::ImageFeature;
-use crate::components::customer_logos::Partners;
 use crate::layouts::layout::Layout;
-use crate::routes::marketing::Index;
-use axum::response::Html;
-use axum::Router;
-use axum_extra::routing::RouterExt;
 use dioxus::prelude::*;
 
-pub fn routes() -> Router {
-    Router::new().typed_get(index)
-}
-
 pub async fn generate() {
-    let html = crate::render(HomePage).await;
-
-    let mut file = File::create("dist/index.html").expect("Unable to create file");
-    file.write_all(html.as_bytes())
-        .expect("Unable to write to file");
-
     let html = crate::render(Pricing).await;
 
     fs::create_dir_all("dist/pricing").expect("Couyldn't create folder");
@@ -51,12 +34,6 @@ pub async fn generate() {
     let mut file = File::create("dist/contact/index.html").expect("Unable to create file");
     file.write_all(html.as_bytes())
         .expect("Unable to write to file");
-}
-
-pub async fn index(Index {}: Index) -> Html<String> {
-    let html = crate::render(HomePage).await;
-
-    Html(html)
 }
 
 #[component]
@@ -311,44 +288,6 @@ pub fn ContactPage() -> Element {
                 image: "/landing-page/bionic-console.png",
                 cta: "Find out more",
                 cta_url: crate::routes::marketing::Index {}.to_string()
-            }
-            Footer {}
-        }
-    }
-}
-
-#[component]
-pub fn HomePage() -> Element {
-    rsx! {
-        Layout {
-            title: "Enterprise Generative AI",
-            description: "The Industry Standard For Enterprise Generative AI",
-            mobile_menu: None,
-
-            div {
-                class: "mt-12 flex flex-col items-center",
-                ImageHero {
-                    title: "Generative AI Private Data",
-                    subtitle: "We use hardware based confidential computing to
-                        run AI in a highly secure enclave for maximum 
-                        protection of your data in the cloud or on premise"
-                }
-                Partners {}
-
-                ImageFeature {
-                    title: "Data Governance",
-                    sub_title: "A Chat-GPT Replacement Without The Data Leakage",
-                    text: "Leverage your existing company knowledge to automate tasks like customer support,
-        lead qualification, and RFP processing and much more.",
-                    title1: "Regulatory Compliance.",
-                    text1: "Run Generative AI and become compliant with GDPR, CCPA, PIPEDA, POPI, LGPD, HIPAA, PCI-DSS, and More",
-                    title2: "Chat Console.",
-                    text2: "A familiar chat console with text and code generation and the ability to select an assistant tuned on your data.",
-                    title3: "Data Governance.",
-                    text3: "By deploying Bionic close to your data you are able to benefit from Generative AI
-        and still conform to data privacy and controls.",
-                    image: "/landing-page/bionic-console.png",
-                }
             }
             Footer {}
         }

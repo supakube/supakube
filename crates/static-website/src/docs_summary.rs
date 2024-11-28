@@ -19,18 +19,16 @@ pub fn summary() -> Summary {
             },
             Category {
                 name: "Learn Bionic".to_string(),
-                pages: vec![
-                    Page {
-                        date: "",
-                        title: "Installation",
-                        description: "Installation",
-                        folder: "docs/guides/installation/",
-                        markdown: include_str!("../content/docs/guides/installation/index.md"),
-                        image: None,
-                        author_image: None,
-                        author: None,
-                    },
-                ],
+                pages: vec![Page {
+                    date: "",
+                    title: "Installation",
+                    description: "Installation",
+                    folder: "docs/guides/installation/",
+                    markdown: include_str!("../content/docs/guides/installation/index.md"),
+                    image: None,
+                    author_image: None,
+                    author: None,
+                }],
             },
         ],
     }

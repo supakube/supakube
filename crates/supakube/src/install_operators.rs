@@ -1,5 +1,9 @@
 use anyhow::Result;
-use k8s_openapi::api::{apps::v1::Deployment, core::v1::{Namespace, ServiceAccount}, rbac::v1::{ClusterRole, ClusterRoleBinding, PolicyRule, RoleRef, Subject}};
+use k8s_openapi::api::{
+    apps::v1::Deployment,
+    core::v1::{Namespace, ServiceAccount},
+    rbac::v1::{ClusterRole, ClusterRoleBinding, PolicyRule, RoleRef, Subject},
+};
 use kube::{
     api::{ObjectMeta, Patch, PatchParams, PostParams},
     Api, Client, Error,
@@ -21,7 +25,7 @@ pub async fn install(installer: &crate::Installer) -> Result<()> {
     println!("🔧 Creating Namespace : {}", &installer.operator_namespace);
     create_namespace(&client, &installer.operator_namespace).await?;
 
-    if ! installer.supakube_operator_only {
+    if !installer.supakube_operator_only {
         install_postgres_operator(&client).await?;
     }
 
