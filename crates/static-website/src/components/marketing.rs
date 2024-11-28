@@ -5,7 +5,7 @@ use super::image_hero::ImageHero;
 use crate::components::extra_footer::ExtraFooter;
 use crate::components::footer::Footer;
 use crate::components::image_feature::ImageFeature;
-use crate::components::partners::Partners;
+use crate::components::customer_logos::Partners;
 use crate::layouts::layout::Layout;
 use crate::routes::marketing::Index;
 use axum::response::Html;
@@ -327,7 +327,12 @@ pub fn HomePage() -> Element {
 
             div {
                 class: "mt-12 flex flex-col items-center",
-                ImageHero {}
+                ImageHero {
+                    title: "Generative AI Private Data",
+                    subtitle: "We use hardware based confidential computing to
+                        run AI in a highly secure enclave for maximum 
+                        protection of your data in the cloud or on premise"
+                }
                 Partners {}
 
                 ImageFeature {

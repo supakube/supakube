@@ -17,7 +17,7 @@ pub fn Document(summary: Summary, category: Category, doc: Page) -> Element {
                 class: "flex-1",
 
                 div {
-                    class: "container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10",
+                    class: "mt-12 mx-auto max-w-6xl flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10",
                     LeftNav {
                         summary
                     }
@@ -52,7 +52,7 @@ fn MobileMenu(summary: Summary) -> Element {
 fn LeftNav(summary: Summary) -> Element {
     rsx! {
         div {
-            class: "h-[calc(100vh-68px)] hidden lg:flex",
+            class: "h-[calc(100vh-68px)] hidden lg:flex pl-4",
             nav {
                 class: "h-[calc(100vh-86px)] overflow-scroll p-3",
                 for category in &summary.categories {
@@ -96,7 +96,7 @@ fn Content(doc: Page) -> Element {
     .expect("Couldn't generate markdown");
     rsx! {
         section {
-            class: "",
+            class: "mt-2",
             div {
                 class: "",
                 article {

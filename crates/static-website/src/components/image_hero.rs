@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 
 #[component]
-pub fn ImageHero() -> Element {
+pub fn ImageHero(title: String, subtitle: String) -> Element {
     rsx! {
         section {
             div {
@@ -10,13 +10,11 @@ pub fn ImageHero() -> Element {
                     class: "max-w-md",
                     h1 {
                         class: "text-5xl font-bold",
-                        "Generative AI. Private Data."
+                        "{title}"
                     }
                     p {
                         class: "py-6",
-                        "We use hardware based confidential computing to
-                        run AI in a highly secure enclave for maximum 
-                        protection of your data in the cloud or on premise"
+                        "{subtitle}"
                     }
                     div {
                         class: "flex gap-2 justify-center",

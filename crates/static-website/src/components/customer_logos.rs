@@ -7,11 +7,11 @@ pub fn Partners() -> Element {
             class: "flex flex-col items-center mt-12",
             span {
                 class: "badge badge-primary badge-outline",
-                "Sponsors"
+                "Partners"
             }
             h3 {
                 class: "mt-4 mb-4",
-                "Developed using trusted enclaves provided by our partners"
+                "Trusted By"
             }
             div {
                 class: "flex gap-6 space-between",

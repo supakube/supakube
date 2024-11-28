@@ -26,6 +26,7 @@ pub fn Navigation(mobile_menu: Element) -> Element {
                         a { class: "navigation-menu-item", "hx-boost": "true", href: docs::Index {}.to_string(), "Documentation" }
                         a { class: "navigation-menu-item", "hx-boost": "true", href: blog::Index {}.to_string(), "Blog" }
                         a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::PartnersPage {}.to_string(), "Partners" }
+                        a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::EnterprisePage {}.to_string(), "Enterprise" }
                         a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::ServicesPage {}.to_string(), "Services" }
                         a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::Contact {}.to_string(), "Contact Us" }
                     }
