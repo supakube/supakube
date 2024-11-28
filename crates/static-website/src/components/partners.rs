@@ -12,14 +12,14 @@ pub fn PartnersPage() -> Element {
             description: "Partners",
             section {
                 class: "mt-24 flex flex-col items-center",
-                
+
                 ImageHero {
                     title: "Become a bionicGPT Partner",
                     subtitle: "Unlock Revenue with Secure, Enterprise-Grade AI Solutions"
                 }
 
                 div {
-                    class: "w-full lg:w-3/4 lg:max-w-3xl mx-auto px-4 md:px-6 lg:px-8 text-left", 
+                    class: "w-full lg:w-3/4 lg:max-w-3xl mx-auto px-4 md:px-6 lg:px-8 text-left",
                     img {
                         src: "/landing-page/partners-bionic.png",
                         alt: "bionicGPT Partnership",

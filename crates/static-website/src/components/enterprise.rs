@@ -4,6 +4,7 @@ use std::io::Write;
 use super::image_hero::ImageHero;
 use crate::components::benefits::Benefits;
 use crate::components::customer_logos::Customers;
+use crate::components::faq_accordian::Faq;
 use crate::components::footer::Footer;
 use crate::components::image_feature::ImageFeature;
 use crate::components::problem_solution::ProblemSolution;
@@ -84,6 +85,8 @@ pub fn EnterprisePage() -> Element {
                 }
 
                 Testamonials {}
+
+                Faq {}
             }
             Footer {}
         }

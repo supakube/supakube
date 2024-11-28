@@ -92,5 +92,5 @@ pub fn Testamonials() -> Element {
                 }
             }
         }
-    }    
+    }
 }

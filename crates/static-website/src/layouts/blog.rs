@@ -31,7 +31,7 @@ pub fn BlogPost(post: Page) -> Element {
             image: "{image}",
             mobile_menu: None,
             article {
-                class: "mt-12 mx-auto prose lg:prose-xl p-4",
+                class: "mt-24 mx-auto prose lg:prose-xl p-4",
                 h1 {
                     "{post.title}"
                 }
