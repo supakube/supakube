@@ -9,7 +9,7 @@ pub fn SmallImageFeature(title: String, sub_title: String, text: String, image: 
     };
     rsx! {
         section { 
-            class: "lg:max-w-5xl sm:py-32 md:flex {flip} gap-8",
+            class: "lg:max-w-5xl my-24 md:flex {flip} gap-8",
             div { 
                 class: "flex-1 max-w-2xl mb-6",
                 h2 { 
