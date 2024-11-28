@@ -5,6 +5,7 @@ use super::image_hero::ImageHero;
 use crate::components::benefits::Benefits;
 use crate::components::customer_logos::Customers;
 use crate::components::faq_accordian::Faq;
+use crate::components::features::Features;
 use crate::components::footer::Footer;
 use crate::components::image_feature::ImageFeature;
 use crate::components::problem_solution::ProblemSolution;
@@ -83,6 +84,8 @@ pub fn EnterprisePage() -> Element {
                     benefit3: "AI Development",
                     benefit3_desc: "Our team specialises in custom AI development, tailored extensions to bionicGPT, and powerful AI agents. From enhancing existing functionalities to creating bespoke AI workflows, we help you deploy highly effective solutions that fit seamlessly into your tech stack. We also provide support for integrating AI agents that automate tasks, streamline data handling, and optimize operations. With bionicGPT as your foundation, you can scale up securely and efficiently with innovations that align perfectly with your goals.",
                 }
+                
+                Features {}
 
                 Testamonials {}
 

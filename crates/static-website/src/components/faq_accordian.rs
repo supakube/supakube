@@ -56,5 +56,5 @@ pub fn Faq() -> Element {
                 }
             }
         }
-    }    
+    }
 }

@@ -3,6 +3,7 @@ pub mod customer_logos;
 pub mod enterprise;
 pub mod extra_footer;
 pub mod faq_accordian;
+pub mod features;
 pub mod footer;
 pub mod home_page;
 pub mod image_feature;
