@@ -1,5 +1,6 @@
 use crate::components::extra_footer::ExtraFooter;
 use crate::components::footer::Footer;
+use crate::components::navigation::Section;
 use crate::layouts::layout::Layout;
 use dioxus::prelude::*;
 
@@ -10,6 +11,7 @@ pub fn Pricing() -> Element {
             title: "Pricing",
             description: "Bionic Pricing",
             mobile_menu: None,
+            section: Section::Pricing,
             div {
                 div {
                     class: "mt-24 mx-auto max-w-7xl px-6 lg:px-8",

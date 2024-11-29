@@ -1,5 +1,6 @@
 use crate::components::extra_footer::ExtraFooter;
 use crate::components::footer::Footer;
+use crate::components::navigation::Section;
 use crate::components::team::Team;
 use crate::layouts::layout::Layout;
 use dioxus::prelude::*;
@@ -10,6 +11,7 @@ pub fn ContactPage() -> Element {
         Layout {
             title: "Enterprise Generative AI",
             mobile_menu: None,
+            section: Section::Contact,
             description: "The Industry Standard For Enterprise Generative AI",
             section {
                 class: "mt-24 text-center mb-12",

@@ -2,6 +2,7 @@ use crate::components::benefits::Benefits;
 use crate::components::features::Features;
 use crate::components::footer::Footer;
 use crate::components::image_hero::ImageHero;
+use crate::components::navigation::Section;
 use crate::components::testamonials::Testamonials;
 use crate::layouts::layout::Layout;
 use dioxus::prelude::*;
@@ -13,6 +14,7 @@ pub fn PartnersPage() -> Element {
             title: "Partners",
             mobile_menu: None,
             description: "Partners",
+            section: Section::Partners,
             div {
                 class: "mt-24 flex flex-col items-center",
 

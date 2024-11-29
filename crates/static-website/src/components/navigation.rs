@@ -1,8 +1,20 @@
 use crate::routes::{blog, docs, marketing};
 use dioxus::prelude::*;
 
+#[derive(PartialEq, Clone, Eq, Debug)]
+pub enum Section {
+    None,
+    Home,
+    Enterprise,
+    Partners,
+    Pricing,
+    Blog,
+    Docs,
+    Contact,
+}
+
 #[component]
-pub fn Navigation(mobile_menu: Element) -> Element {
+pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
     rsx! {
         header { class: "navigation",
             div {

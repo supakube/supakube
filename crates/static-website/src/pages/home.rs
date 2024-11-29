@@ -4,6 +4,7 @@ use crate::components::faq_accordian::Faq;
 use crate::components::features::Features;
 use crate::components::footer::Footer;
 use crate::components::image_hero::ImageHero;
+use crate::components::navigation::Section;
 use crate::components::problem_solution::ProblemSolution;
 use crate::components::small_image_feature::SmallImageFeature;
 use crate::components::testamonials::Testamonials;
@@ -27,6 +28,7 @@ pub fn HomePage() -> Element {
             title: "Enterprise Generative AI",
             description: "The Industry Standard For Enterprise Generative AI",
             mobile_menu: None,
+            section: Section::Home,
 
             div {
                 class: "mt-24 flex flex-col items-center",

@@ -2,7 +2,7 @@ use dioxus::prelude::*;
 use markdown::{CompileOptions, Options};
 
 use super::layout::Layout;
-use crate::generator::{Category, Page, Summary};
+use crate::{components::navigation::Section, generator::{Category, Page, Summary}};
 
 #[component]
 pub fn Document(summary: Summary, category: Category, doc: Page) -> Element {
@@ -10,6 +10,7 @@ pub fn Document(summary: Summary, category: Category, doc: Page) -> Element {
         Layout {
             title: "{doc.title}",
             description: "{doc.description}",
+            section: Section::Docs,
             mobile_menu: rsx! (MobileMenu {
                 summary: summary.clone()
             }),

@@ -1,5 +1,5 @@
 use super::layout::Layout;
-use crate::{components::footer::Footer, generator::Page};
+use crate::{components::navigation::Section, components::footer::Footer, generator::Page};
 use dioxus::prelude::*;
 use markdown::{CompileOptions, Options};
 
@@ -21,6 +21,7 @@ pub fn MarkdownPage(post: Page) -> Element {
             title: "{post.title}",
             description: "{post.description}",
             mobile_menu: None,
+            section: Section::None,
             article {
                 class: "mx-auto max-w-2xl p-4",
                 h1 {

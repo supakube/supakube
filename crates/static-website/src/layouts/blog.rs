@@ -1,6 +1,6 @@
 use super::layout::Layout;
 use crate::{
-    components::{extra_footer::ExtraFooter, footer::Footer},
+    components::{extra_footer::ExtraFooter, footer::Footer, navigation::Section},
     generator::{Page, Summary},
 };
 use dioxus::prelude::*;
@@ -30,6 +30,7 @@ pub fn BlogPost(post: Page) -> Element {
             description: "{post.description}",
             image: "{image}",
             mobile_menu: None,
+            section: Section::Blog,
             article {
                 class: "mt-24 mx-auto prose lg:prose-xl p-4",
                 h1 {
@@ -108,6 +109,7 @@ pub fn BlogList(summary: Summary) -> Element {
             title: "Blog",
             description: "Blog",
             mobile_menu: None,
+            section: Section::Blog,
             section {
                 class: "lg:max-w-5xl mx-auto text-center mb-12 mt-24",
                 h1 {

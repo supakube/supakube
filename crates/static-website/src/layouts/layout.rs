@@ -1,6 +1,6 @@
 #![allow(non_snake_case)]
 
-use crate::components::navigation::Navigation;
+use crate::components::navigation::{Navigation, Section};
 use dioxus::prelude::*;
 
 // Remember: owned props must implement PartialEq!
@@ -11,6 +11,7 @@ pub struct LayoutProps {
     image: Option<String>,
     children: Element,
     mobile_menu: Element,
+    section: Section
 }
 
 pub fn Layout(props: LayoutProps) -> Element {
@@ -100,7 +101,8 @@ pub fn Layout(props: LayoutProps) -> Element {
         body {
             //WebinarHeader {}
             Navigation {
-                mobile_menu: props.mobile_menu
+                mobile_menu: props.mobile_menu,
+                section: props.section
             }
             div {
                 {props.children}
