@@ -11,7 +11,7 @@ pub fn Customers() -> Element {
             }
             h3 {
                 class: "mt-4 mb-4",
-                "Trusted By"
+                "Trusted by the Best Companies"
             }
             div {
                 class: "flex gap-6 space-between",

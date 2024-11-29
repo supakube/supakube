@@ -1,5 +1,8 @@
+use crate::components::benefits::Benefits;
+use crate::components::features::Features;
 use crate::components::footer::Footer;
 use crate::components::image_hero::ImageHero;
+use crate::components::testamonials::Testamonials;
 use crate::layouts::layout::Layout;
 use dioxus::prelude::*;
 
@@ -10,25 +13,30 @@ pub fn PartnersPage() -> Element {
             title: "Partners",
             mobile_menu: None,
             description: "Partners",
-            section {
+            div {
                 class: "mt-24 flex flex-col items-center",
 
                 ImageHero {
-                    title: "Become a bionicGPT Partner",
+                    title: "Become a Bionic-GPT Partner",
                     subtitle: "Unlock Revenue with Secure, Enterprise-Grade AI Solutions"
                 }
 
-                div {
-                    class: "w-full lg:w-3/4 lg:max-w-3xl mx-auto px-4 md:px-6 lg:px-8 text-left",
-                    img {
-                        src: "/landing-page/partners-bionic.png",
-                        alt: "bionicGPT Partnership",
-                        class: "mx-auto mt-4 mb-6 w-1/2", // Centers the image and sets it to 50% width of the container
-                    }
-                    p {
-                        class: "mt-4 mb-6",
-                        "At bionicGPT, we offer a unique opportunity to partner with a secure, enterprise-ready generative AI platform designed for flexibility, compliance, and scalability. Our solution is deployable on-premise or in your private cloud, enabling enterprises to leverage the power of generative AI within the secure confines of their own infrastructure."
-                    }
+                Benefits {
+                    title: "Partners",
+                    subtitle: "Why Partner with Us?",
+                    benefit1: "Enter a growing Market",
+                    benefit1_desc: "As a bionicGPT partner, you can tap into a growing market of enterprises seeking safe, private, and powerful AI solutionse",
+                    benefit2: "Enterprise Ready",
+                    benefit2_desc: "AI platform designed for flexibility, compliance, and scalability.",
+                    benefit3: "On Prem or Private Cloud",
+                    benefit3_desc: "Enabling enterprises to leverage the power of generative AI within the secure confines of their own infrastructure.",
+                }
+
+                Features {}
+
+                Testamonials {}
+
+                section {
                     h4 {
                         class: "text-2xl font-bold mt-8",
                         "Why Partner with Us?"
@@ -52,7 +60,7 @@ pub fn PartnersPage() -> Element {
                         },
                         " has been a trusted partner of bionicGPT for over a year, delivering successful installations for multiple clients. By leveraging bionicGPT, GTEdge AI offers a comprehensive turnkey solution deployed directly in their data center. This partnership has enabled GTEdge AI to enhance and expand their AI training and consultancy services."
                     }
-
+    
                     h4 {
                         class: "text-2xl font-bold mt-8",
                         "Partner Benefits"
