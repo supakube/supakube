@@ -4,11 +4,11 @@ use dioxus::prelude::*;
 pub fn Testamonials() -> Element {
     rsx! {
         section {
-            class: "lg:max-w-5xl text-gray-600 body-font",
+            class: "lg:max-w-5xl body-font",
             div {
                 class: "container py-24 mx-auto",
                 h1 {
-                    class: "text-3xl font-medium title-font text-gray-900 mb-12 text-center",
+                    class: "text-3xl font-medium text-primary title-font mb-12 text-center",
                     "Testimonials"
                 }
                 div {
@@ -16,7 +16,7 @@ pub fn Testamonials() -> Element {
                     div {
                         class: "p-4 md:w-1/2 w-full",
                         div {
-                            class: "h-full bg-gray-100 p-8 rounded",
+                            class: "h-full bg-base-200 p-8 rounded",
                             svg {
                                 xmlns: "http://www.w3.org/2000/svg",
                                 fill: "currentColor",
@@ -54,7 +54,7 @@ pub fn Testamonials() -> Element {
                     div {
                         class: "p-4 md:w-1/2 w-full",
                         div {
-                            class: "h-full bg-gray-100 p-8 rounded",
+                            class: "h-full bg-base-200 p-8 rounded",
                             svg {
                                 xmlns: "http://www.w3.org/2000/svg",
                                 fill: "currentColor",

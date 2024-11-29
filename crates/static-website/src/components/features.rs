@@ -10,7 +10,7 @@ pub fn Features() -> Element {
                 div {
                     class: "max-w-screen-md mb-8 lg:mb-16",
                     h2 {
-                        class: "mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white",
+                        class: "mb-4 text-4xl tracking-tight font-extrabold text-primary",
                         "Designed for business teams like yours"
                     }
                     p {
@@ -23,7 +23,7 @@ pub fn Features() -> Element {
                     for i in 0..6 {
                         div {
                             div {
-                                class: "flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900",
+                                class: "flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12",
 
                                 match i {
                                     0 => rsx!(img { src: "/feature-icons/marketing.svg" }),

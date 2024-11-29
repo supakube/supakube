@@ -6,7 +6,7 @@ pub fn Faq() -> Element {
         section {
             class: "lg:max-w-5xl mt-24 mb-24",
             h1 {
-                class: "text-3xl font-medium title-font text-gray-900 mb-12 text-center",
+                class: "text-3xl font-medium text-primary title-font mb-12 text-center",
                 "Frequently asked questions"
             }
             div {
