@@ -1,6 +1,7 @@
 use crate::components::extra_footer::ExtraFooter;
 use crate::components::footer::Footer;
 use crate::components::navigation::Section;
+use crate::components::security::Security;
 use crate::components::team::Team;
 use crate::layouts::layout::Layout;
 use dioxus::prelude::*;
@@ -39,6 +40,9 @@ pub fn ContactPage() -> Element {
             }
             Team {
 
+            }
+            Security {
+                
             }
             ExtraFooter {
                 title: "The secure open source Chat-GPT replacement

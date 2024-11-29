@@ -9,6 +9,7 @@ use crate::components::footer::Footer;
 use crate::components::image_hero::ImageHero;
 use crate::components::navigation::Section;
 use crate::components::problem_solution::ProblemSolution;
+use crate::components::security::Security;
 use crate::components::small_image_feature::SmallImageFeature;
 use crate::components::testamonials::Testamonials;
 use crate::layouts::layout::Layout;
@@ -95,6 +96,8 @@ pub fn EnterprisePage() -> Element {
                 Testamonials {}
 
                 Faq {}
+
+                Security {}
             }
             Footer {}
         }

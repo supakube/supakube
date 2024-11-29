@@ -113,11 +113,12 @@ pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
                     // Icons
                     nav { 
                         class: "navigation-icons",
-                        a {
-                            class: "navigation-menu-item",
-                            "hx-boost": "true",
-                            href: docs::Index {}.to_string(),
-                            "Documentation"
+
+                        NavItem {
+                            link: docs::Index {}.to_string(),
+                            name: "Documentation".to_string(),
+                            section: Section::Docs,
+                            current_section: section.clone(),
                         }
                         // GitHub Icon
                         a {
