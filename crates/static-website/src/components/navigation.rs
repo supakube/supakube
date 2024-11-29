@@ -14,6 +14,22 @@ pub enum Section {
 }
 
 #[component]
+pub fn NavItem(link: String, name: String, section: Section, current_section: Section) -> Element {
+    let mut class = "";
+    if section == current_section {
+        class = "active";
+    }
+    rsx!(
+        a { 
+            class: format!("navigation-menu-item {}", class), 
+            "hx-boost": "true",
+            href: link, 
+            "{name}" 
+        } 
+    )
+}
+
+#[component]
 pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
     rsx! {
         header { class: "navigation",
@@ -22,7 +38,8 @@ pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
                 div {
                     class: "navigation-logo",
                     a {
-                        class: "navigation-logo-link", href: marketing::Index {}.to_string(),
+                        class: "navigation-logo-link", 
+                        href: marketing::Index {}.to_string(),
                         "hx-boost": "true",
                         img {
                             alt: "Logo",
@@ -33,12 +50,38 @@ pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
                         }
                         span { class: "navigation-logo-text", "Bionic-GPT" }
                     }
-                    nav { class: "navigation-menu",
-                    a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::EnterprisePage {}.to_string(), "Enterprise" }
-                        a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::Pricing {}.to_string(), "Pricing" }
-                        a { class: "navigation-menu-item", "hx-boost": "true", href: blog::Index {}.to_string(), "Blog" }
-                        a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::Contact {}.to_string(), "Contact Us" }
-                        a { class: "navigation-menu-item", "hx-boost": "true", href: marketing::PartnersPage {}.to_string(), "Partners" }
+                    nav { 
+                        class: "navigation-menu",
+                        NavItem {
+                            link: marketing::EnterprisePage {}.to_string(),
+                            name: "Enterprise".to_string(),
+                            section: Section::Enterprise,
+                            current_section: section.clone(),
+                        }
+                        NavItem {
+                            link: marketing::Pricing {}.to_string(),
+                            name: "Pricing".to_string(),
+                            section: Section::Pricing,
+                            current_section: section.clone(),
+                        }
+                        NavItem {
+                            link: blog::Index {}.to_string(),
+                            name: "Blog".to_string(),
+                            section: Section::Blog,
+                            current_section: section.clone(),
+                        }
+                        NavItem {
+                            link: marketing::Contact {}.to_string(),
+                            name: "Contact Us".to_string(),
+                            section: Section::Contact,
+                            current_section: section.clone(),
+                        }
+                        NavItem {
+                            link: marketing::PartnersPage {}.to_string(),
+                            name: "Partners".to_string(),
+                            section: Section::Partners,
+                            current_section: section.clone(),
+                        }
                     }
                 }
 
