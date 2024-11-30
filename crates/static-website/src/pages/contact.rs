@@ -42,7 +42,7 @@ pub fn ContactPage() -> Element {
 
             }
             Security {
-                
+
             }
             ExtraFooter {
                 title: "The secure open source Chat-GPT replacement

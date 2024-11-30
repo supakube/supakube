@@ -36,7 +36,14 @@ pub fn PartnersPage() -> Element {
 
                 Features {}
 
-                Testamonials {}
+                Testamonials {
+                    text1: "The no-code RAG pipeline, combined with the team-based privacy model, has revolutionized how we handle sensitive data and collaboration, making deployment secure and seamless.",
+                    job1: "Data Governance Lead",
+                    person1: "Emma Trident",
+                    text2: "The new, clean, and intuitive interface has made adopting bionicGPT across teams effortless. It’s a joy to use and has lowered the learning curve significantly.",
+                    job2: "Digital Adoption Specialist",
+                    person2: "Patrick O'leary",
+                }
 
                 section {
                     h4 {
@@ -62,7 +69,7 @@ pub fn PartnersPage() -> Element {
                         },
                         " has been a trusted partner of bionicGPT for over a year, delivering successful installations for multiple clients. By leveraging bionicGPT, GTEdge AI offers a comprehensive turnkey solution deployed directly in their data center. This partnership has enabled GTEdge AI to enhance and expand their AI training and consultancy services."
                     }
-    
+
                     h4 {
                         class: "text-2xl font-bold mt-8",
                         "Partner Benefits"

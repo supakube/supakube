@@ -11,7 +11,7 @@ pub struct LayoutProps {
     image: Option<String>,
     children: Element,
     mobile_menu: Element,
-    section: Section
+    section: Section,
 }
 
 pub fn Layout(props: LayoutProps) -> Element {

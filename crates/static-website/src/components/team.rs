@@ -92,7 +92,7 @@ pub fn Team() -> Element {
                         role: "Product Manager".to_string(),
                         img: "https://dummyimage.com/108x98".to_string()
                     }
-                    
+
                 }
             }
         }

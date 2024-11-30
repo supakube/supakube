@@ -1,5 +1,5 @@
 use super::layout::Layout;
-use crate::{components::navigation::Section, components::footer::Footer, generator::Page};
+use crate::{components::footer::Footer, components::navigation::Section, generator::Page};
 use dioxus::prelude::*;
 use markdown::{CompileOptions, Options};
 

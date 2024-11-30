@@ -86,7 +86,14 @@ pub fn HomePage() -> Element {
 
                 Features {}
 
-                Testamonials {}
+                Testamonials {
+                    text1: "Having the flexibility to use the best model for the job has been a game-changer. Bionic-GPT’s support for multiple models ensures we can tailor solutions to specific challenges, delivering optimal results every time.",
+                    job1: "Data Scientist",
+                    person1: "Emma Trident",
+                    text2: "Bionic-GPT’s observability feature, which logs all messages into and out of the models, has been critical for ensuring compliance in our organization. It gives us peace of mind and robust accountability.",
+                    job2: "Compliance Officer",
+                    person2: "Patrick O'leary",
+                }
 
                 Faq {}
             }

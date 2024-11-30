@@ -1,7 +1,14 @@
 use dioxus::prelude::*;
 
 #[component]
-pub fn Testamonials() -> Element {
+pub fn Testamonials(
+    text1: String,
+    job1: String,
+    person1: String,
+    text2: String,
+    job2: String,
+    person2: String,
+) -> Element {
     rsx! {
         section {
             class: "lg:max-w-5xl body-font",
@@ -28,7 +35,7 @@ pub fn Testamonials() -> Element {
                             }
                             p {
                                 class: "leading-relaxed mb-6",
-                                "Synth chartreuse iPhone lomo cray raw denim brunch everyday carry neutra before they sold out fixie 90's microdosing. Tacos pinterest fanny pack venmo, post-ironic heirloom try-hard pabst authentic iceland."
+                                "{text1}"
                             }
                             a {
                                 class: "inline-flex items-center",
@@ -41,11 +48,11 @@ pub fn Testamonials() -> Element {
                                     class: "flex-grow flex flex-col pl-4",
                                     span {
                                         class: "title-font font-medium text-gray-900",
-                                        "Holden Caulfield"
+                                        "{person1}"
                                     }
                                     span {
                                         class: "text-gray-500 text-sm",
-                                        "UI DEVELOPER"
+                                        "{job1}"
                                     }
                                 }
                             }
@@ -66,24 +73,24 @@ pub fn Testamonials() -> Element {
                             }
                             p {
                                 class: "leading-relaxed mb-6",
-                                "Synth chartreuse iPhone lomo cray raw denim brunch everyday carry neutra before they sold out fixie 90's microdosing. Tacos pinterest fanny pack venmo, post-ironic heirloom try-hard pabst authentic iceland."
+                                "{text2}"
                             }
                             a {
                                 class: "inline-flex items-center",
                                 img {
                                     alt: "testimonial",
-                                    src: "https://dummyimage.com/107x107",
+                                    src: "https://dummyimage.com/106x106",
                                     class: "w-12 h-12 rounded-full flex-shrink-0 object-cover object-center",
                                 }
                                 span {
                                     class: "flex-grow flex flex-col pl-4",
                                     span {
                                         class: "title-font font-medium text-gray-900",
-                                        "Alper Kamu"
+                                        "{person2}"
                                     }
                                     span {
                                         class: "text-gray-500 text-sm",
-                                        "DESIGNER"
+                                        "{job2}"
                                     }
                                 }
                             }

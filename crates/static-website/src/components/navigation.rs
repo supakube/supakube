@@ -20,12 +20,12 @@ pub fn NavItem(link: String, name: String, section: Section, current_section: Se
         class = "active";
     }
     rsx!(
-        a { 
-            class: format!("navigation-menu-item {}", class), 
+        a {
+            class: format!("navigation-menu-item {}", class),
             "hx-boost": "true",
-            href: link, 
-            "{name}" 
-        } 
+            href: link,
+            "{name}"
+        }
     )
 }
 
@@ -38,7 +38,7 @@ pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
                 div {
                     class: "navigation-logo",
                     a {
-                        class: "navigation-logo-link", 
+                        class: "navigation-logo-link",
                         href: marketing::Index {}.to_string(),
                         "hx-boost": "true",
                         img {
@@ -50,7 +50,7 @@ pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
                         }
                         span { class: "navigation-logo-text", "Bionic-GPT" }
                     }
-                    nav { 
+                    nav {
                         class: "navigation-menu",
                         NavItem {
                             link: marketing::EnterprisePage {}.to_string(),
@@ -111,7 +111,7 @@ pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
                 div { class: "flex flex-1 items-center justify-between gap-2 md:justify-end",
 
                     // Icons
-                    nav { 
+                    nav {
                         class: "navigation-icons",
 
                         NavItem {

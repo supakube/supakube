@@ -84,7 +84,7 @@ pub fn EnterprisePage() -> Element {
                     title: "Services",
                     subtitle: "Services",
                     benefit1: "AI Training",
-                    benefit1_desc: "Empower your team with the skills to harness generative AI confidently and effectively. Our training covers both general AI knowledge and specific product training on bionicGPT, ensuring that your team can use the platform to its fullest potential. Whether your team is new to AI or looking to advance their expertise, we provide insights into AI-driven data workflows, and secure deployment. Our hands-on sessions transform AI concepts into practical applications, giving your team the tools to integrate generative AI and ensure data security and compliance.",
+                    benefit1_desc: "The API interface has allowed us to seamlessly integrate bionicGPT into our clients’ corporate systems, extending its capabilities across their operations.",
                     benefit2: "AI Consulting",
                     benefit2_desc: "Our AI Consulting services focus on transforming your specific business needs into effective AI solutions. We work closely with your team to identify opportunities, design strategies, and integrate AI in ways that drive real value. From feasibility studies to model selection and data management, we’re here to guide you through each step, ensuring your AI initiatives align with industry best practices and regulatory standards.",
                     benefit3: "AI Development",
@@ -93,7 +93,14 @@ pub fn EnterprisePage() -> Element {
 
                 Features {}
 
-                Testamonials {}
+                Testamonials {
+                    text1: "Having the flexibility to use the best model for the job has been a game-changer. Bionic-GPT’s support for multiple models ensures we can tailor solutions to specific challenges, delivering optimal results every time.",
+                    job1: "Data Scientist",
+                    person1: "Emma Trident",
+                    text2: "Joining the bionicGPT Partner Program has significantly expanded our business, providing new revenue streams and opportunities to deliver AI solutions to enterprise clients.",
+                    job2: "Compliance Officer",
+                    person2: "Patrick O'leary",
+                }
 
                 Faq {}
 
