@@ -1,8 +1,11 @@
 use std::sync::LazyLock;
 
 use pulldown_cmark::{CodeBlockKind, Event, Parser, Tag, TagEnd};
-use syntect::{highlighting::{Theme, ThemeSet}, html::highlighted_html_for_string, parsing::SyntaxSet};
-
+use syntect::{
+    highlighting::{Theme, ThemeSet},
+    html::highlighted_html_for_string,
+    parsing::SyntaxSet,
+};
 
 pub fn markdown_to_html(markdown: &str) -> String {
     static SYNTAX_SET: LazyLock<SyntaxSet> = LazyLock::new(SyntaxSet::load_defaults_newlines);
@@ -24,8 +27,8 @@ pub fn markdown_to_html(markdown: &str) -> String {
             None
         }
         Event::End(TagEnd::CodeBlock) => {
-            let html = highlighted_html_for_string(&code, &SYNTAX_SET, sr, &THEME)
-                .unwrap_or(code.clone());
+            let html =
+                highlighted_html_for_string(&code, &SYNTAX_SET, sr, &THEME).unwrap_or(code.clone());
             code.clear();
             code_block = false;
             Some(Event::Html(html.into()))
