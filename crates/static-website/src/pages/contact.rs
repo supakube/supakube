@@ -35,7 +35,7 @@ pub fn ContactPage() -> Element {
                 a {
                     class: "btn btn-primary",
                     href: "https://calendly.com/bionicgpt",
-                    "Schedule a Meeting"
+                    "Book a Demo via Calendly"
                 }
             }
             Team {

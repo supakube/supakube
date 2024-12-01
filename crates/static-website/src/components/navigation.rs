@@ -14,11 +14,23 @@ pub enum Section {
 }
 
 #[component]
-pub fn NavItem(link: String, name: String, section: Section, current_section: Section) -> Element {
-    let mut class = "";
+pub fn NavItem(
+    link: String,
+    name: String,
+    section: Section,
+    current_section: Section,
+    class: Option<String>,
+) -> Element {
+    let mut added_class = "";
     if section == current_section {
-        class = "active";
+        added_class = "active";
     }
+    let class = if let Some(class) = class {
+        class
+    } else {
+        "".to_string()
+    };
+    let class = format!("{} {}", class, added_class);
     rsx!(
         a {
             class: format!("navigation-menu-item {}", class),
@@ -71,15 +83,15 @@ pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
                             current_section: section.clone(),
                         }
                         NavItem {
-                            link: marketing::Contact {}.to_string(),
-                            name: "Contact Us".to_string(),
-                            section: Section::Contact,
-                            current_section: section.clone(),
-                        }
-                        NavItem {
                             link: marketing::PartnersPage {}.to_string(),
                             name: "Partners".to_string(),
                             section: Section::Partners,
+                            current_section: section.clone(),
+                        }
+                        NavItem {
+                            link: docs::Index {}.to_string(),
+                            name: "Documentation".to_string(),
+                            section: Section::Docs,
                             current_section: section.clone(),
                         }
                     }
@@ -113,13 +125,6 @@ pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
                     // Icons
                     nav {
                         class: "navigation-icons",
-
-                        NavItem {
-                            link: docs::Index {}.to_string(),
-                            name: "Documentation".to_string(),
-                            section: Section::Docs,
-                            current_section: section.clone(),
-                        }
                         // GitHub Icon
                         a {
                             class: "ml-4 mr-4",
@@ -129,8 +134,12 @@ pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
                             img { src: "https://img.shields.io/github/stars/supakube/supakube" }
                             span { class: "sr-only", "GitHub" }
                         }
-                        theme-switch {
-
+                        NavItem {
+                            class: "btn btn-primary btn-sm",
+                            link: marketing::Contact {}.to_string(),
+                            name: "Book a Demo".to_string(),
+                            section: Section::Contact,
+                            current_section: section.clone(),
                         }
                     }
                 }

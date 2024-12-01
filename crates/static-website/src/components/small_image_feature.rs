@@ -29,6 +29,7 @@ pub fn SmallImageFeature(
             div {
                 class: "flex-1",
                 img {
+                    loading: "lazy",
                     class: "rounded-xl ring-1 ring-gray-400/10 lg:max-w-2xl",
                     alt: "Product screenshot",
                     src: "{image}",

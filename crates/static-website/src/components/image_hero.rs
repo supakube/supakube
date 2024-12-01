@@ -1,5 +1,7 @@
 use dioxus::prelude::*;
 
+use crate::routes::marketing;
+
 #[component]
 pub fn ImageHero(title: String, subtitle: String) -> Element {
     rsx! {
@@ -20,13 +22,8 @@ pub fn ImageHero(title: String, subtitle: String) -> Element {
                         class: "flex gap-2 justify-center",
                         a {
                             class: "btn btn-primary",
-                            href: "{crate::routes::SIGN_IN_UP}",
-                            "Get started with Cloud Edition"
-                        }
-                        a {
-                            class: "btn btn-secondary btn-outline",
-                            href: crate::routes::marketing::Contact {}.to_string(),
-                            "Schedule a Meeting"
+                            href: marketing::Contact {}.to_string(),
+                            "Book a Demo"
                         }
                     }
                 }

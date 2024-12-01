@@ -67,24 +67,6 @@ pub fn Layout(props: LayoutProps) -> Element {
                 src: "/goat-counter.js"
 
             }
-            link {
-                rel: "stylesheet",
-                href: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css",
-                "type": "text/css"
-            }
-            script {
-                src: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
-
-            }
-            script {
-                src: "https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.js"
-
-            }
-            link {
-                rel: "stylesheet",
-                href: "https://unpkg.com/highlightjs-copy/dist/highlightjs-copy.min.css",
-                "type": "text/css"
-            }
             script {
                 "async": "true",
                 src: "https://unpkg.com/htmx.org@2.0.3"
@@ -92,10 +74,6 @@ pub fn Layout(props: LayoutProps) -> Element {
             script {
                 "async": "true",
                 src: "https://unpkg.com/@mahozad/theme-switch"
-            }
-            script {
-                "async": "true",
-                "hljs.addPlugin(new CopyButtonPlugin());hljs.highlightAll();"
             }
         }
         body {
