@@ -77,15 +77,15 @@ pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
                             current_section: section.clone(),
                         }
                         NavItem {
-                            link: marketing::PartnersPage {}.to_string(),
-                            name: "Partners".to_string(),
-                            section: Section::Partners,
-                            current_section: section.clone(),
-                        }
-                        NavItem {
                             link: docs::Index {}.to_string(),
                             name: "Documentation".to_string(),
                             section: Section::Docs,
+                            current_section: section.clone(),
+                        }
+                        NavItem {
+                            link: marketing::PartnersPage {}.to_string(),
+                            name: "Partners".to_string(),
+                            section: Section::Partners,
                             current_section: section.clone(),
                         }
                     }

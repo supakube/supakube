@@ -8,7 +8,7 @@ use crate::routes::marketing;
 pub fn ImageHero(title: String, subtitle: String, video: String) -> Element {
     rsx! {
         section {
-            class: "flex flex-row",
+            class: "flex flex-row gap-8",
             div {
                 div {
                     class: "max-w-lg",
