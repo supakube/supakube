@@ -4,6 +4,7 @@ pub mod docs_summary;
 pub mod generator;
 pub mod layouts;
 pub mod pages;
+pub mod markdown;
 pub mod pages_summary;
 
 use axum::Router;

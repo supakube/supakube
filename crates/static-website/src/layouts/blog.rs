@@ -4,7 +4,6 @@ use crate::{
     generator::{Page, Summary},
 };
 use dioxus::prelude::*;
-use markdown::{CompileOptions, Options};
 
 #[component]
 pub fn BlogPost(post: Page) -> Element {
@@ -13,17 +12,7 @@ pub fn BlogPost(post: Page) -> Element {
     } else {
         ""
     };
-    let content = markdown::to_html_with_options(
-        post.markdown,
-        &Options {
-            compile: CompileOptions {
-                allow_dangerous_html: true,
-                ..CompileOptions::default()
-            },
-            ..Options::default()
-        },
-    )
-    .expect("Couldn't generate markdown");
+    let content = crate::markdown::markdown_to_html(post.markdown);
     rsx! {
         Layout {
             title: "{post.title}",
