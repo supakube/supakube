@@ -20,7 +20,7 @@ pub fn Document(summary: Summary, category: Category, doc: Page) -> Element {
                 class: "flex-1",
 
                 div {
-                    class: "mt-12 mx-auto max-w-6xl flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10",
+                    class: "mt-12 flex flex-row",
                     LeftNav {
                         summary
                     }
@@ -89,11 +89,11 @@ fn Content(doc: Page) -> Element {
     let content = crate::markdown::markdown_to_html(doc.markdown);
     rsx! {
         section {
-            class: "mt-2",
+            class: "mt-2 overflow-scroll h-[calc(100vh-68px)] w-full",
             div {
-                class: "",
+                class: "mb-12",
                 article {
-                    class: "prose",
+                    class: "mx-auto prose",
                     div {
                         dangerous_inner_html: "{content}"
                     }
