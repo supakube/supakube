@@ -36,8 +36,8 @@ pub fn HomePage() -> Element {
                 class: "mt-24 flex flex-col items-center",
                 ImageHero {
                     video: "https://www.youtube.com/embed/slRiOOM17tM?si=yBb5noZUF44ZIo70",
-                    title: "Use AI To Boost Company Productivity by 15% Whilst Keeping Your Data Private",
-                    subtitle: "We are a Chat-GPT replacement focused on data privacy."
+                    title: "Use Generative AI To Boost Company Productivity by 15% And Keep Your Data Private",
+                    subtitle: "We are a Chat-GPT replacement focused on data privacy and compliance."
                 }
                 Customers {}
 
