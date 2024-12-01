@@ -3,7 +3,7 @@ use dioxus::prelude::*;
 use crate::routes::marketing;
 
 #[component]
-pub fn ImageHero(title: String, subtitle: String) -> Element {
+pub fn Hero(title: String, subtitle: String) -> Element {
     rsx! {
         section {
             div {

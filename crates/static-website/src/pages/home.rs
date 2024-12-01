@@ -3,7 +3,8 @@ use crate::components::customer_logos::Customers;
 use crate::components::faq_accordian::Faq;
 use crate::components::features::Features;
 use crate::components::footer::Footer;
-use crate::components::image_hero::ImageHero;
+use crate::components::security::Security;
+use crate::components::video_hero::ImageHero;
 use crate::components::navigation::Section;
 use crate::components::problem_solution::ProblemSolution;
 use crate::components::small_image_feature::SmallImageFeature;
@@ -33,15 +34,14 @@ pub fn HomePage() -> Element {
             div {
                 class: "mt-24 flex flex-col items-center",
                 ImageHero {
-                    title: "Increase company productivity with Private Generative AI",
-                    subtitle: "We use hardware based confidential computing to
-                        run AI in a highly secure enclave for maximum 
-                        protection of your data in the cloud or on premise"
+                    video: "https://www.youtube.com/embed/slRiOOM17tM?si=yBb5noZUF44ZIo70",
+                    title: "Boost Company Productivity by 15 % and Keep Your Data Private",
+                    subtitle: "We are a Chat-GPT replacement focused on data privacy."
                 }
                 Customers {}
 
                 ProblemSolution {
-                    video: "https://www.youtube.com/embed/slRiOOM17tM?si=yBb5noZUF44ZIo70",
+                    image: "/private-deployment.webp",
                     title: "How do you get the benefits of AI and keep your data private?",
                     subtitle: "A Chat-GPT Replacement Without The Data Leakage",
                 }
@@ -96,6 +96,8 @@ pub fn HomePage() -> Element {
                 }
 
                 Faq {}
+
+                Security {}
             }
             Footer {}
         }

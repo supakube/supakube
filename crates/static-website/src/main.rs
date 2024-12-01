@@ -53,10 +53,6 @@ pub mod routes {
         pub struct PartnersPage {}
 
         #[derive(TypedPath, Deserialize)]
-        #[typed_path("/enterprise/")]
-        pub struct EnterprisePage {}
-
-        #[derive(TypedPath, Deserialize)]
         #[typed_path("/services/")]
         pub struct ServicesPage {}
     }
@@ -79,7 +75,6 @@ async fn main() {
 
     fs::create_dir_all("dist").expect("Couldn't create dist folder");
     components::marketing::generate().await;
-    pages::enterprise::generate().await;
     pages::home::generate().await;
     generator::generate_docs(docs_summary::summary());
     generator::generate(blog_summary::summary());
