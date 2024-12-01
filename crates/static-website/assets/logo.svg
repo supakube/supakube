@@ -1,27 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-  <!-- Black box -->
-  <rect x="40" y="40" width="120" height="120" fill="black" />
-  
-  <!-- Central "b" -->
-  <text x="100" y="125" text-anchor="middle" font-size="72" font-weight="bold" fill="white" font-family="Arial">B</text>
-  
-  <!-- Top face dots -->
-  <circle cx="50" cy="20" r="8" fill="black" />
-  <circle cx="100" cy="20" r="8" fill="black" />
-  <circle cx="150" cy="20" r="8" fill="black" />
-  
-  <!-- Bottom face dots -->
-  <circle cx="50" cy="180" r="8" fill="black" />
-  <circle cx="100" cy="180" r="8" fill="black" />
-  <circle cx="150" cy="180" r="8" fill="black" />
-  
-  <!-- Left face dots -->
-  <circle cx="20" cy="50" r="8" fill="black" />
-  <circle cx="20" cy="100" r="8" fill="black" />
-  <circle cx="20" cy="150" r="8" fill="black" />
-  
-  <!-- Right face dots -->
-  <circle cx="180" cy="50" r="8" fill="black" />
-  <circle cx="180" cy="100" r="8" fill="black" />
-  <circle cx="180" cy="150" r="8" fill="black" />
-</svg>
+<svg viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" 
+xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" 
+stroke-width="2"></g><g id="SVGRepo_tracerCarrier" 
+stroke-linecap="round" stroke-linejoin="round"></g><g 
+id="SVGRepo_iconCarrier"><defs><style>.cls-1{stroke:#000000;stroke-linecap:round;stroke-linejoin:round;}</style></defs><path class="cls-1" d="M4.5,35.48,14.78,24,4.5,12.51h7.09L21.88,24,11.59,35.48Zm35.51,0H25.13a3.2,3.2,0,0,1,0-6.38H40a3.2,3.2,0,1,1,.57,6.38A5.42,5.42,0,0,1,40,35.48Z"></path></g></svg>
