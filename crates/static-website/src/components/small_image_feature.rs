@@ -13,7 +13,7 @@ pub fn SmallImageFeature(
         section {
             class: "lg:max-w-5xl my-24 md:flex {flip} gap-8",
             div {
-                class: "flex-1 max-w-2xl mb-6",
+                class: "flex-1",
                 h2 {
                     class: "badge badge-outline",
                     "{title}" }
@@ -30,7 +30,8 @@ pub fn SmallImageFeature(
                 class: "flex-1",
                 img {
                     loading: "lazy",
-                    class: "rounded-xl ring-1 ring-gray-400/10 lg:max-w-2xl",
+                    width: "728",
+                    height: "610",
                     alt: "Product screenshot",
                     src: "{image}",
                 }

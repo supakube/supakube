@@ -19,6 +19,8 @@ pub fn ProblemSolution(image: String, title: String, subtitle: String) -> Elemen
             div {
                 class: "flex-1",
                 img {
+                    width: "560",
+                    height: "315",
                     loading: "lazy",
                     class: "rounded-xl ring-1 ring-gray-400/10 lg:max-w-2xl",
                     alt: "Product screenshot",

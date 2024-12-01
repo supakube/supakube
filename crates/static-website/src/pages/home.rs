@@ -69,10 +69,10 @@ pub fn HomePage() -> Element {
 
                 SmallImageFeature {
                     title: "Data Governance",
-                    sub_title: "A Chat-GPT Replacement Without The Data Leakage",
+                    sub_title: "AI Assistants",
                     text: "Leverage your existing company knowledge to automate tasks like customer support,
         lead qualification, and RFP processing and much more.",
-                    image: "/landing-page/bionic-console.png",
+                    image: "/landing-page/assistants.png",
                     flip: true
                 }
 
@@ -81,8 +81,17 @@ pub fn HomePage() -> Element {
                     sub_title: "A Chat-GPT Replacement Without The Data Leakage",
                     text: "Leverage your existing company knowledge to automate tasks like customer support,
         lead qualification, and RFP processing and much more.",
-                    image: "/landing-page/bionic-console.png",
+                    image: "/landing-page/teams.png",
                     flip: false
+                }
+
+                SmallImageFeature {
+                    title: "Observability",
+                    sub_title: "Powerful Observability Features",
+                    text: "Leverage your existing company knowledge to automate tasks like customer support,
+        lead qualification, and RFP processing and much more.",
+                    image: "/landing-page/dashboard.png",
+                    flip: true
                 }
 
                 Features {}
