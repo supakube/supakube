@@ -42,7 +42,7 @@ pub fn HomePage() -> Element {
                 Customers {}
 
                 ProblemSolution {
-                    image: "/private-deployment.webp",
+                    image: "/landing-page/private-deployment.svg",
                     title: "How do you get the benefits of AI and keep your data private?",
                     subtitle: "A Chat-GPT Replacement Without The Data Leakage",
                 }
