@@ -57,7 +57,7 @@ fn LeftNav(summary: Summary) -> Element {
         div {
             class: "fixed z-40 lg:z-auto w-0 -left-full lg:w-[420px] !lg:left-0 lg:sticky h-screen top-0 bottom-0 flex flex-col ml-0 border-r lg:overflow-y-auto",
             nav {
-                class: "pt-12 p-4",
+                class: "pt-12 p-5",
                 for category in &summary.categories {
                     p {
                         class: "font-semibold mb-2",

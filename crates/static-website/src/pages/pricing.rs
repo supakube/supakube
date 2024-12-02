@@ -27,7 +27,7 @@ pub fn Pricing() -> Element {
                 }
             }
             div {
-                class: "mx-auto lg:flex lg:flex-row justify-center gap-4 lg:max-w-5xl w-full p-5",
+                class: "mx-auto mt-12 mb-12 lg:flex lg:flex-row justify-center gap-4 lg:max-w-5xl w-full p-5",
                 div {
                     class: "card card-bordered lg:w-1/3",
                     div {
