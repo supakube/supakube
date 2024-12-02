@@ -71,10 +71,6 @@ pub fn Layout(props: LayoutProps) -> Element {
                 "async": "true",
                 src: "https://unpkg.com/htmx.org@2.0.3"
             }
-            script {
-                "async": "true",
-                src: "https://unpkg.com/@mahozad/theme-switch"
-            }
         }
         body {
             //WebinarHeader {}

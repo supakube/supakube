@@ -7,7 +7,6 @@ use crate::components::navigation::Section;
 use crate::components::problem_solution::ProblemSolution;
 use crate::components::security::Security;
 use crate::components::small_image_feature::SmallImageFeature;
-use crate::components::team::Team;
 use crate::components::testamonials::Testamonials;
 use crate::components::video_hero::ImageHero;
 use crate::layouts::layout::Layout;
@@ -37,7 +36,8 @@ pub fn HomePage() -> Element {
                 ImageHero {
                     video: "https://www.youtube.com/embed/slRiOOM17tM?si=yBb5noZUF44ZIo70",
                     title: "The #1 Enterprise Generative AI and Data Privacy Solution.",
-                    subtitle: "We are a Chat-GPT replacement focused on data privacy and compliance."
+                    subtitle: "We are a Chat-GPT replacement focused on data privacy and compliance.",
+                    claim: "100's of installations globally."
                 }
                 Customers {}
 
@@ -106,17 +106,6 @@ pub fn HomePage() -> Element {
                 }
 
                 Faq {}
-
-                Testamonials {
-                    text1: "Having the flexibility to use the best model for the job has been a game-changer. Bionic-GPT’s support for multiple models ensures we can tailor solutions to specific challenges, delivering optimal results every time.",
-                    job1: "Data Scientist",
-                    person1: "Emma Trident",
-                    text2: "Bionic-GPT’s observability feature, which logs all messages into and out of the models, has been critical for ensuring compliance in our organization. It gives us peace of mind and robust accountability.",
-                    job2: "Compliance Officer",
-                    person2: "Patrick O'leary",
-                }
-
-                Team {}
 
                 Security {}
             }

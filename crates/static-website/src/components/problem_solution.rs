@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 pub fn ProblemSolution(image: String, title: String, subtitle: String) -> Element {
     rsx! {
         section {
-            class: "mt-24 flex lg:max-w-5xl gap-8",
+            class: "mt-24 md:flex lg:max-w-5xl gap-8",
             div {
                 class: "flex-1",
                 h1 {

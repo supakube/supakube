@@ -3,10 +3,10 @@ use dioxus::prelude::*;
 use crate::routes::marketing;
 
 #[component]
-pub fn ImageHero(title: String, subtitle: String, video: String) -> Element {
+pub fn ImageHero(title: String, subtitle: String, video: String, claim: String) -> Element {
     rsx! {
         section {
-            class: "flex flex-row lg:max-w-5xl gap-8",
+            class: "md:flex flex-row lg:max-w-5xl gap-8",
             div {
                 div {
                     h1 {
@@ -17,10 +17,16 @@ pub fn ImageHero(title: String, subtitle: String, video: String) -> Element {
                         class: "py-6",
                         "{subtitle}"
                     }
-                    a {
-                        class: "btn btn-primary",
-                        href: marketing::Contact {}.to_string(),
-                        "Book a Demo"
+                    div {
+                        a {
+                            class: "btn btn-primary",
+                            href: marketing::Contact {}.to_string(),
+                            "Book a Demo"
+                        }
+                        strong {
+                            class: "ml-4",
+                            "{claim}"
+                        }
                     }
                 }
             }
