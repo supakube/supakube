@@ -48,49 +48,49 @@ pub fn Team() -> Element {
                 }
                 div {
                     class: "flex flex-wrap -m-2",ContactCard {
-                        name: "Kulbinder Dio".to_string(),
-                        role: "UI Designer".to_string(),
-                        img: "https://dummyimage.com/80x80".to_string()
+                        name: "Dio".to_string(),
+                        role: "CEO".to_string(),
+                        img: "/contact-us/dio.png".to_string()
                     }
                     ContactCard {
-                        name: "Ian Purton".to_string(),
+                        name: "Ian".to_string(),
                         role: "CTO".to_string(),
-                        img: "https://dummyimage.com/80x80".to_string()
+                        img: "/contact-us/ian.png".to_string()
                     }
                     ContactCard {
-                        name: "Oskar Blinde".to_string(),
-                        role: "Founder".to_string(),
-                        img: "https://dummyimage.com/80x80".to_string()
+                        name: "Affifa R".to_string(),
+                        role: "UI/UX Designer".to_string(),
+                        img: "/contact-us/affifa-r.png".to_string()
                     }
                     ContactCard {
-                        name: "John Doe".to_string(),
-                        role: "DevOps".to_string(),
-                        img: "https://dummyimage.com/90x90".to_string()
+                        name: "John D".to_string(),
+                        role: "Head of Engineering".to_string(),
+                        img: "/contact-us/john-d.png".to_string()
                     }
                     ContactCard {
-                        name: "Martin Eden".to_string(),
-                        role: "Software Engineer".to_string(),
-                        img: "https://dummyimage.com/94x94".to_string()
+                        name: "Ashar P".to_string(),
+                        role: "Growth Engineer".to_string(),
+                        img: "/contact-us/ashar-p.jpeg".to_string()
                     }
                     ContactCard {
-                        name: "Boris Kitua".to_string(),
-                        role: "UX Researcher".to_string(),
-                        img: "https://dummyimage.com/98x98".to_string()
+                        name: "Diana D".to_string(),
+                        role: "AI Researcher".to_string(),
+                        img: "/contact-us/diane-d.jpeg".to_string()
                     }
                     ContactCard {
-                        name: "Atticus Finch".to_string(),
+                        name: "Nattaliia T".to_string(),
                         role: "QA Engineer".to_string(),
-                        img: "https://dummyimage.com/100x90".to_string()
+                        img: "/contact-us/nattaliia-t.jpeg".to_string()
                     }
                     ContactCard {
-                        name: "Alper Kamu".to_string(),
-                        role: "System".to_string(),
-                        img: "https://dummyimage.com/104x94".to_string()
+                        name: "Anastasia P".to_string(),
+                        role: "Sales & Marketing".to_string(),
+                        img: "/contact-us/anastasia-p.jpeg".to_string()
                     }
                     ContactCard {
-                        name: "Rodrigo Monchi".to_string(),
+                        name: "Martin M".to_string(),
                         role: "Product Manager".to_string(),
-                        img: "https://dummyimage.com/108x98".to_string()
+                        img: "/contact-us/martin-m.jpeg".to_string()
                     }
 
                 }
