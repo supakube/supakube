@@ -13,12 +13,8 @@ pub fn MarkdownPage(post: Page) -> Element {
             section: Section::None,
             article {
                 class: "mx-auto max-w-2xl p-5",
-                h1 {
-                    class: "reset-tw",
-                    "{post.title}"
-                }
                 div {
-                    class: "reset-tw",
+                    class: "prose",
                     dangerous_inner_html: "{content}"
                 }
             }

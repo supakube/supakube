@@ -25,7 +25,32 @@ pub async fn generate() {
 #[component]
 pub fn HomePage() -> Element {
 
-    let features: Vec<Feature> = Vec::new();
+    let titles = &[
+        "No Code Rag",
+        "Team-based permissions",
+        "Full Observability",
+        "Rate limiting",
+        "Military Grade Security",
+        "Operations",
+    ];
+
+    let descriptions = &[
+        "Including no-code RAG pipelines",
+        "Data is siloed at the tema level",
+        "Auto-assign tasks, send Slack messages, and much more...",
+        "Audit-proof software built for critical financial...",
+        "Craft beautiful, delightful experiences for both...",
+        "Keep your company’s lights on with customizable...",
+    ];
+
+    let features: Vec<Feature> = titles
+        .iter()
+        .zip(descriptions.iter())
+        .map(|(title, description)| Feature {
+            title: title.to_string(),
+            description: description.to_string(),
+        })
+        .collect();
 
     rsx! {
         Layout {
