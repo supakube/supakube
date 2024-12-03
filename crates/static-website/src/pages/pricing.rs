@@ -14,7 +14,7 @@ pub fn Pricing() -> Element {
             section: Section::Pricing,
             div {
                 div {
-                    class: "mt-24 mx-auto max-w-7xl px-6 lg:px-8",
+                    class: "p-5 mt-24 mx-auto max-w-7xl px-6 lg:px-8",
                     div {
                         class: "mx-auto max-w-2xl sm:text-center",
                         h2 {

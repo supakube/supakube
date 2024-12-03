@@ -12,7 +12,7 @@ pub fn MarkdownPage(post: Page) -> Element {
             mobile_menu: None,
             section: Section::None,
             article {
-                class: "mx-auto max-w-2xl p-4",
+                class: "mx-auto max-w-2xl p-5",
                 h1 {
                     class: "reset-tw",
                     "{post.title}"

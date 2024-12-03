@@ -89,7 +89,7 @@ fn Content(doc: Page) -> Element {
     let content = crate::markdown::markdown_to_html(doc.markdown);
     rsx! {
         section {
-            class: "pt-12 w-full",
+            class: "sm:p-5 pt-12 w-full",
             div {
                 class: "mb-12",
                 article {

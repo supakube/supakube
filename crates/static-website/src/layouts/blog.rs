@@ -21,7 +21,7 @@ pub fn BlogPost(post: Page) -> Element {
             mobile_menu: None,
             section: Section::Blog,
             article {
-                class: "mt-24 mx-auto prose lg:prose-xl p-4",
+                class: "mt-24 mx-auto prose lg:prose-xl p-5",
                 h1 {
                     "{post.title}"
                 }
