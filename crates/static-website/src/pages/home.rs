@@ -1,7 +1,7 @@
 use crate::components::benefits::Benefits;
 use crate::components::customer_logos::Customers;
 use crate::components::faq_accordian::Faq;
-use crate::components::features::Features;
+use crate::components::features::{Feature, Features};
 use crate::components::footer::Footer;
 use crate::components::navigation::Section;
 use crate::components::problem_solution::ProblemSolution;
@@ -24,6 +24,9 @@ pub async fn generate() {
 
 #[component]
 pub fn HomePage() -> Element {
+
+    let features: Vec<Feature> = Vec::new();
+
     rsx! {
         Layout {
             title: "Enterprise Generative AI",
@@ -94,7 +97,11 @@ pub fn HomePage() -> Element {
                     flip: true
                 }
 
-                Features {}
+                Features {
+                    title: "",
+                    description: "",
+                    features
+                }
 
                 Testamonials {
                     text1: "Having the flexibility to use the best model for the job has been a game-changer. Bionic-GPT’s support for multiple models ensures we can tailor solutions to specific challenges, delivering optimal results every time.",

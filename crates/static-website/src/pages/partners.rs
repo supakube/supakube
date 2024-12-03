@@ -1,5 +1,5 @@
 use crate::components::benefits::Benefits;
-use crate::components::features::Features;
+use crate::components::features::{Feature, Features};
 use crate::components::footer::Footer;
 use crate::components::hero::Hero;
 use crate::components::navigation::Section;
@@ -9,6 +9,34 @@ use dioxus::prelude::*;
 
 #[component]
 pub fn PartnersPage() -> Element {
+
+    let titles = &[
+        "No Code Rag",
+        "Team-based permissions",
+        "Full Observability",
+        "Rate limiting",
+        "Military Grade Security",
+        "Operations",
+    ];
+
+    let descriptions = &[
+        "Including no-code RAG pipelines",
+        "Data is siloed at the tema level",
+        "Auto-assign tasks, send Slack messages, and much more...",
+        "Audit-proof software built for critical financial...",
+        "Craft beautiful, delightful experiences for both...",
+        "Keep your company’s lights on with customizable...",
+    ];
+
+    let features: Vec<Feature> = titles
+        .iter()
+        .zip(descriptions.iter())
+        .map(|(title, description)| Feature {
+            title: title.to_string(),
+            description: description.to_string(),
+        })
+        .collect();
+    
     rsx! {
         Layout {
             title: "Partners",
@@ -26,61 +54,36 @@ pub fn PartnersPage() -> Element {
                 Benefits {
                     title: "Partners",
                     subtitle: "Why Partner with Us?",
-                    benefit1: "Enter a growing Market",
-                    benefit1_desc: "As a bionicGPT partner, you can tap into a growing market of enterprises seeking safe, private, and powerful AI solutionse",
-                    benefit2: "Enterprise Ready",
-                    benefit2_desc: "AI platform designed for flexibility, compliance, and scalability.",
-                    benefit3: "On Prem or Private Cloud",
-                    benefit3_desc: "Enabling enterprises to leverage the power of generative AI within the secure confines of their own infrastructure.",
+                    benefit1: "Revenue Growth",
+                    benefit1_desc: "Earn from licensing new users, support, and upgrades, 
+                        while also providing AI consulting, training, and development services.",
+                    benefit2: "In-Demand Solution",
+                    benefit2_desc: "Our platform’s private, secure deployment model opens doors 
+                        to businesses prioritising data privacy and compliance.",
+                    benefit3: "End-to-End Support",
+                    benefit3_desc: "Get onboarding assistance and ongoing technical 
+                        support to ensure a seamless experience for you and your clients.",
                 }
 
-                Features {}
+                Features {
+                    title: "Bionic-GPT Features",
+                    description: "As a bionicGPT partner, you can tap into a growing market of businesses seeking safe, 
+                        private, and powerful AI solutions.",
+                    features
+                }
 
                 Testamonials {
-                    text1: "The no-code RAG pipeline, combined with the team-based privacy model, has revolutionized how we handle sensitive data and collaboration, making deployment secure and seamless.",
+                    text1: "The no-code RAG pipeline, combined with the team-based privacy model, has revolutionized 
+                        how we handle sensitive data and collaboration, making deployment secure and seamless.",
                     job1: "Data Governance Lead",
                     person1: "Emma Trident",
-                    text2: "The new, clean, and intuitive interface has made adopting bionicGPT across teams effortless. It’s a joy to use and has lowered the learning curve significantly.",
+                    text2: "The new, clean, and intuitive interface has made adopting bionicGPT across teams effortless. 
+                        It’s a joy to use and has lowered the learning curve significantly.",
                     job2: "Digital Adoption Specialist",
                     person2: "Patrick O'leary",
                 }
 
                 section {
-                    h4 {
-                        class: "text-2xl font-bold mt-8",
-                        "Why Partner with Us?"
-                    }
-                    p {
-                        class: "mt-4 mb-6",
-                        "As a bionicGPT partner, you can tap into a growing market of enterprises seeking safe, private, and powerful AI solutions. Our platform’s features, including no-code RAG pipelines, team-based permissions, full observability, and customizable rate limiting, making it an ideal fit for security-conscious businesses and organisations in highly regulated sectors. And, with your local expertise and support, you can transform these capabilities into tangible value for your clients."
-                    }
-                    h4 {
-                        class: "text-2xl font-bold mt-8",
-                        "A Success Story"
-                    }
-                    p {
-                        class: "mt-4 mb-6",
-                        "Based in Washington, D.C., ",
-                        a {
-                            href: "https://gtedge.ai",
-                            target: "_blank",
-                            rel: "noopener noreferrer",
-                            "GTEdge AI"
-                        },
-                        " has been a trusted partner of bionicGPT for over a year, delivering successful installations for multiple clients. By leveraging bionicGPT, GTEdge AI offers a comprehensive turnkey solution deployed directly in their data center. This partnership has enabled GTEdge AI to enhance and expand their AI training and consultancy services."
-                    }
-
-                    h4 {
-                        class: "text-2xl font-bold mt-8",
-                        "Partner Benefits"
-                    }
-                    ul {
-                        class: "list-disc list-inside mt-4 mb-6",
-                        li { class: "mt-2", strong { "Revenue Growth:" }, " Earn from licensing new users, support, and upgrades, while also providing AI consulting, training, and development services." }
-                        li { class: "mt-2", strong { "In-Demand Solution:" }, " Our platform’s private, secure deployment model opens doors to businesses prioritising data privacy and compliance." }
-                        li { class: "mt-2", strong { "End-to-End Support:" }, " Get onboarding assistance and ongoing technical support to ensure a seamless experience for you and your clients." }
-                        li { class: "mt-2", strong { "Flexible Deployments:" }, " Offer clients flexible deployment options, including on-premise or private cloud, for total control over data and security." }
-                    }
                     div {
                         class: "mt-10 flex flex-col items-center",
                         hr { class: "w-full mb-4" }
