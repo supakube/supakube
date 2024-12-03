@@ -35,7 +35,7 @@ pub fn HomePage() -> Element {
                 class: "p-5 mt-24 flex flex-col items-center",
                 ImageHero {
                     video: "https://www.youtube.com/embed/slRiOOM17tM?si=yBb5noZUF44ZIo70",
-                    title: "The #1 Enterprise Generative AI and Data Privacy Solution.",
+                    title: "The #1 Enterprise Generative AI and Data Privacy Solution2.",
                     subtitle: "We are a Chat-GPT replacement focused on data privacy and compliance.",
                     claim: "100's of installations globally."
                 }
