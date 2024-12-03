@@ -8,8 +8,8 @@ pub fn Shield(text: String) -> Element {
             fill: "currentColor",
             stroke: "currentColor",
             xmlns: "http://www.w3.org/2000/svg",
-            width: "100",
-            height: "100",
+            width: "70",
+            height: "70",
             g {
                 id: "SVGRepo_bgCarrier",
                 stroke_width: "0"
@@ -44,7 +44,7 @@ pub fn Shield(text: String) -> Element {
 pub fn Security() -> Element {
     rsx! {
         section {
-            class: "lg:max-w-5xl mx-auto flex flex-row gap-8 text-gray-600 body-font mb-24",
+            class: "lg:max-w-5xl mx-auto md:flex flex-row gap-8 mt-24",
             div {
                 class: "flex-1",
                 h2 {
@@ -61,11 +61,11 @@ pub fn Security() -> Element {
                 }
             }
             div {
-                class: "flex-1 grid grid-cols-2 gap-8",
+                class: "mt-12 md:mt-0 flex-1 grid grid-cols-2 gap-8",
                 div {
                     class: "text-center block mx-auto",
                     Shield {
-                        text: "ISO27001"
+                        text: "ISO 27001"
                     }
                 }
                 div {

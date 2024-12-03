@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 pub fn Footer() -> Element {
     rsx! {
         footer {
-            class: "flex flex-row justify-around bg-neutral text-neutral-content p-10",
+            class: "mt-12 flex flex-row justify-around bg-neutral text-neutral-content p-10",
             nav {
                 h6 {
                     class: "footer-title",

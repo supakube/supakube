@@ -11,7 +11,7 @@ pub fn SmallImageFeature(
     let flip = if flip { "flex-row-reverse" } else { "flex-row" };
     rsx! {
         section {
-            class: "lg:max-w-5xl my-24 md:flex {flip} gap-8",
+            class: "lg:max-w-5xl mt-24 md:flex {flip} gap-8",
             div {
                 class: "flex-1",
                 h2 {

@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 pub fn Faq() -> Element {
     rsx! {
         section {
-            class: "lg:max-w-5xl mt-24 mb-24",
+            class: "lg:max-w-5xl mt-24",
             h1 {
                 class: "text-3xl font-medium text-primary title-font mb-12 text-center",
                 "Frequently asked questions"

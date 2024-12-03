@@ -123,8 +123,8 @@ pub fn HomePage() -> Element {
                 }
 
                 Features {
-                    title: "",
-                    description: "",
+                    title: "Bionic-GPT Features",
+                    description: "A fully implemented solution for all your needs",
                     features
                 }
 

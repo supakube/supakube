@@ -11,9 +11,9 @@ pub fn Testamonials(
 ) -> Element {
     rsx! {
         section {
-            class: "mx-auto lg:max-w-5xl body-font",
+            class: "mx-auto lg:max-w-5xl mt-24",
             div {
-                class: "container py-24 mx-auto",
+                class: "container mx-auto",
                 h1 {
                     class: "text-3xl font-medium text-primary title-font mb-12 text-center",
                     "Testimonials"

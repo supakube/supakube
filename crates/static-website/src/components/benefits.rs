@@ -13,9 +13,9 @@ pub fn Benefits(
 ) -> Element {
     rsx! {
         section {
-            class: "lg:max-w-5xl",
+            class: "lg:max-w-5xl mt-24",
             div {
-                class: "container py-24 mx-auto",
+                class: "container mx-auto",
                 div {
                     class: "flex flex-col text-center w-full mb-20",
                     h2 {
