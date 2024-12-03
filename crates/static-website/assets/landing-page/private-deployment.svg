@@ -5,19 +5,15 @@
 <style type="text/css">
 	.st0{fill:#052727;}
 	.st1{fill:#FFFFFF;}
-	.st2{font-family:'Calibri';}
-	.st3{font-size:10.9756px;}
+	.st3{font-size:10px;}
 	.st4{fill:#F8F9FF;}
-	.st5{font-family:'Calibri-Bold';}
-	.st6{font-size:13.1233px;}
+	.st6{font-size:13px;}
 	.st7{fill:#169772;}
 	.st8{fill:#000002;}
 	.st9{fill:#000001;}
-	.st10{font-family:'MicrosoftJhengHeiUIBold';}
-	.st11{font-size:10.765px;}
+	.st11{font-size:10px;}
 	.st12{fill:#F8FCFF;}
-	.st13{font-family:'MicrosoftSansSerif';}
-	.st14{font-size:3.3889px;}
+	.st14{font-size:3px;}
 	.st15{fill:#F8F8FF;}
 	.st16{fill:#0F0F0F;}
 	.st17{fill:#042523;}
@@ -30,30 +26,41 @@
 </style>
 <rect class="st0" width="560" height="315"/>
 <g>
-	<text transform="matrix(1 0 0 1 87.4629 241.824)" class="st1 st2 st3">Adopton + Privacy</text>
+	<text transform="matrix(1 0 0 1 80.4629 241.824)" class="st1 st2 st3">Complete Privacy</text>
 </g>
 <path class="st4" d="M164.4,226.21H93.45c-2.1,0-3.8-1.7-3.8-3.8v-44.95c0-2.1,1.7-3.8,3.8-3.8h70.95c2.1,0,3.8,1.7,3.8,3.8v44.95
 	C168.2,224.51,166.5,226.21,164.4,226.21z"/>
 <g>
-	<text transform="matrix(1 0 0 1 99.3006 201.2244)" class="st5 st6">Bionic-GPT</text>
+	<text transform="matrix(1 0 0 1 92 201.2244)" class="st5 st6">Bionic-GPT</text>
 </g>
 <g>
 	<g>
-		<path class="st7" d="M188.07,65.02H67.75c-1.94,0-3.52-1.58-3.52-3.52V20.93c0-1.94,1.58-3.52,3.52-3.52h120.31
-			c1.94,0,3.52,1.58,3.52,3.52V61.5C191.59,63.45,190.01,65.02,188.07,65.02z"/>
-		<g>
-			<text transform="matrix(1 0 0 1 84.208 46.3816)" class="st1 st5 st3">Your own instance</text>
-		</g>
-	</g>
+  <!-- Box -->
+  <path class="st7" d="M188.07,65.02H67.75c-1.94,0-3.52-1.58-3.52-3.52V20.93c0-1.94,1.58-3.52,3.52-3.52h120.31
+    c1.94,0,3.52,1.58,3.52,3.52V61.5C191.59,63.45,190.01,65.02,188.07,65.02z"/>
+
+  <!-- Centered Text -->
+  <text x="124" y="43.5" class="st1 st5 st3" text-anchor="middle" dominant-baseline="middle">
+    Your own instance
+  </text>
+</g>
+
 	<g>
 		<path class="st7" d="M340.46,65.02H215.92c-1.94,0-3.52-1.58-3.52-3.52V20.93c0-1.94,1.58-3.52,3.52-3.52h124.54
 			c1.94,0,3.52,1.58,3.52,3.52V61.5C343.98,63.45,342.41,65.02,340.46,65.02z"/>
-		<text transform="matrix(1 0 0 1 224.8291 32.5859)"><tspan x="0" y="0" class="st1 st5 st3">Deployed on your own</tspan><tspan x="11.22" y="12.62" class="st1 st5 st3">server, holding all</tspan><tspan x="32.81" y="25.24" class="st1 st5 st3">your data</tspan></text>
+		<text transform="translate(215.8291 32.5859)">
+			<tspan x="5" y="0" class="st1 st5 st3">Deployed on your own</tspan>
+			<tspan x="11.22" y="12.62" class="st1 st5 st3">server, holding all</tspan>
+			<tspan x="32.81" y="25.24" class="st1 st5 st3">your data</tspan>
+		</text>
 	</g>
 	<g>
 		<path class="st7" d="M488.56,65.02H368.24c-1.94,0-3.52-1.58-3.52-3.52V20.93c0-1.94,1.58-3.52,3.52-3.52h120.31
 			c1.94,0,3.52,1.58,3.52,3.52V61.5C492.08,63.45,490.5,65.02,488.56,65.02z"/>
-		<text transform="matrix(1 0 0 1 404.0469 39.1816)"><tspan x="0" y="0" class="st1 st5 st3">Using your</tspan><tspan x="-13.12" y="12.62" class="st1 st5 st3">preferred model</tspan></text>
+		<text transform="matrix(1 0 0 1 398 39.1816)">
+			<tspan x="0" y="0" class="st1 st5 st3">With your</tspan>
+			<tspan x="-13.12" y="12.62" class="st1 st5 st3">preferred model</tspan>
+			</text>
 	</g>
 </g>
 <g>
@@ -174,7 +181,9 @@
 	<g>
 		<path class="st4" d="M487.8,298.24h-90.49c-1.87,0-3.38-1.51-3.38-3.38v-27.35c0-1.87,1.51-3.38,3.38-3.38h90.49
 			c1.87,0,3.38,1.51,3.38,3.38v27.35C491.18,296.73,489.67,298.24,487.8,298.24z"/>
-		<text transform="matrix(1 0 0 1 408.3621 279.7053)"><tspan x="0" y="0" class="st10 st11">Open Source</tspan><tspan x="-8.32" y="11.72" class="st10 st11">(LLaMa, Mixtral)</tspan></text>
+		<text transform="matrix(1 0 0 1 408.3621 279.7053)">
+			<tspan x="0" y="0" class="st10 st11">Open Source</tspan>
+			<tspan x="-8.32" y="11.72" class="st10 st11">(LLaMa, Mixtral)</tspan></text>
 	</g>
 	<g>
 		<path class="st12" d="M487.8,256.16h-90.49c-1.87,0-3.38-1.51-3.38-3.38v-27.35c0-1.87,1.51-3.38,3.38-3.38h90.49
@@ -262,7 +271,7 @@
 <g>
 	<g>
 		<g>
-			<text transform="matrix(1 0 0 1 248.5415 249.3888)" class="st1 st2 st3">Private SaaS</text>
+			<text transform="matrix(1 0 0 1 242 249)" class="st1 st2 st3">Private SaaS</text>
 		</g>
 		<g>
 			<path class="st4" d="M305.87,307.67h-60.21c-2.1,0-3.8-1.7-3.8-3.8v-44.95c0-2.1,1.7-3.8,3.8-3.8h60.21c2.1,0,3.8,1.7,3.8,3.8
@@ -288,7 +297,7 @@
 	</g>
 	<g>
 		<g>
-			<text transform="matrix(1 0 0 1 245.9956 167.7417)" class="st1 st2 st3">Private Cloud</text>
+			<text transform="matrix(1 0 0 1 240 167.7417)" class="st1 st2 st3">Private Cloud</text>
 		</g>
 		<g>
 			<path class="st4" d="M305.87,225.88h-60.21c-2.1,0-3.8-1.7-3.8-3.8v-44.95c0-2.1,1.7-3.8,3.8-3.8h60.21c2.1,0,3.8,1.7,3.8,3.8
@@ -331,7 +340,7 @@
 	</g>
 	<g>
 		<g>
-			<text transform="matrix(1 0 0 1 250.0098 87.4406)" class="st1 st2 st3">On Premise</text>
+			<text transform="matrix(1 0 0 1 245 87.4406)" class="st1 st2 st3">On Premise</text>
 		</g>
 		<g>
 			<path class="st4" d="M305.87,145.86h-60.21c-2.1,0-3.8-1.7-3.8-3.8V97.11c0-2.1,1.7-3.8,3.8-3.8h60.21c2.1,0,3.8,1.7,3.8,3.8
