@@ -62,7 +62,7 @@ pub fn Navigation(mobile_menu: Element, section: Section) -> Element {
                     a {
                         href: marketing::Index {}.to_string(),
                         span {
-                            class: "flex flex-row gap-4",
+                            class: "pl-5 flex flex-row gap-2",
                             img {
                                 alt: "Logo",
                                 width: "22",
