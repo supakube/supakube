@@ -13,7 +13,7 @@ pub fn Benefits(
 ) -> Element {
     rsx! {
         section {
-            class: "lg:max-w-5xl text-gray-600 body-font",
+            class: "lg:max-w-5xl",
             div {
                 class: "container py-24 mx-auto",
                 div {

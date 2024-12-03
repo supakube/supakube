@@ -78,9 +78,7 @@ pub fn Layout(props: LayoutProps) -> Element {
                 mobile_menu: props.mobile_menu,
                 section: props.section
             }
-            div {
-                {props.children}
-            }
+            {props.children}
         }
     )
 }
