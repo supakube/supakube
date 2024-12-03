@@ -26,12 +26,12 @@
 </style>
 <rect class="st0" width="560" height="315"/>
 <g>
-	<text transform="matrix(1 0 0 1 80.4629 241.824)" class="st1 st2 st3">Complete Privacy</text>
+	<text transform="matrix(1 0 0 1 82 241.824)" class="st1 st2 st3">Complete Privacy</text>
 </g>
 <path class="st4" d="M164.4,226.21H93.45c-2.1,0-3.8-1.7-3.8-3.8v-44.95c0-2.1,1.7-3.8,3.8-3.8h70.95c2.1,0,3.8,1.7,3.8,3.8v44.95
 	C168.2,224.51,166.5,226.21,164.4,226.21z"/>
 <g>
-	<text transform="matrix(1 0 0 1 92 201.2244)" class="st5 st6">Bionic-GPT</text>
+	<text transform="matrix(1 0 0 1 92 203)" class="st5 st6">Bionic-GPT</text>
 </g>
 <g>
 	<g>
@@ -50,7 +50,7 @@
 			c1.94,0,3.52,1.58,3.52,3.52V61.5C343.98,63.45,342.41,65.02,340.46,65.02z"/>
 		<text transform="translate(215.8291 32.5859)">
 			<tspan x="5" y="0" class="st1 st5 st3">Deployed on your own</tspan>
-			<tspan x="11.22" y="12.62" class="st1 st5 st3">server, holding all</tspan>
+			<tspan x="15" y="12.62" class="st1 st5 st3">server, holding all</tspan>
 			<tspan x="32.81" y="25.24" class="st1 st5 st3">your data</tspan>
 		</text>
 	</g>
@@ -271,7 +271,7 @@
 <g>
 	<g>
 		<g>
-			<text transform="matrix(1 0 0 1 242 249)" class="st1 st2 st3">Private SaaS</text>
+			<text transform="matrix(1 0 0 1 233 249)" class="st1 st2 st3">Bionic-GPT SaaS</text>
 		</g>
 		<g>
 			<path class="st4" d="M305.87,307.67h-60.21c-2.1,0-3.8-1.7-3.8-3.8v-44.95c0-2.1,1.7-3.8,3.8-3.8h60.21c2.1,0,3.8,1.7,3.8,3.8
