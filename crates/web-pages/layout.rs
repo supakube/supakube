@@ -24,6 +24,14 @@ pub fn Layout(title: String, children: Element) -> Element {
                 name: "viewport",
                 content: "width=device-width, initial-scale=1"
             }
+            script {
+                src: "https://cdn.tailwindcss.com"
+            }
+            link {
+                href: "https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css",
+                rel: "stylesheet",
+                type: "text/css"
+            }
         }
         body {
             {children}
