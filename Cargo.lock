@@ -3824,8 +3824,12 @@ dependencies = [
 name = "web-server"
 version = "0.1.0"
 dependencies = [
+ "assets",
  "axum",
+ "axum-extra",
+ "serde",
  "tokio",
+ "tokio-util",
  "tower-livereload",
  "web-pages",
 ]

@@ -1,6 +1,8 @@
 #![allow(non_snake_case)]
 mod root;
+mod static_files;
 use axum::{routing::get, Router};
+use axum_extra::routing::RouterExt;
 use std::net::SocketAddr;
 use tower_livereload::LiveReloadLayer;
 
@@ -8,6 +10,7 @@ use tower_livereload::LiveReloadLayer;
 async fn main() {
     // build our application with a route
     let app = Router::new()
+        .typed_get(static_files::static_path)
         .route("/", get(root::loader))
         .layer(LiveReloadLayer::new());
 
