@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use daisy_rsx::Button;
+use daisy_rsx::{Button, ButtonScheme};
 
 use crate::layout::{render_page, Layout};
 
@@ -11,6 +11,7 @@ pub fn index() -> String {
                 "test5"
             }
             Button {
+                button_scheme: ButtonScheme::Primary,
                 "Hello"
             }
         }
