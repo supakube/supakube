@@ -10,10 +10,11 @@ pub struct LayoutProps {
     description: String,
     image: Option<String>,
     children: Element,
-    mobile_menu: Element,
+    mobile_menu: Option<Element>,
     section: Section,
 }
 
+#[component]
 pub fn Layout(props: LayoutProps) -> Element {
     rsx!(
         head {
