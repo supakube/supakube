@@ -1,1 +1,1 @@
-FROM purtontech/rust-on-nails-devcontainer:1.3.14 AS development
+FROM purtontech/rust-on-nails-devcontainer:1.3.15 AS development
