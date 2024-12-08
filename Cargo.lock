@@ -107,6 +107,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "619743e34b5ba4e9703bba34deac3427c72507c7159f5fd030aea8cac0cfe341"
 
 [[package]]
+name = "assets"
+version = "0.1.0"
+dependencies = [
+ "cache-busters",
+ "mime",
+]
+
+[[package]]
 name = "async-broadcast"
 version = "0.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -634,6 +642,10 @@ name = "data-encoding"
 version = "2.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e8566979429cf69b49a5c740c60791108e86440e8be149bbea4fe54d2c32d6e2"
+
+[[package]]
+name = "db"
+version = "0.1.0"
 
 [[package]]
 name = "deranged"
@@ -3799,17 +3811,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "web-assets"
-version = "0.1.0"
-dependencies = [
- "cache-busters",
- "mime",
-]
-
-[[package]]
 name = "web-pages"
 version = "0.1.0"
 dependencies = [
+ "assets",
  "daisy_rsx",
  "dioxus",
  "dioxus-ssr",

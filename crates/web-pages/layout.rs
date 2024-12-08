@@ -1,4 +1,5 @@
 use dioxus::prelude::*;
+use assets::files::*;
 
 // Method to render components to HTML
 pub fn render_page(page: Element) -> String {
@@ -24,11 +25,8 @@ pub fn Layout(title: String, children: Element) -> Element {
                 name: "viewport",
                 content: "width=device-width, initial-scale=1"
             }
-            script {
-                src: "https://cdn.tailwindcss.com"
-            }
             link {
-                href: "https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css",
+                href: output_css.name,
                 rel: "stylesheet",
                 type: "text/css"
             }
