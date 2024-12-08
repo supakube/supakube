@@ -8,7 +8,7 @@ pub fn index() -> String {
         Layout {
             title: "My App",
             h1 {
-                "test5"
+                "test6"
             }
             Button {
                 button_scheme: ButtonScheme::Primary,
