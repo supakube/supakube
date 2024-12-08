@@ -7,7 +7,7 @@ edition = "2021"
 path = "lib.rs"
 
 [dependencies]
-mime = "0.3.0"
+mime = "0.3"
 
 [build-dependencies]
-cache-busters = "0.1.0"
+cache-busters = "0.1"
