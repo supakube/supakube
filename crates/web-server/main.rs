@@ -1,5 +1,4 @@
 #![allow(non_snake_case)]
-mod layout;
 mod root;
 use axum::{routing::get, Router};
 use std::net::SocketAddr;

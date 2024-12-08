@@ -3,8 +3,11 @@ name = "web-server"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "web-server" # Replace with your project's name
+path = "main.rs"
+
 [dependencies]
+web-pages = { path = "../web-pages" }
 axum = { version = "0.7", default-features = false, features = ["http1", "tokio"] }
-dioxus = { version = "0.6", default-features = false, features = ["macro", "html", "signals"] }
-dioxus-ssr = { version = "0.6", default-features = false }
 tokio = { version = "1", default-features = false, features = ["macros", "rt-multi-thread"] }

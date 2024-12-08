@@ -1,0 +1,11 @@
+[package]
+name = "web-pages"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+path = "lib.rs"
+
+[dependencies]
+dioxus = { version = "0.6", default-features = false, features = ["macro", "html", "signals"] }
+dioxus-ssr = { version = "0.6", default-features = false }

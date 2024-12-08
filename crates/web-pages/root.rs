@@ -1,13 +1,8 @@
-use axum::response::Html;
 use dioxus::prelude::*;
-use crate::layout::{Layout, render_page};
 
-pub async fn loader() -> Html<String> {
+use crate::layout::{render_page, Layout};
 
-    Html(index())
-}
-
-fn index() -> String {
+pub fn index() -> String {
     let page = rsx! {
         Layout {
             title: "My App",
