@@ -9,7 +9,6 @@ use dioxus::prelude::*;
 
 #[component]
 pub fn PartnersPage() -> Element {
-
     let titles = &[
         "No Code Rag",
         "Team-based permissions",
@@ -36,7 +35,7 @@ pub fn PartnersPage() -> Element {
             description: description.to_string(),
         })
         .collect();
-    
+
     rsx! {
         Layout {
             title: "Partners",
@@ -55,29 +54,29 @@ pub fn PartnersPage() -> Element {
                     title: "Partners",
                     subtitle: "Why Partner with Us?",
                     benefit1: "Revenue Growth",
-                    benefit1_desc: "Earn from licensing new users, support, and upgrades, 
+                    benefit1_desc: "Earn from licensing new users, support, and upgrades,
                         while also providing AI consulting, training, and development services.",
                     benefit2: "In-Demand Solution",
-                    benefit2_desc: "Our platform’s private, secure deployment model opens doors 
+                    benefit2_desc: "Our platform’s private, secure deployment model opens doors
                         to businesses prioritising data privacy and compliance.",
                     benefit3: "End-to-End Support",
-                    benefit3_desc: "Get onboarding assistance and ongoing technical 
+                    benefit3_desc: "Get onboarding assistance and ongoing technical
                         support to ensure a seamless experience for you and your clients.",
                 }
 
                 Features {
                     title: "Bionic-GPT Features",
-                    description: "As a bionicGPT partner, you can tap into a growing market of businesses seeking safe, 
+                    description: "As a bionicGPT partner, you can tap into a growing market of businesses seeking safe,
                         private, and powerful AI solutions.",
                     features
                 }
 
                 Testamonials {
-                    text1: "The no-code RAG pipeline, combined with the team-based privacy model, has revolutionized 
+                    text1: "The no-code RAG pipeline, combined with the team-based privacy model, has revolutionized
                         how we handle sensitive data and collaboration, making deployment secure and seamless.",
                     job1: "Data Governance Lead",
                     person1: "Emma Trident",
-                    text2: "The new, clean, and intuitive interface has made adopting bionicGPT across teams effortless. 
+                    text2: "The new, clean, and intuitive interface has made adopting bionicGPT across teams effortless.
                         It’s a joy to use and has lowered the learning curve significantly.",
                     job2: "Digital Adoption Specialist",
                     person2: "Patrick O'leary",

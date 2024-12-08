@@ -29,7 +29,6 @@ pub struct Feature {
 
 #[component]
 pub fn Features(features: Vec<Feature>, title: String, description: String) -> Element {
-
     rsx! {
         section {
             class: "lg:max-w-5xl body-font mt-24",

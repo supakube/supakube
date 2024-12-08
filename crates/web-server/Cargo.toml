@@ -11,3 +11,4 @@ path = "main.rs"
 web-pages = { path = "../web-pages" }
 axum = { version = "0.7", default-features = false, features = ["http1", "tokio"] }
 tokio = { version = "1", default-features = false, features = ["macros", "rt-multi-thread"] }
+tower-livereload = "0.9"

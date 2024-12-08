@@ -24,7 +24,6 @@ pub async fn generate() {
 
 #[component]
 pub fn HomePage() -> Element {
-
     let titles = &[
         "No Code Rag",
         "Team-based permissions",

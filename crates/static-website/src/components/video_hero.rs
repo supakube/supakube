@@ -42,7 +42,7 @@ pub fn ImageHero(title: String, subtitle: String, video: String, claim: String) 
                     referrerpolicy: "strict-origin-when-cross-origin",
                     allowfullscreen: true,
                 }
-            }            
+            }
         }
     }
 }

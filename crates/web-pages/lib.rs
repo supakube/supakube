@@ -1,2 +1,2 @@
-pub mod root;
 mod layout;
+pub mod root;

@@ -7,7 +7,7 @@ pub fn index() -> String {
         Layout {
             title: "My App",
             h1 {
-                "test"
+                "test2"
             }
         }
     };
