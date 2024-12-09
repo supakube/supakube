@@ -36,9 +36,9 @@ pub fn index() -> String {
             div {
                 class: "mt-12",
                 BlankSlate {
-                    heading: "Welcome to Your App",
-                    description: "Read the docs to find out more",
-                    visual: favicon_svg.name
+                    heading: "Welcome to Your Application",
+                    description: "It's really only the beginning",
+                    visual: dashboard_svg.name
                 }
             }
         }
