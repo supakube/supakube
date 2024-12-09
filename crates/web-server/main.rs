@@ -1,11 +1,10 @@
 mod config;
 mod errors;
-
-use std::net::SocketAddr;
-
 use crate::errors::CustomError;
-use axum::{routing::get, Extension, Json, Router};
-use db::User;
+use axum::response::Html;
+use axum::{extract::Extension, routing::get, Router};
+use std::net::SocketAddr;
+use web_pages::root;
 use tower_livereload::LiveReloadLayer;
 
 #[tokio::main]
@@ -16,24 +15,26 @@ async fn main() {
 
     // build our application with a route
     let app = Router::new()
-        .route("/", get(users))
-        .layer(LiveReloadLayer::new())
+        .route("/", get(loader))
         .layer(Extension(config))
+        .layer(LiveReloadLayer::new())
         .layer(Extension(pool.clone()));
 
     // run it
     let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
-    println!("listening on {}", addr);
+    println!("listening on... {}", addr);
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     axum::serve(listener, app.into_make_service())
         .await
         .unwrap();
 }
 
-async fn users(Extension(pool): Extension<db::Pool>) -> Result<Json<Vec<User>>, CustomError> {
+pub async fn loader(Extension(pool): Extension<db::Pool>) -> Result<Html<String>, CustomError> {
     let client = pool.get().await?;
 
     let users = db::queries::users::get_users().bind(&client).all().await?;
 
-    Ok(Json(users))
+    let html = root::index(users);
+
+    Ok(Html(html))
 }

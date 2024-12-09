@@ -2,9 +2,9 @@
 use dioxus::prelude::*;
 
 #[derive(Props, Clone, PartialEq)]
-pub struct AppLayoutProps {
+pub struct LayoutProps {
     title: String,
-    fav_icon_src: String,
+    fav_icon_src: Option<String>,
     stylesheets: Vec<String>,
     js_href: Option<String>,
     header: Element,
@@ -14,7 +14,7 @@ pub struct AppLayoutProps {
     sidebar_header: Element,
 }
 
-pub fn BaseLayout(props: AppLayoutProps) -> Element {
+pub fn Layout(props: LayoutProps) -> Element {
     rsx!(
         head {
             title {
@@ -44,10 +44,12 @@ pub fn BaseLayout(props: AppLayoutProps) -> Element {
                     src: "{js_href}"
                 }
             }
-            link {
-                rel: "icon",
-                "type": "image/svg+xml",
-                href: "{props.fav_icon_src}"
+            if let Some(fav_icon_src) = props.fav_icon_src {
+                link {
+                    rel: "icon",
+                    "type": "image/svg+xml",
+                    href: "{fav_icon_src}"
+                }
             }
         }
         body {
