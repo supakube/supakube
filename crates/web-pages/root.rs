@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
-use daisy_rsx::{Button, ButtonScheme, ButtonSize};
+use assets::files::*;
+use daisy_rsx::BlankSlate;
 use crate::layout::{render_page, Layout, SideBar};
 use axum_extra::routing::TypedPath;
 use serde::Deserialize;
@@ -19,13 +20,10 @@ pub fn index() -> String {
                 }
             ),
             selected_item: SideBar::Dashboard,
-            h1 {
-                "test6"
-            }
-            Button {
-                button_scheme: ButtonScheme::Primary,
-                button_size: ButtonSize::Medium,
-                "Hello"
+            BlankSlate {
+                heading: "Welcome to Your App",
+                description: "Read the docs to find out more",
+                visual: favicon_svg.name
             }
         }
     };

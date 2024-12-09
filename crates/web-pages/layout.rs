@@ -11,6 +11,7 @@ pub fn render_page(page: Element) -> String {
 #[derive(PartialEq, Clone, Eq, Debug)]
 pub enum SideBar {
     Dashboard,
+    Customers,
 }
 
 impl std::fmt::Display for SideBar {
@@ -49,6 +50,13 @@ pub fn Layout(props: LayoutProps) -> Element {
                             icon: favicon_svg.name,
                             title: "Dashboard"
                         }
+                        NavItem {
+                            id: SideBar::Customers.to_string(),
+                            selected_item_id: props.selected_item.to_string(),
+                            href: super::root::Index { },
+                            icon: favicon_svg.name,
+                            title: "Customers"
+                        }
                     )
                 }
             ),
@@ -62,7 +70,10 @@ pub fn Layout(props: LayoutProps) -> Element {
                     "Footer"
                 }  
             ),
-            {props.children}
+            div {
+                class: "px-4",
+                {props.children}
+            }  
         }
     }
 }
