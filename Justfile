@@ -14,3 +14,6 @@ deploy-app:
     kubectl apply -f .devcontainer/supakube.yaml
     cargo run --bin supakube -- open-ports --namespace test-app
     cargo run --bin supakube -- operator
+
+watch:
+    mold -run cargo watch --workdir /workspace/ -w crates/web-server -w crates/db --no-gitignore -x "run --bin web-server"

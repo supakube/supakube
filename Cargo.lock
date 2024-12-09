@@ -3905,6 +3905,7 @@ dependencies = [
  "assets",
  "axum",
  "axum-extra",
+ "db",
  "serde",
  "tokio",
  "tokio-util",
