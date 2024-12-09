@@ -9,7 +9,7 @@ path = "main.rs"
 
 [dependencies]
 web-pages = { path = "../web-pages" }
-assets = { path = "../web-assets" }
+web-assets = { path = "../web-assets" }
 db = { version = "0.1.0", path = "../db" }
 axum = { version = "0.7", default-features = false, features = ["http1", "json", "tokio"] }
 axum-extra = { version = "0.9", features = ["form"] }

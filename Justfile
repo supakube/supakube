@@ -16,4 +16,4 @@ deploy-app:
     cargo run --bin supakube -- operator
 
 watch:
-    mold -run cargo watch --workdir /workspace/ -w crates/web-server -w crates/db --no-gitignore -x "run --bin web-server"
+    mold -run cargo watch --workdir /workspace/ -w crates/web-server -w crates/web-pages -w crates/db --no-gitignore -x "run --bin web-server"

@@ -7,3 +7,4 @@ edition = "2021"
 db = { version = "0.1.0", path = "../db" }
 dioxus = { version = "0.6", default-features = false, features = ["macro", "html", "signals"] }
 dioxus-ssr = { version = "0.6", default-features = false }
+web-assets = { version = "0.1.0", path = "../web-assets" }
