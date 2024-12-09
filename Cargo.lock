@@ -3815,9 +3815,12 @@ name = "web-pages"
 version = "0.1.0"
 dependencies = [
  "assets",
+ "axum",
+ "axum-extra",
  "daisy_rsx",
  "dioxus",
  "dioxus-ssr",
+ "serde",
 ]
 
 [[package]]

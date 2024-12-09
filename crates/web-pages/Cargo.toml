@@ -8,6 +8,9 @@ path = "lib.rs"
 
 [dependencies]
 assets = { path = "../web-assets" }
+axum = { version = "0.7", default-features = false }
+axum-extra = { version = "0.9", features = ["form"] }
 dioxus = { version = "0.6", default-features = false, features = ["macro", "html", "signals"] }
 dioxus-ssr = { version = "0.6", default-features = false }
 daisy_rsx = "0.1.12"
+serde = "1"
