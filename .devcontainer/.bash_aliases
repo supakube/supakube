@@ -11,4 +11,4 @@ alias gitsetup='git config --global user.name \$NAME && git config --global user
 
 # Database
 alias dbmate='dbmate --no-dump-schema --migrations-dir /workspace/crates/db/migrations'
-alias db='psql postgresql://db-owner:testpassword@localhost:30001/bionic-gpt?sslmode=disable'
+alias db='psql $DATABASE_URL'

@@ -48,6 +48,7 @@
 	"postCreateCommand": "cat /workspace/.devcontainer/.bash_aliases >> ~/.bash_aliases && sudo chown -R vscode:vscode /workspace/target && chmod -R u+w /workspace/target",
 	"remoteEnv": {
 		// Pass in the host directory for Docker mount commands from inside the container
-		"HOST_PROJECT_PATH": "${localWorkspaceFolder}"
+		"HOST_PROJECT_PATH": "${localWorkspaceFolder}",
+		"DATABASE_URL": "postgresql://db-owner:testpassword@localhost:30001/my-application?sslmode=disable"
 	}
 }

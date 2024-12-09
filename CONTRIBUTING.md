@@ -2,5 +2,5 @@
 
 - `just init`
 - Wait a while
-- `just deploy-operator`
+- `just deploy-operators`
 - `just deploy-app`
