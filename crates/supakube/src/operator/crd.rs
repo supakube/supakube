@@ -15,11 +15,10 @@ use serde::{Deserialize, Serialize};
 pub struct SupakubeSpec {
     pub replicas: i32,
     pub version: String,
-    pub install_operators: bool,
     pub app_name: String,
-    pub disable_ingress: Option<bool>,
     pub pgadmin: Option<bool>,
     pub observability: Option<bool>,
+    /// For development we set the DB passwords to a known value
     pub development: Option<bool>,
     pub testing: Option<bool>,
     pub application_db_disk_size: i32,

@@ -37,7 +37,9 @@ pub async fn install(installer: &crate::Installer) -> Result<()> {
         install_postgres_operator(&client).await?;
     }
 
-    create_operator(&client, &installer.operator_namespace).await?;
+    if !installer.no_supakube_operator {
+        create_operator(&client, &installer.operator_namespace).await?;
+    }
     create_crd(&client).await?;
     create_roles(&client, installer).await?;
 

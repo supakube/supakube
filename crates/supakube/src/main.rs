@@ -22,9 +22,13 @@ pub struct Cli {
 
 #[derive(Parser)]
 pub struct Installer {
-    /// Run a cut down version of Bionic for integration testing
+    /// Don't install any other operators, they'll need
+    /// to be installed by a sys admin
     #[arg(long, default_value_t = false)]
     supakube_operator_only: bool,
+    /// Don't install supakube we'll run it locally
+    #[arg(long, default_value_t = false)]
+    no_supakube_operator: bool,
     /// In which namespace shall we install
     #[arg(long, default_value = "supakube-system")]
     operator_namespace: String,

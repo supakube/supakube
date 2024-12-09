@@ -7,9 +7,10 @@ init:
 
 # Deploy Postgres and Nginx operators
 deploy-operators:
-    cargo run --bin supakube -- install
+    cargo run --bin supakube -- install --no-supakube-operator
 
 deploy-app:
     kubectl create namespace test-app
     kubectl apply -f .devcontainer/supakube.yaml
     cargo run --bin supakube -- open-ports --namespace test-app
+    cargo run --bin supakube -- operator
