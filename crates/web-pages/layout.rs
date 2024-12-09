@@ -104,18 +104,18 @@ pub fn Layout(props: LayoutProps) -> Element {
                         class: "",
                         "v1.0.1"
                     }
-                } 
+                }
             ),
             sidebar_footer: rsx!(
                 div {
                     class: "text-center text-sm",
                     "You can place items at the bottom"
-                }  
+                }
             ),
             div {
                 class: "px-4 h-full",
                 {props.children}
-            }  
+            }
         }
     }
 }

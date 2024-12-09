@@ -52,6 +52,8 @@ pub async fn reconcile(
     let client: Client = context.client.clone(); // The `Client` is shared -> a clone from the reference is obtained
 
     let namespace: String = supakube.namespace().unwrap_or("default".to_string());
+
+    let development = supakube.spec.development.unwrap_or_default();
     let name = supakube.name_any();
 
     let supakube_version = get_current_supakube_version(&client, &namespace).await?;
@@ -68,9 +70,21 @@ pub async fn reconcile(
             // of `kube::Error` to the `Error` defined in this crate.
             finalizer::add(client.clone(), &name, &namespace).await?;
 
+            let override_db_password = if development {
+                Some("testpassword".to_string())
+            } else {
+                None
+            };
+
             // The databases
-            database::deploy_app_database(&client, &namespace, &supakube.spec.app_name, &None)
-                .await?;
+            database::deploy_app_database(
+                &client,
+                &namespace,
+                &supakube.spec.app_name,
+                &None,
+                &override_db_password,
+            )
+            .await?;
             keycloak_db::deploy_keycloak_database(
                 &client,
                 &namespace,

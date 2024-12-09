@@ -5,7 +5,8 @@ init:
     k3d cluster delete
     k3d cluster create --agents 1 -p "30000-30001:30000-30001@agent:0"
 
-deploy-operator:
+# Deploy Postgres and Nginx operators
+deploy-operators:
     cargo run --bin supakube -- install
 
 deploy-app:

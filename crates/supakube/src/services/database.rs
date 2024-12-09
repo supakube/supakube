@@ -16,6 +16,7 @@ pub async fn deploy_app_database(
     namespace: &str,
     app_name: &str,
     db_user_prefix: &Option<String>,
+    insecure_override_passwords: &Option<String>,
 ) -> Result<Option<String>, Error> {
     // If the cluster config exists, then do nothing.
     let cluster_name = format!("{}-db-cluster", app_name);
@@ -24,9 +25,16 @@ pub async fn deploy_app_database(
     if cluster.is_ok() {
         return Ok(None);
     }
-    let app_database_password = Uuid::new_v4().to_string();
-    let readonly_database_password = Uuid::new_v4().to_string();
-    let dbowner_password = Uuid::new_v4().to_string();
+
+    let app_database_password: String = insecure_override_passwords
+        .clone()
+        .unwrap_or(Uuid::new_v4().to_string());
+    let readonly_database_password: String = insecure_override_passwords
+        .clone()
+        .unwrap_or(Uuid::new_v4().to_string());
+    let dbowner_password: String = insecure_override_passwords
+        .clone()
+        .unwrap_or(Uuid::new_v4().to_string());
 
     let db_user_prefix: String = db_user_prefix.clone().unwrap_or("".to_string());
 

@@ -1,13 +1,20 @@
 use anyhow::Result;
-use k8s_openapi::{api::{
-    apps::v1::Deployment,
-    core::v1::{Namespace, ServiceAccount},
-    rbac::v1::{ClusterRole, ClusterRoleBinding, PolicyRule, RoleRef, Subject},
-}, apiextensions_apiserver::pkg::apis::apiextensions::v1::CustomResourceDefinition};
-use kube::{
-    api::{ObjectMeta, Patch, PatchParams, PostParams}, Api, Client, CustomResourceExt, Error
+use k8s_openapi::{
+    api::{
+        apps::v1::Deployment,
+        core::v1::{Namespace, ServiceAccount},
+        rbac::v1::{ClusterRole, ClusterRoleBinding, PolicyRule, RoleRef, Subject},
+    },
+    apiextensions_apiserver::pkg::apis::apiextensions::v1::CustomResourceDefinition,
 };
-use kube_runtime::{conditions, wait::{await_condition, Condition}};
+use kube::{
+    api::{ObjectMeta, Patch, PatchParams, PostParams},
+    Api, Client, CustomResourceExt, Error,
+};
+use kube_runtime::{
+    conditions,
+    wait::{await_condition, Condition},
+};
 use serde_json::json;
 
 use crate::operator::crd::Supakube;

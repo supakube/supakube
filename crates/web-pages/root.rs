@@ -1,14 +1,13 @@
-use dioxus::prelude::*;
-use assets::files::*;
-use daisy_rsx::BlankSlate;
 use crate::layout::{render_page, Layout, SideBar};
+use assets::files::*;
 use axum_extra::routing::TypedPath;
+use daisy_rsx::BlankSlate;
+use dioxus::prelude::*;
 use serde::Deserialize;
 
 #[derive(TypedPath, Deserialize)]
 #[typed_path("/")]
-pub struct Index {
-}
+pub struct Index {}
 
 pub fn index() -> String {
     let page = rsx! {
@@ -32,7 +31,7 @@ pub fn index() -> String {
                     }
                 }
             ),
-            selected_item: SideBar::Dashboard, 
+            selected_item: SideBar::Dashboard,
             div {
                 class: "mt-12",
                 BlankSlate {
