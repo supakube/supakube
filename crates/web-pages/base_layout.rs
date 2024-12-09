@@ -56,6 +56,7 @@ pub fn BaseLayout(props: AppLayoutProps) -> Element {
                 nav {
                     id: "sidebar",
                     class: "
+                        border-r border-base-300
                         fixed
                         bg-base-200
                         inset-y-0
@@ -90,7 +91,7 @@ pub fn BaseLayout(props: AppLayoutProps) -> Element {
                     id: "main-content",
                     class: "flex-1 flex flex-col",
                     header {
-                        class: "flex items-center p-4",
+                        class: "flex items-center p-4 border-b border-base-300",
                         button {
                             id: "toggleButton",
                             svg {

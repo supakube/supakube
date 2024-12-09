@@ -32,11 +32,14 @@ pub fn index() -> String {
                     }
                 }
             ),
-            selected_item: SideBar::Dashboard,
-            BlankSlate {
-                heading: "Welcome to Your App",
-                description: "Read the docs to find out more",
-                visual: favicon_svg.name
+            selected_item: SideBar::Dashboard, 
+            div {
+                class: "mt-12",
+                BlankSlate {
+                    heading: "Welcome to Your App",
+                    description: "Read the docs to find out more",
+                    visual: favicon_svg.name
+                }
             }
         }
     };
