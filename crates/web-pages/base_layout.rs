@@ -116,10 +116,7 @@ pub fn BaseLayout(props: AppLayoutProps) -> Element {
                                 }
                             }
                         }
-                        div {
-                            class: "flex items-center w-full justify-between",
-                            {props.header}
-                        }
+                        {props.header}
                     }
                     section {
                         class: "flex-1 overflow-y-auto",

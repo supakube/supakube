@@ -37,6 +37,11 @@ pub fn Layout(props: LayoutProps) -> Element {
             stylesheets: stylesheets,
             fav_icon_src: favicon_svg.name,
             header: rsx!(
+                div {
+                    "data-orientation": "vertical",
+                    role: "none",
+                    class: "shrink-0 bg-border w-[1px] mr-2 h-4",
+                }
                 {props.header}
             ),
             sidebar: rsx!(
@@ -108,7 +113,7 @@ pub fn Layout(props: LayoutProps) -> Element {
                 }  
             ),
             div {
-                class: "px-4",
+                class: "px-4 h-full",
                 {props.children}
             }  
         }

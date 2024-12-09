@@ -15,8 +15,21 @@ pub fn index() -> String {
         Layout {
             title: "My App",
             header: rsx!(
-                h1 {
-                    "test6"
+                nav {
+                    aria_label: "breadcrumb",
+                    ol {
+                        class: "flex flex-wrap items-center gap-1.5 break-words text-sm sm:gap-2.5",
+                        li {
+                            class: "items-center gap-1.5 hidden md:block",
+                            "Your Application"
+                        }
+                        li {
+                            ">"
+                        }
+                        li {
+                            "Dashboard"
+                        }
+                    }
                 }
             ),
             selected_item: SideBar::Dashboard,
