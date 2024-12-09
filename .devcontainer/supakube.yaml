@@ -11,7 +11,7 @@ spec:
   disable_ingress: false
   pgadmin: false
   observability: false
-  development: false
+  development: true
   testing: false
   application_db_disk_size: 1
   keycloak_db_disk_size: 1

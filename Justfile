@@ -11,3 +11,4 @@ deploy-operator:
 deploy-app:
     kubectl create namespace test-app
     kubectl apply -f .devcontainer/supakube.yaml
+    cargo run --bin supakube -- open-ports --namespace test-app
