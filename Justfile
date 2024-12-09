@@ -1,14 +1,9 @@
 list:
     just --list
 
-deploy-hot-reload:
-    earthly -P +hot-reload
-    k3d image import ghcr.io/supakube/hot-reload:latest
-    kubectl patch deployment hot-reload -n supakube -p \
-    "{\"spec\": {\"template\": {\"spec\": {\"containers\": [{\"name\": \"hot-reload\", \"image\": \"ghcr.io/supakube/hot-reload:latest\", \"imagePullPolicy\": \"Never\"}]}}}}"
+init:
+    k3d cluster delete
+    k3d cluster create --agents 1 -p "30000-30001:30000-30001@agent:0"
 
-install-supakube:
-    cargo run --bin supakube -- install --development
-
-chill:
-    watchexec -w crates/web-server "cargo build --bin web-server"
+deploy:
+    cargo run --bin supakube -- install
