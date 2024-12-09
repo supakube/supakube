@@ -2,4 +2,5 @@
 
 - `just init`
 - Wait a while
-- `jsut deploy`
+- `just deploy-operator`
+- `just deploy-app`

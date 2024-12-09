@@ -1,15 +1,16 @@
 use anyhow::Result;
-use k8s_openapi::api::{
+use k8s_openapi::{api::{
     apps::v1::Deployment,
     core::v1::{Namespace, ServiceAccount},
     rbac::v1::{ClusterRole, ClusterRoleBinding, PolicyRule, RoleRef, Subject},
-};
+}, apiextensions_apiserver::pkg::apis::apiextensions::v1::CustomResourceDefinition};
 use kube::{
-    api::{ObjectMeta, Patch, PatchParams, PostParams},
-    Api, Client, Error,
+    api::{ObjectMeta, Patch, PatchParams, PostParams}, Api, Client, CustomResourceExt, Error
 };
-use kube_runtime::wait::{await_condition, Condition};
+use kube_runtime::{conditions, wait::{await_condition, Condition}};
 use serde_json::json;
+
+use crate::operator::crd::Supakube;
 
 const CNPG_YAML: &str = include_str!("../config/cnpg-1.22.1.yaml");
 const OPERATOR_IMAGE: &str = "ghcr.io/supakube/supakube";
@@ -30,8 +31,32 @@ pub async fn install(installer: &crate::Installer) -> Result<()> {
     }
 
     create_operator(&client, &installer.operator_namespace).await?;
+    create_crd(&client).await?;
     create_roles(&client, installer).await?;
 
+    Ok(())
+}
+
+async fn create_crd(client: &Client) -> Result<(), Error> {
+    println!("Installing Supakube CRD");
+    let crd = Supakube::crd();
+    let crds: Api<CustomResourceDefinition> = Api::all(client.clone());
+    crds.patch(
+        "supakubes.supakube.com",
+        &PatchParams::apply(MANAGER),
+        &Patch::Apply(crd),
+    )
+    .await?;
+
+    println!("Waiting for Supakube CRD");
+    let establish = await_condition(
+        crds,
+        "supakubes.supakube.com",
+        conditions::is_crd_established(),
+    );
+    let _ = tokio::time::timeout(std::time::Duration::from_secs(10), establish)
+        .await
+        .unwrap();
     Ok(())
 }
 

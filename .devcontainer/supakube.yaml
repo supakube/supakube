@@ -1,0 +1,18 @@
+apiVersion: supakube.com/v1
+kind: Supakube
+metadata:
+  name: example-supakube
+  namespace: test-app
+spec:
+  replicas: 1
+  version: "1.0.0"
+  install_operators: true
+  app_name: "my-application"
+  disable_ingress: false
+  pgadmin: false
+  observability: false
+  development: false
+  testing: false
+  application_db_disk_size: 1
+  keycloak_db_disk_size: 1
+  hostname-url: "https://supakube.com"
