@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.menu > li > a {
+    padding-left: 0.25;
+}
+
+.menu > li > a.active > img {
+    filter: invert(1);
+}
 
 [data-theme="dark"] {
     .menu {
@@ -12,5 +19,9 @@
         > li > a.active > img {
             filter: invert(1);
         }
+    }
+
+    img.svg-icon {
+        filter: invert(0.6);
     }
 }

@@ -52,14 +52,14 @@ pub fn Layout(props: LayoutProps) -> Element {
                             id: SideBar::Dashboard.to_string(),
                             selected_item_id: props.selected_item.to_string(),
                             href: super::root::Index { },
-                            icon: dashboard_svg.name,
+                            icon: trades_svg.name,
                             title: "Dashboard"
                         }
                         NavItem {
                             id: SideBar::Customers.to_string(),
                             selected_item_id: props.selected_item.to_string(),
                             href: super::root::Index { },
-                            icon: dashboard_svg.name,
+                            icon: trades_svg.name,
                             title: "Trades"
                         }
                     )

@@ -20,7 +20,7 @@ module.exports = {
     require("daisyui"),
     require('@tailwindcss/typography')
   ],
-
+  /** We can extend the theme at style it as we wish */
   daisyui: {
     themes: [
       {
