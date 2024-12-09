@@ -41,7 +41,7 @@ pub fn Layout(props: LayoutProps) -> Element {
             ),
             sidebar: rsx!(
                 NavGroup {
-                    heading: "Generative AI",
+                    heading: "Trading",
                     content:  rsx!(
                         NavItem {
                             id: SideBar::Dashboard.to_string(),
@@ -55,19 +55,56 @@ pub fn Layout(props: LayoutProps) -> Element {
                             selected_item_id: props.selected_item.to_string(),
                             href: super::root::Index { },
                             icon: favicon_svg.name,
-                            title: "Customers"
+                            title: "Trades"
                         }
                     )
                 }
             ),
             sidebar_header: rsx!(
-                h1 {
-                    "Header"
-                }  
+                div {
+                    class: "flex aspect-square size-8 items-center justify-center rounded-lg bg-neutral text-neutral-content",
+                    svg {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        width: "24",
+                        height: "24",
+                        view_box: "0 0 24 24",
+                        fill: "none",
+                        stroke: "currentColor",
+                        stroke_width: "2",
+                        stroke_linecap: "round",
+                        stroke_linejoin: "round",
+                        class: "lucide lucide-gallery-vertical-end size-4",
+                        path {
+                            d: "M7 2h10",
+                        }
+                        path {
+                            d: "M5 6h14",
+                        }
+                        rect {
+                            width: "18",
+                            height: "12",
+                            x: "3",
+                            y: "10",
+                            rx: "2",
+                        }
+                    }
+                }
+                div {
+                    class: "ml-3 flex flex-col gap-0.5 leading-none",
+                    span {
+                        class: "font-semibold uppercase",
+                        "Your Application"
+                    }
+                    span {
+                        class: "",
+                        "v1.0.1"
+                    }
+                } 
             ),
             sidebar_footer: rsx!(
-                h1 {
-                    "Footer"
+                div {
+                    class: "text-center text-sm",
+                    "You can place items at the bottom"
                 }  
             ),
             div {
