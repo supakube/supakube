@@ -4,9 +4,9 @@ use dioxus::prelude::*;
 #[component]
 pub fn Layout(title: String, children: Element) -> Element {
     rsx! {
-        BaseLayout { 
+        BaseLayout {
             title,
-            stylesheets: vec![],
+            stylesheets: vec![web_assets::files::tailwind_css.name.to_string()],
             header: rsx!(),
             sidebar: rsx!(),
             sidebar_header: rsx!(),
@@ -15,7 +15,6 @@ pub fn Layout(title: String, children: Element) -> Element {
         }
     }
 }
-
 
 #[derive(Props, Clone, PartialEq)]
 pub struct BaseLayoutProps {

@@ -5,7 +5,10 @@ mod static_files;
 
 use std::net::SocketAddr;
 
-use axum::{routing::{get, post}, Extension, Router};
+use axum::{
+    routing::{get, post},
+    Extension, Router,
+};
 use tower_livereload::LiveReloadLayer;
 
 #[tokio::main]

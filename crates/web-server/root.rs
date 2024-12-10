@@ -1,5 +1,9 @@
 use crate::errors::CustomError;
-use axum::{http::StatusCode, response::{Html, IntoResponse, Redirect, Response}, Extension};
+use axum::{
+    http::StatusCode,
+    response::{Html, IntoResponse, Redirect, Response},
+    Extension,
+};
 use axum_extra::extract::Form;
 use serde::Deserialize;
 use validator::Validate;
@@ -27,7 +31,6 @@ pub async fn new_user_action(
     Extension(pool): Extension<db::Pool>,
     Form(form): Form<SignUp>,
 ) -> Result<Response, CustomError> {
-
     // 👇 add our error handling
     if form.validate().is_err() {
         return Ok((StatusCode::BAD_REQUEST, "Bad request").into_response());
