@@ -100,7 +100,7 @@ pub fn Layout(title: String, children: Element, selected_item: SideBar) -> Eleme
                 }  
             ),
             div {
-                class: "px-4 h-full",
+                class: "px-4 h-full md:m-12 mx-auto",
                 {children}
             } 
         }
