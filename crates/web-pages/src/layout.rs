@@ -1,8 +1,24 @@
 #![allow(non_snake_case)]
 use dioxus::prelude::*;
 
+#[component]
+pub fn Layout(title: String, children: Element) -> Element {
+    rsx! {
+        BaseLayout { 
+            title,
+            stylesheets: vec![],
+            header: rsx!(),
+            sidebar: rsx!(),
+            sidebar_header: rsx!(),
+            sidebar_footer: rsx!(),
+            children,
+        }
+    }
+}
+
+
 #[derive(Props, Clone, PartialEq)]
-pub struct LayoutProps {
+pub struct BaseLayoutProps {
     title: String,
     fav_icon_src: Option<String>,
     stylesheets: Vec<String>,
@@ -14,7 +30,7 @@ pub struct LayoutProps {
     sidebar_header: Element,
 }
 
-pub fn Layout(props: LayoutProps) -> Element {
+pub fn BaseLayout(props: BaseLayoutProps) -> Element {
     rsx!(
         head {
             title {
