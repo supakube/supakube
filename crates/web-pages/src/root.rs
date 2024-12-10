@@ -1,4 +1,4 @@
-use crate::{layout::Layout, render};
+use crate::{layout::{Layout, SideBar}, render};
 use db::User;
 use dioxus::prelude::*;
 use web_assets::files::favicon_svg;
@@ -7,6 +7,7 @@ pub fn index(users: Vec<User>) -> String {
     let page = rsx! {
         Layout {    // <-- Use our layout
             title: "Users Table",
+            selected_item: SideBar::Users,
             table {
                 thead {
                     tr {

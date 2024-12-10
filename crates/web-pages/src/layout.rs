@@ -1,14 +1,40 @@
 #![allow(non_snake_case)]
+use daisy_rsx::*;
 use dioxus::prelude::*;
+use web_assets::files::*;
+
+#[derive(PartialEq, Clone, Eq, Debug)]
+pub enum SideBar {
+    Users,
+}
+
+impl std::fmt::Display for SideBar {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        std::fmt::Debug::fmt(self, f)
+    }
+}
 
 #[component]
-pub fn Layout(title: String, children: Element) -> Element {
+pub fn Layout(title: String, children: Element, selected_item: SideBar) -> Element {
     rsx! {
         BaseLayout {
             title,
-            stylesheets: vec![web_assets::files::tailwind_css.name.to_string()],
+            stylesheets: vec![tailwind_css.name.to_string()],
             header: rsx!(),
-            sidebar: rsx!(),
+            sidebar: rsx!(
+                NavGroup {
+                    heading: "Your Menu",
+                    content:  rsx!(
+                        NavItem {
+                            id: SideBar::Users.to_string(),
+                            selected_item_id: selected_item.to_string(),
+                            href: "/",
+                            icon: favicon_svg.name,
+                            title: "Users"
+                        }
+                    )
+                }
+            ),
             sidebar_header: rsx!(),
             sidebar_footer: rsx!(),
             children,
