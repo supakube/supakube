@@ -20,7 +20,24 @@ pub fn Layout(title: String, children: Element, selected_item: SideBar) -> Eleme
         BaseLayout {
             title,
             stylesheets: vec![tailwind_css.name.to_string()],
-            header: rsx!(),
+            header: rsx!(
+                nav {
+                    aria_label: "breadcrumb",
+                    ol {
+                        class: "flex flex-wrap items-center gap-1.5 break-words text-sm sm:gap-2.5",
+                        li {
+                            class: "items-center gap-1.5 hidden md:block",
+                            "Your Application"
+                        }
+                        li {
+                            ">"
+                        }
+                        li {
+                            "Users"
+                        }
+                    }
+                }
+            ),
             sidebar: rsx!(
                 NavGroup {
                     heading: "Your Menu",
@@ -35,9 +52,57 @@ pub fn Layout(title: String, children: Element, selected_item: SideBar) -> Eleme
                     )
                 }
             ),
-            sidebar_header: rsx!(),
-            sidebar_footer: rsx!(),
-            children,
+            sidebar_header: rsx!(
+                div {
+                    class: "flex aspect-square size-8 items-center justify-center rounded-lg bg-neutral text-neutral-content",
+                    svg {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        width: "24",
+                        height: "24",
+                        view_box: "0 0 24 24",
+                        fill: "none",
+                        stroke: "currentColor",
+                        stroke_width: "2",
+                        stroke_linecap: "round",
+                        stroke_linejoin: "round",
+                        class: "lucide lucide-gallery-vertical-end size-4",
+                        path {
+                            d: "M7 2h10",
+                        }
+                        path {
+                            d: "M5 6h14",
+                        }
+                        rect {
+                            width: "18",
+                            height: "12",
+                            x: "3",
+                            y: "10",
+                            rx: "2",
+                        }
+                    }
+                }
+                div {
+                    class: "ml-3 flex flex-col gap-0.5 leading-none",
+                    span {
+                        class: "font-semibold uppercase",
+                        "Your Application"
+                    }
+                    span {
+                        class: "",
+                        "v1.0.1"
+                    }
+                } 
+            ),
+            sidebar_footer: rsx!(
+                div {
+                    class: "text-center text-sm",
+                    "You can place items at the bottom"
+                }  
+            ),
+            div {
+                class: "px-4 h-full",
+                {children}
+            } 
         }
     }
 }
