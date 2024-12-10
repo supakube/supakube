@@ -37,7 +37,7 @@ pub fn index(users: Vec<User>) -> String {
 
             // 👇 this is our new form
             form {
-                action: "/sign_up",
+                action: "/new_user",
                 method: "POST",
                 label { r#for: "user_email", "Email:" }
                 input { id: "user_email", name: "email", r#type: "email", required: "true" }

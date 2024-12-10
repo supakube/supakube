@@ -5,7 +5,7 @@ mod static_files;
 
 use std::net::SocketAddr;
 
-use axum::{routing::get, Extension, Router};
+use axum::{routing::{get, post}, Extension, Router};
 use tower_livereload::LiveReloadLayer;
 
 #[tokio::main]
@@ -17,6 +17,7 @@ async fn main() {
     // build our application with a route
     let app = Router::new()
         .route("/", get(root::loader))
+        .route("/new_user", post(root::new_user_action))
         .route("/static/*path", get(static_files::static_path))
         .layer(LiveReloadLayer::new())
         .layer(Extension(config))
