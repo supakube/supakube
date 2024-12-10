@@ -1,6 +1,6 @@
 VERSION 0.8
 
-FROM purtontech/rust-on-nails-devcontainer:1.3.14
+FROM purtontech/rust-on-nails-devcontainer:1.3.15
 
 ARG --global OPERATOR_IMAGE_NAME=supakube/supakube:latest
 ARG --global OPERATOR_EXE_NAME=supakube
@@ -14,10 +14,10 @@ all:
 
 build:
     # Copy in all our crates
-    COPY --dir crates crates
+    COPY --dir crates/supakube crates/supakube
     COPY --dir Cargo.lock Cargo.toml .
     # We need to run inside docker as we need postgres running for cornucopia
-    RUN cargo build --release --target x86_64-unknown-linux-musl
+    RUN cd crates/supakube && cargo build --release --target x86_64-unknown-linux-musl
     SAVE ARTIFACT target/x86_64-unknown-linux-musl/release/$OPERATOR_EXE_NAME
 
 build-cli-linux:
