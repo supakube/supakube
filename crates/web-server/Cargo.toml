@@ -17,3 +17,4 @@ tokio = { version = "1", default-features = false, features = ["macros", "rt-mul
 tokio-util = { version = "0.7", default-features = false }
 tower-livereload = "0.9"
 serde = { version = "1", features = ["derive"] }
+validator = { version = "0.15", features = ["derive"] }
