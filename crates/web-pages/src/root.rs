@@ -1,4 +1,7 @@
-use crate::{layout::{Layout, SideBar}, render};
+use crate::{
+    layout::{Layout, SideBar},
+    render,
+};
 use daisy_rsx::*;
 use db::User;
 use dioxus::prelude::*;

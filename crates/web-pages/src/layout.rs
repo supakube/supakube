@@ -20,6 +20,7 @@ pub fn Layout(title: String, children: Element, selected_item: SideBar) -> Eleme
         BaseLayout {
             title,
             stylesheets: vec![tailwind_css.name.to_string()],
+            js_href: htmx_2_0_3_js.name,
             header: rsx!(
                 nav {
                     aria_label: "breadcrumb",
@@ -91,18 +92,18 @@ pub fn Layout(title: String, children: Element, selected_item: SideBar) -> Eleme
                         class: "",
                         "v1.0.1"
                     }
-                } 
+                }
             ),
             sidebar_footer: rsx!(
                 div {
                     class: "text-center text-sm",
                     "You can place items at the bottom"
-                }  
+                }
             ),
             div {
                 class: "px-4 h-full md:m-12 mx-auto",
                 {children}
-            } 
+            }
         }
     }
 }
