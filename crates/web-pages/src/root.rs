@@ -15,7 +15,7 @@ pub fn index(users: Vec<User>) -> String {
                 description: "API Keys allow you to access our programming interface",
             }
             Card {
-                class: "mt-12 has-data-table bordered",
+                class: "card-bordered mt-12 has-data-table",
                 CardHeader {
                     class: "p-3 border-b",
                     title: "Users"
@@ -49,18 +49,31 @@ pub fn index(users: Vec<User>) -> String {
             }
 
             Card {
-                class: "mt-12 bordered",
+                class: "card-bordered mt-12",
                 CardHeader {
                     class: "p-3 border-b",
                     title: "Add User"
                 }
                 CardBody {
                     form {
+                        class: "flex flex-col",
                         action: "/new_user",
                         method: "POST",
-                        label { r#for: "user_email", "Email:" }
-                        input { id: "user_email", name: "email", r#type: "email", required: "true" }
-                        button { "Submit" }
+
+                        Input {
+                            input_type: InputType::Email,
+                            placeholder: "Production API Key",
+                            help_text: "Please enter an email address",
+                            required: true,
+                            label: "Email",
+                            name: "email"
+                        }
+                        Button {
+                            class: "mt-4",
+                            button_type: ButtonType::Submit,
+                            button_scheme: ButtonScheme::Primary,
+                            "Submit"
+                        }
                     }
                 }
             }
