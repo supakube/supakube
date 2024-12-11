@@ -60,6 +60,7 @@ pub fn index(users: Vec<User>) -> String {
                 CardBody {
                     class: "p-3",
                     form {
+                        "hx-boost": "true", 
                         class: "flex flex-col",
                         action: "/new_user",
                         method: "POST",
