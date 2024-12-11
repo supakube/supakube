@@ -15,11 +15,13 @@ pub fn index(users: Vec<User>) -> String {
                 description: "API Keys allow you to access our programming interface",
             }
             Card {
-                class: "mt-12 has-data-table",
+                class: "mt-12 has-data-table bordered",
                 CardHeader {
+                    class: "p-3 border-b",
                     title: "Users"
                 }
                 CardBody {
+                    class: "p-0",
                     table {
                         class: "table table-sm",
                         thead {
@@ -47,8 +49,9 @@ pub fn index(users: Vec<User>) -> String {
             }
 
             Card {
-                class: "mt-12",
+                class: "mt-12 bordered",
                 CardHeader {
+                    class: "p-3 border-b",
                     title: "Add User"
                 }
                 CardBody {
