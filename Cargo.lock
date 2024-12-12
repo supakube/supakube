@@ -596,9 +596,9 @@ dependencies = [
 
 [[package]]
 name = "daisy_rsx"
-version = "0.1.12"
+version = "0.1.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "966ee75572c49198b1c7ce96c1a29b901df1c939b8010103485fa5ba13939a40"
+checksum = "3d9a14ad0b6971a4e6b5febf2930c60b84a7307af5ebeaf301ef7f449a83301a"
 dependencies = [
  "dioxus",
  "dioxus-ssr",
@@ -3147,6 +3147,7 @@ version = "0.1.0"
 dependencies = [
  "axum",
  "axum-extra",
+ "daisy_rsx",
  "dioxus",
  "dioxus-ssr",
  "pulldown-cmark",

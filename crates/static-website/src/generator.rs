@@ -2,9 +2,11 @@ use std::fs::{self, File};
 use std::io::Write;
 use std::path::Path;
 
-use crate::layouts::blog::{BlogList, BlogListProps, BlogPost, BlogPostProps};
-use crate::layouts::docs::{Document, DocumentProps};
-use crate::layouts::pages::{MarkdownPage, MarkdownPageProps};
+use dioxus::prelude::*;
+
+use crate::layouts::blog::{BlogList, BlogPost};
+use crate::layouts::docs::Document;
+use crate::layouts::pages::MarkdownPage;
 
 #[derive(PartialEq, Eq, Clone)]
 pub struct Summary {
@@ -45,7 +47,13 @@ pub fn generate(summary: Summary) {
 
     for category in summary.categories {
         for page in category.pages {
-            let html = crate::render_with_props(BlogPost, BlogPostProps { post: page });
+            let page_ele = rsx! {
+                BlogPost {
+                    post: page
+                }
+            };
+
+            let html = crate::render(page_ele);
             let file = format!("dist/{}/index.html", page.folder);
 
             let mut file = File::create(&file).expect("Unable to create file");
@@ -64,14 +72,15 @@ pub fn generate_docs(summary: Summary) {
 
     for category in &summary.categories {
         for page in &category.pages {
-            let html = crate::render_with_props(
-                Document,
-                DocumentProps {
+            let page_ele = rsx! {
+                Document {
                     summary: summary.clone(),
                     category: category.clone(),
                     doc: *page,
-                },
-            );
+                }
+            };
+
+            let html = crate::render(page_ele);
             let file = format!("dist/{}/index.html", page.folder);
 
             let mut file = File::create(&file).expect("Unable to create file");
@@ -84,7 +93,12 @@ pub fn generate_docs(summary: Summary) {
 pub async fn generate_pages(summary: Summary) {
     for category in &summary.categories {
         for page in &category.pages {
-            let html = crate::render_with_props(MarkdownPage, MarkdownPageProps { post: *page });
+            let page_ele = rsx! {
+                MarkdownPage {
+                    post: *page
+                }
+            };
+            let html = crate::render(page_ele);
 
             let file = format!("dist/{}", page.folder);
 
@@ -100,7 +114,12 @@ pub async fn generate_pages(summary: Summary) {
 }
 
 pub async fn generate_blog_list(summary: Summary) {
-    let html = crate::render_with_props(BlogList, BlogListProps { summary });
+    let page_ele = rsx! {
+        BlogList {
+            summary
+        }
+    };
+    let html = crate::render(page_ele);
 
     let mut file = File::create("dist/blog/index.html").expect("Unable to create file");
     file.write_all(html.as_bytes())
@@ -123,4 +142,27 @@ pub fn copy_folder(src: &Path, dst: &Path) -> std::io::Result<()> {
     }
 
     Ok(())
+}
+
+pub async fn generate_marketing_pages() {
+    let html = crate::pages::pricing::pricing();
+
+    fs::create_dir_all("dist/pricing").expect("Couyldn't create folder");
+    let mut file = File::create("dist/pricing/index.html").expect("Unable to create file");
+    file.write_all(html.as_bytes())
+        .expect("Unable to write to file");
+
+    let html = crate::pages::partners::partners_page();
+
+    fs::create_dir_all("dist/partners").expect("Couyldn't create folder");
+    let mut file = File::create("dist/partners/index.html").expect("Unable to create file");
+    file.write_all(html.as_bytes())
+        .expect("Unable to write to file");
+
+    let html = crate::pages::contact::contact_page();
+
+    fs::create_dir_all("dist/contact").expect("Couyldn't create folder");
+    let mut file = File::create("dist/contact/index.html").expect("Unable to create file");
+    file.write_all(html.as_bytes())
+        .expect("Unable to write to file");
 }

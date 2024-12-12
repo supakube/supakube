@@ -76,7 +76,7 @@ async fn main() {
         .init();
 
     fs::create_dir_all("dist").expect("Couldn't create dist folder");
-    components::marketing::generate().await;
+    generator::generate_marketing_pages().await;
     pages::home::generate().await;
     generator::generate_docs(docs_summary::summary());
     generator::generate(blog_summary::summary());
@@ -113,13 +113,7 @@ pub fn render_with_props<P: Clone + 'static, M: 'static>(
     format!("<!DOCTYPE html><html lang='en'>{}</html>", html)
 }
 
-async fn render(ele: fn() -> Element) -> String {
-    // create a VirtualDom with the app component
-    let mut vdom = VirtualDom::new(ele);
-    // rebuild the VirtualDom before rendering
-    vdom.rebuild_in_place();
-
-    // render the VirtualDom to HTML
-    let html = dioxus_ssr::render(&vdom);
+pub fn render(page: Element) -> String {
+    let html = dioxus_ssr::render_element(page);
     format!("<!DOCTYPE html><html lang='en'>{}</html>", html)
 }

@@ -1,14 +1,13 @@
-use crate::components::benefits::Benefits;
 use crate::components::features::{Feature, Features};
 use crate::components::footer::Footer;
 use crate::components::hero::Hero;
 use crate::components::navigation::Section;
 use crate::components::testamonials::Testamonials;
 use crate::layouts::layout::Layout;
+use daisy_rsx::marketing::benefits::Benefits;
 use dioxus::prelude::*;
 
-#[component]
-pub fn PartnersPage() -> Element {
+pub fn partners_page() -> String {
     let titles = &[
         "No Code Rag",
         "Team-based permissions",
@@ -36,7 +35,7 @@ pub fn PartnersPage() -> Element {
         })
         .collect();
 
-    rsx! {
+    let page = rsx! {
         Layout {
             title: "Partners",
             mobile_menu: None,
@@ -96,5 +95,7 @@ pub fn PartnersPage() -> Element {
             }
         }
         Footer {}
-    }
+    };
+
+    crate::render(page)
 }
