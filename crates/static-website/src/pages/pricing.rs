@@ -1,7 +1,7 @@
-use crate::components::extra_footer::ExtraFooter;
 use crate::components::footer::Footer;
 use crate::components::navigation::Section;
 use crate::layouts::layout::Layout;
+use daisy_rsx::marketing::extra_footer::ExtraFooter;
 use dioxus::prelude::*;
 
 pub fn pricing() -> String {

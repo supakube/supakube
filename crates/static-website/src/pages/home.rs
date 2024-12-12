@@ -1,18 +1,18 @@
-use crate::components::customer_logos::Customers;
-use crate::components::faq_accordian::Faq;
-use crate::components::features::{Feature, Features};
 use crate::components::footer::Footer;
 use crate::components::navigation::Section;
-use crate::components::problem_solution::ProblemSolution;
-use crate::components::security::Security;
-use crate::components::small_image_feature::SmallImageFeature;
-use crate::components::testamonials::Testamonials;
-use crate::components::video_hero::ImageHero;
 use crate::layouts::layout::Layout;
 use daisy_rsx::marketing::benefits::Benefits;
+use daisy_rsx::marketing::security::Security;
 use dioxus::prelude::*;
 use std::fs::File;
 use std::io::Write;
+use daisy_rsx::marketing::customer_logos::Customers;
+use daisy_rsx::marketing::faq_accordian::{Faq, FaqText};
+use daisy_rsx::marketing::features::{Feature, Features};
+use daisy_rsx::marketing::problem_solution::ProblemSolution;
+use daisy_rsx::marketing::small_image_feature::SmallImageFeature;
+use daisy_rsx::marketing::testamonials::Testamonials;
+use daisy_rsx::marketing::video_hero::VideoHero;
 
 pub async fn generate() {
     let html = home_page();
@@ -59,18 +59,21 @@ pub fn home_page() -> String {
 
             div {
                 class: "p-5 mt-24 flex flex-col items-center",
-                ImageHero {
+                VideoHero {
                     video: "https://www.youtube.com/embed/slRiOOM17tM?si=yBb5noZUF44ZIo70",
                     title: "The #1 Enterprise Generative AI and Data Privacy Solution.",
                     subtitle: "We are a Chat-GPT replacement focused on data privacy and compliance.",
-                    claim: "100's of installations globally."
+                    claim: "100's of installations globally.",
+                    cta: "More cred",
+                    cta_link: "More cred",
                 }
                 Customers {}
 
                 ProblemSolution {
                     image: "/landing-page/private-deployment.svg",
                     title: "How do you get the benefits of AI and keep your data private?",
-                    subtitle: "A Chat-GPT Replacement Without The Data Leakage",
+                    problem: "A Chat-GPT Replacement Without The Data Leakage",
+                    solution: "A Chat-GPT Replacement Without The Data Leakage",
                 }
 
                 Benefits {
@@ -130,12 +133,37 @@ pub fn home_page() -> String {
                     text1: "Having the flexibility to use the best model for the job has been a game-changer. Bionic-GPT’s support for multiple models ensures we can tailor solutions to specific challenges, delivering optimal results every time.",
                     job1: "Data Scientist",
                     person1: "Emma Trident",
+                    img1: "",
                     text2: "Bionic-GPT’s observability feature, which logs all messages into and out of the models, has been critical for ensuring compliance in our organization. It gives us peace of mind and robust accountability.",
                     job2: "Compliance Officer",
                     person2: "Patrick O'leary",
+                    img2: "",
                 }
 
-                Faq {}
+                Faq {
+                    class: "m-24",
+                    questions: vec![
+                        FaqText {
+                            question: String::from("How does Bionic-GPT ensure data privacy?"),
+                            answer: String::from("Bionic-GPT runs entirely within your environment, meaning your data never leaves your control. Unlike traditional AI models, there’s no need to send information to external servers, eliminating the risk of leaks or unauthorized access."),
+                        },
+                        FaqText {
+                            question: String::from("Is Bionic-GPT as powerful as Chat-GPT?"),
+                            answer: String::from("Yes! Bionic-GPT delivers the same advanced AI capabilities as Chat-GPT, with the added advantage of running securely within your infrastructure. You get the full power of GPT without compromising privacy or control."),
+                        },
+                        FaqText {
+                            question: String::from("Can Bionic-GPT be tailored to my specific needs?"),
+                            answer: String::from("Absolutely. Bionic-GPT allows you to customize and fine-tune the AI using your own data, ensuring it provides accurate, context-aware insights and performs tasks specific to your business requirements."),
+                        },
+                        FaqText {
+                            question: String::from("How do I monitor and manage usage?"),
+                            answer: String::from("Bionic-GPT includes powerful observability and auditability features. You can track usage, monitor performance, and ensure compliance with detailed logs and insights into how the AI is being used."),
+                        },
+                        FaqText {
+                            question: String::from("Is Bionic-GPT suitable for regulated industries?"),
+                            answer: String::from("Yes. Bionic-GPT is designed with security and compliance in mind, making it ideal for industries with strict data protection requirements. It keeps sensitive information private while meeting regulatory standards."),
+                        },
+                    ]}
 
                 Security {}
             }

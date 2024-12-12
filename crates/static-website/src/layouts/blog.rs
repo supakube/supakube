@@ -1,6 +1,7 @@
 use super::layout::Layout;
+use daisy_rsx::marketing::extra_footer::ExtraFooter;
 use crate::{
-    components::{extra_footer::ExtraFooter, footer::Footer, navigation::Section},
+    components::{footer::Footer, navigation::Section},
     generator::{Page, Summary},
 };
 use dioxus::prelude::*;

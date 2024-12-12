@@ -1,10 +1,10 @@
-use crate::components::features::{Feature, Features};
 use crate::components::footer::Footer;
-use crate::components::hero::Hero;
 use crate::components::navigation::Section;
-use crate::components::testamonials::Testamonials;
 use crate::layouts::layout::Layout;
 use daisy_rsx::marketing::benefits::Benefits;
+use daisy_rsx::marketing::features::{Feature, Features};
+use daisy_rsx::marketing::hero::Hero;
+use daisy_rsx::marketing::testamonials::Testamonials;
 use dioxus::prelude::*;
 
 pub fn partners_page() -> String {
@@ -46,7 +46,9 @@ pub fn partners_page() -> String {
 
                 Hero {
                     title: "Become a Bionic-GPT Partner",
-                    subtitle: "Unlock Revenue with Secure, Enterprise-Grade AI Solutions"
+                    subtitle: "Unlock Revenue with Secure, Enterprise-Grade AI Solutions",
+                    cta: "saf",
+                    cta_link: "saf"
                 }
 
                 Benefits {
@@ -71,14 +73,14 @@ pub fn partners_page() -> String {
                 }
 
                 Testamonials {
-                    text1: "The no-code RAG pipeline, combined with the team-based privacy model, has revolutionized
-                        how we handle sensitive data and collaboration, making deployment secure and seamless.",
-                    job1: "Data Governance Lead",
+                    text1: "Having the flexibility to use the best model for the job has been a game-changer. Bionic-GPT’s support for multiple models ensures we can tailor solutions to specific challenges, delivering optimal results every time.",
+                    job1: "Data Scientist",
                     person1: "Emma Trident",
-                    text2: "The new, clean, and intuitive interface has made adopting bionicGPT across teams effortless.
-                        It’s a joy to use and has lowered the learning curve significantly.",
-                    job2: "Digital Adoption Specialist",
+                    img1: "",
+                    text2: "Bionic-GPT’s observability feature, which logs all messages into and out of the models, has been critical for ensuring compliance in our organization. It gives us peace of mind and robust accountability.",
+                    job2: "Compliance Officer",
                     person2: "Patrick O'leary",
+                    img2: "",
                 }
 
                 section {
