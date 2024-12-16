@@ -12,9 +12,7 @@ fn main() {
         PathBuf::from("./dist"),
     ];
 
-    let files = vec![
-        PathBuf::from("../web-csr/dist/web_csr_bg.wasm"),
-    ];
+    let files = vec![];
 
     generate_static_files_code(&static_out_dir, &asset_dirs, &files).unwrap();
 }

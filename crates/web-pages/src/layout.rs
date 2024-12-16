@@ -122,27 +122,10 @@ pub struct BaseLayoutProps {
 }
 
 pub fn BaseLayout(props: BaseLayoutProps) -> Element {
-    let wasm = 
-    format!("
-    let wasm;
-    (async () => {{
-        WebAssembly.compileStreaming(fetch('{}'))
-            .then((module) => WebAssembly.instantiate(module, importObject))
-            .then((instance) => instance.exports.run());
-        //const bytes = await response.arrayBuffer();
-        //const result = await WebAssembly.instantiate(bytes, {{}});
-        //console.log('here1');
-        //__wbg_set_wasm(result.instance.exports);
-        //console.log('here');
-        //wasm = result.instance.exports;
-        //console.log(wasm);
-        //wasm.__wbindgen_start();
-        //await init();
-        // After init completes, you can call exported functions from your WASM module.
-        // For example:
-        // const result = your_exported_function();
-        // console.log(result);
-    }})();", web_csr_bg_wasm.name);
+    let wasm = "import init, { run } from './wasm/web_csr.js';
+      init().then(() => {
+        run();
+      });";
     rsx!(
         head {
             title {

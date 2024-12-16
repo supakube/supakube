@@ -4,6 +4,7 @@ mod root;
 mod static_files;
 
 use std::net::SocketAddr;
+use tower_http::services::ServeDir;
 
 use axum::{
     routing::{get, post},
@@ -22,6 +23,7 @@ async fn main() {
         .route("/", get(root::loader))
         .route("/new_user", post(root::new_user_action))
         .route("/static/*path", get(static_files::static_path))
+        .nest_service("/wasm", ServeDir::new("/workspace/crates/web-csr/dist"))
         .layer(LiveReloadLayer::new())
         .layer(Extension(config))
         .layer(Extension(pool.clone()));
