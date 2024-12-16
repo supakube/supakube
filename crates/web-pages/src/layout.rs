@@ -123,9 +123,7 @@ pub struct BaseLayoutProps {
 
 pub fn BaseLayout(props: BaseLayoutProps) -> Element {
     let wasm = "import init, { run } from './wasm/web_csr.js';
-      init().then(() => {
-        run();
-      });";
+      init();";
     rsx!(
         head {
             title {
@@ -210,6 +208,7 @@ pub fn BaseLayout(props: BaseLayoutProps) -> Element {
                     header {
                         class: "flex items-center p-4 border-b border-base-300",
                         button {
+                            "data-alert": "helolo",
                             id: "toggleButton",
                             svg {
                                 xmlns: "http://www.w3.org/2000/svg",
