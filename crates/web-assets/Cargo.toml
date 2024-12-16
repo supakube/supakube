@@ -7,4 +7,4 @@ edition = "2021"
 mime = "0.3"
 
 [build-dependencies]
-cache-busters = "0.1"
+cache-busters = "0.1.2"
