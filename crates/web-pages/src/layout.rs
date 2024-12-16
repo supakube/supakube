@@ -24,6 +24,7 @@ pub fn Layout(title: String, children: Element, selected_item: SideBar) -> Eleme
             header: rsx!(
                 nav {
                     aria_label: "breadcrumb",
+                    class: "flex flex-row space-between",
                     ol {
                         class: "flex flex-wrap items-center gap-1.5 break-words text-sm sm:gap-2.5",
                         li {
@@ -35,6 +36,14 @@ pub fn Layout(title: String, children: Element, selected_item: SideBar) -> Eleme
                         }
                         li {
                             "Users"
+                        }
+                    }
+                    section {
+                        class: "counter",
+                        "data-counter": "0",
+                        button {
+                            "data-counter-increment": "true",
+                            "Increment (0)"
                         }
                     }
                 }

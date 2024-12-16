@@ -1,35 +1,30 @@
-use wasm_bindgen::prelude::*;
-use web_sys::{window, Document, Element, HtmlElement};
+mod counter;
 
-// A simple helper function to get the document from the global window.
-fn document() -> Document {
-    window().expect("no global `window` exists").document().expect("should have a document")
-}
+use wasm_bindgen::prelude::*;
+use web_sys::console;
 
 // Called by our JS entry point to run the example.
 #[wasm_bindgen(start)]
 pub fn run() -> Result<(), JsValue> {
-    // Use `web_sys`'s global `window` function to get a handle on the global
-    // window object.
-    let doc = document();
-    // Query for the button element with `data-alert` attribute.
-    let button: Option<Element> = doc.query_selector("[data-alert]").ok().flatten();
 
-    if let Some(btn_el) = button {
-        // Convert to an HtmlElement to attach event listener easily.
-        let btn = btn_el.dyn_into::<HtmlElement>()?;
+    let window = web_sys::window().ok_or("no window")?;
+    let document = window.document().ok_or("no document")?;
+    let ready_state = document.ready_state();
+    
+    if ready_state == "loading" {
 
-        // Closure for the event listener.
-        let closure = Closure::<dyn FnMut(_)>::new(move |_event: web_sys::Event| {
-            // Show the alert when button is clicked.
-            window().unwrap().alert_with_message("Alert triggered!").unwrap();
-        });
-
-        // Add the click event listener to the button.
-        btn.add_event_listener_with_callback("click", closure.as_ref().unchecked_ref())?;
-        closure.forget(); // Keep the closure alive for the lifetime of the program.
+        console::log_1(&"Dom is ready".into());
+        // Document not yet fully parsed, listen for DOMContentLoaded
+        let closure = Closure::wrap(Box::new(move |_evt: web_sys::Event| {
+            counter::load().unwrap();
+        }) as Box<dyn FnMut(_)>);
+        
+        document.add_event_listener_with_callback("DOMContentLoaded", closure.as_ref().unchecked_ref())?;
+        closure.forget();
     } else {
-        web_sys::console::log_1(&"No element with data-alert found!".into());
+        console::log_1(&"Dom is already ready".into());
+        // DOM already ready, just run load directly
+        counter::load()?;
     }
 
     Ok(())
