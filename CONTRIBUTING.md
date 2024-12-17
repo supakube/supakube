@@ -5,15 +5,14 @@ All of the pages are generated server side with a little bit of Htmx or Webassem
 
 ## Tech Stack
 
-- Axum              # Handles all the applications routes and actions
-- Cornucopia        # Generates rust functions from `.sql` files.
-- Dioxus rsx! macro # Used to create UI components and pages on the server side.
-- Daisy UI          # Tailwind components
+- Axum              # Handles all the applications routes and actions (https://github.com/tokio-rs/axum)
+- Cornucopia        # Generates rust functions from `.sql` files. (https://cornucopia-rs.netlify.app/)
+- Dioxus rsx! macro # Used to create UI components and pages on the server side. (https://dioxuslabs.com/)
+- Daisy UI          # Tailwind components (https://daisyui.com/)
 - daisy_rsx         # A rust crate that implements the Daisy UI components in rsx!
-- SSR
-- DbMate            # Database Migrations
+- DbMate            # Database Migrations (https://github.com/amacneil/dbmate)
 - Postgres          # Database
-- Earthly           # Build system for production.
+- Earthly           # Build system for production. (https://earthly.dev/)
 
 ## Folder: db
 
